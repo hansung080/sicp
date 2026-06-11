@@ -10,5 +10,5 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 
 | Ch | Algorithm | Language |
 |----|-----------|----------|
-| 01 | sqrt      | scm      |
+| 01 | basics    | scm      |
 | .. | sqrt      | scm      |
