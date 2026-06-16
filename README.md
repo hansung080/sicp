@@ -6,9 +6,9 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 
 - Scheme (scm): Tested using DrRacket (Language: R5RS).
 
-## Algorithms
+## Procedures
 
-| Ch | Algorithm | Language |
+| Ch | Procedure | Language |
 |----|-----------|----------|
 | 01 | basics    | scm      |
 | .. | sqrt      | scm      |
