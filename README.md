@@ -8,7 +8,8 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 
 ## Procedures
 
-| Ch | Procedure             | Language |
-|----|-----------------------|----------|
-| 01 | basics                | scm      |
-| .. | arithmetic-expression | scm      |
+| Ch | Procedure                    | Language |
+|----|------------------------------|----------|
+| 01 | basics                       | scm      |
+| .. | arithmetic-expression        | scm      |
+| .. | sum-of-squares-for-2greaters | scm      |
