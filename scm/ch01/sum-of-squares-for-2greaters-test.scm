@@ -9,6 +9,8 @@
   (assert-eq (sum-of-squares-for-2greaters 2 1 2) 8)
   (assert-eq (sum-of-squares-for-2greaters 2 2 2) 8))
 
+(test-sum-of-squares-for-2greaters)
+
 (define (test-sum-of-squares-for-2greaters-table)
   (for-each
    (lambda (test-case)
@@ -21,5 +23,4 @@
      ((2 1 2) 8)
      ((2 2 2) 8))))
 
-(test-sum-of-squares-for-2greaters)
 (test-sum-of-squares-for-2greaters-table)
