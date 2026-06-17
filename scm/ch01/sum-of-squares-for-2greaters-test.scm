@@ -11,9 +11,9 @@
 
 (define (test-sum-of-squares-for-2greaters-table)
   (for-each
-   (lambda (case)
-     (assert-eq (apply sum-of-squares-for-2greaters (car case))
-                (cadr case)))
+   (lambda (test-case)
+     (assert-eq (apply sum-of-squares-for-2greaters (car test-case))
+                (cadr test-case)))
    '(((1 2 3) 13)
      ((2 1 3) 13)
      ((3 2 1) 13)
