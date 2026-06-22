@@ -4,7 +4,7 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 
 ## Programming Languages
 
-- Scheme (scm): Tested using DrRacket (Language: R5RS).
+- Scheme (scm): Tested using DrRacket (Language: R5RS) and plt-r5rs.
 
 ## Procedures
 
