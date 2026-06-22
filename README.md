@@ -11,5 +11,6 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | Ch | Procedure                    | Language |
 |----|------------------------------|----------|
 | 01 | basics                       | scm      |
-| .. | arithmetic-expression        | scm      |
+| .. | arithmetic-expressions       | scm      |
 | .. | sum-of-squares-for-2greaters | scm      |
+| .. | compound-operators           | scm      |
