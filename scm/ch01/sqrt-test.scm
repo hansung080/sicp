@@ -1,0 +1,17 @@
+(load "../common/testing.scm")
+(load "sqrt.scm")
+
+(test "sqrt"
+      (lambda ()
+        (assert-eq (sqrt_ 1)
+                   1.0)
+        (assert-eq (sqrt_ 2)
+                   1.4142156862745097)
+        (assert-eq (sqrt_ 9)
+                   3.00009155413138)
+        (assert-eq (sqrt_ (+ 100 37))
+                   11.704699917758145)
+        (assert-eq (sqrt_ (+ (sqrt_ 2) (sqrt_ 3)))
+                   1.7739279023207892)
+        (assert-eq (square (sqrt_ 1000))
+                   1000.000369924366)))
