@@ -16,3 +16,4 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | .. | compound-operators            | scm      |
 | .. | applicative-order-evaluations | scm      |
 | .. | sqrt                          | scm      |
+| .. | cbrt                          | scm      |
