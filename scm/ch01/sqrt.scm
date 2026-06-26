@@ -41,3 +41,5 @@
           guess
           (try next-guess))))
   (try 1.0))
+
+(define sqrt_ sqrt2)
