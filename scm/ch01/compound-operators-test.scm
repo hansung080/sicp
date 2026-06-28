@@ -3,8 +3,7 @@
 (define (a-plus-abs-b a b)
   ((if (> b 0) + -) a b))
 
-(assert-eq (a-plus-abs-b 1 2)
-           3)
-
-(assert-eq (a-plus-abs-b 1 -2)
-           3)
+(test "a-plus-abs-b"
+      (lambda ()
+        (assert-eq (a-plus-abs-b 1 2) 3)
+        (assert-eq (a-plus-abs-b 1 -2) 3)))

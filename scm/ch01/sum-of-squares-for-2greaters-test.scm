@@ -1,5 +1,16 @@
 (load "../common/testing.scm")
-(load "sum-of-squares-for-2greaters.scm")
+
+(define (sum-of-squares a b)
+  (+ (* a a) (* b b)))
+
+(define (sum-of-squares-for-2greaters a b c)
+  (if (< a b)
+    (if (< a c)
+      (sum-of-squares b c)
+      (sum-of-squares b a))
+    (if (< b c)
+      (sum-of-squares a c)
+      (sum-of-squares a b))))
 
 (test "sum-of-squares-for-2greaters"
       (lambda ()

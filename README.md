@@ -18,3 +18,4 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | .. | sqrt                          | scm      |
 | .. | cbrt                          | scm      |
 | .. | factorial                     | scm      |
+| .. | add                           | scm      |
