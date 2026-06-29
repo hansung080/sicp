@@ -19,3 +19,4 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | .. | cbrt                          | scm      |
 | .. | factorial                     | scm      |
 | .. | add                           | scm      |
+| .. | ackermann-function            | scm      |
