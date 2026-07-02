@@ -6,9 +6,9 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 
 - Scheme (scm): Tested using DrRacket (Language: R5RS) and plt-r5rs.
 
-## Procedures
+## Examples
 
-| Ch | Procedure                     | Language |
+| Ch | Example                       | Language |
 |----|-------------------------------|----------|
 | 01 | basics                        | scm      |
 | .. | arithmetic-expressions        | scm      |
@@ -20,3 +20,4 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | .. | factorial                     | scm      |
 | .. | add                           | scm      |
 | .. | ackermann-function            | scm      |
+| .. | fibonacci-sequence            | scm      |
