@@ -21,7 +21,7 @@
 (define (h n)
   (A 2 n))
 
-;; Substitution Model
+;; Substitution Model for Ackermann Function
 ;;
 ;;   (A 1 10)
 ;;   (A 0 (A 1 9))

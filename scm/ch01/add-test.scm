@@ -6,7 +6,7 @@
 (define (dec x)
   (- x 1))
 
-;; Substitution Model for Recursive Procedure that Generates a Recursive Process
+;; Substitution Model for Recursive Procedure That Generates a Recursive Process
 ;;
 ;;   (add1 4 5)
 ;;   (inc (add1 3 5))
@@ -23,7 +23,7 @@
       b
       (inc (add1 (dec a) b))))
 
-;; Substitution Model for Recursive Procedure that Generates an Iterative Process (Tail-recursive Procedure)
+;; Substitution Model for Recursive Procedure That Generates an Iterative Process (Tail-Recursive Procedure)
 ;;
 ;;   (add2 4 5)
 ;;   (add2 3 6)

@@ -8,7 +8,7 @@
 ;;   Fib(1) = 1
 ;;   Fib(n) = Fib(n-1) + Fib(n-2)  (n >= 2)
 ;;
-;; Substitution Model for Recursive Procedure that Generates a Tree-recursive Process
+;; Substitution Model for Recursive Procedure That Generates a Tree-Recursive Process
 ;;
 ;;   (fib1 5)
 ;;   (+ (fib1 4) (fib1 3))
@@ -48,6 +48,28 @@
         (else (+ (fib1 (- n 1))
                  (fib1 (- n 2))))))
 
+;; State Update Rule for Recursive Procedure That Generates an Iterative Process (Tail-Recursive Procedure)
+;;
+;;   a <- b
+;;   b <- a + b
+;; 
+;; Iterative Process
+;;
+;;   n:        0 1 2 3 4 5 6  7  8 ...
+;;   (fib2 n): 0 1 1 2 3 5 8 13 21 ...
+;;   i=0:      a b
+;;   i=1:        a b
+;;   i=2:          a b
+;;   ...
+(define (fib2 n)
+  (define (iter i a b)
+    (if (= i n)
+        a
+        (iter (+ i 1)
+              b
+              (+ a b))))
+  (iter 0 0 1))
+
 ;; Fibonacci Sequence Using Golden Ratio (φ)
 ;;
 ;;   Fib(n) = round(φ^n / sqrt(5))  (φ^2 = φ + 1, φ = (1 + sqrt(5)) / 2 = 1.6180...)
@@ -67,6 +89,18 @@
         (assert-eq (fib1 6) 8)
         (assert-eq (fib1 7) 13)
         (assert-eq (fib1 8) 21)))
+
+(test "fib2"
+      (lambda ()
+        (assert-eq (fib2 0) 0)
+        (assert-eq (fib2 1) 1)
+        (assert-eq (fib2 2) 1)
+        (assert-eq (fib2 3) 2)
+        (assert-eq (fib2 4) 3)
+        (assert-eq (fib2 5) 5)
+        (assert-eq (fib2 6) 8)
+        (assert-eq (fib2 7) 13)
+        (assert-eq (fib2 8) 21)))
 
 (test "fib3"
       (lambda ()

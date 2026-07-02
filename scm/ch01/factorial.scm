@@ -3,7 +3,7 @@
 ;;   0! = 1
 ;;   n! = n * (n-1)!  (n >= 1)
 ;;
-;; Substitution Model for Recursive Procedure that Generates a Recursive Process
+;; Substitution Model for Recursive Procedure That Generates a Recursive Process
 ;;
 ;;   (factorial1 5)
 ;;   (* 5 (factorial1 4))
@@ -22,7 +22,7 @@
       1
       (* n (factorial1 (- n 1)))))
 
-;; Substitution Model for Recursive Procedure that Generates an Iterative Process (Tail-recursive Procedure)
+;; Substitution Model for Recursive Procedure That Generates an Iterative Process (Tail-Recursive Procedure)
 ;;
 ;;   (factorial2 5)
 ;;   (iter 5 1)
