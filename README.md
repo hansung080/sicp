@@ -21,3 +21,4 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | .. | add                           | scm      |
 | .. | ackermann-function            | scm      |
 | .. | fibonacci-sequence            | scm      |
+| .. | count-change                  | scm      |
