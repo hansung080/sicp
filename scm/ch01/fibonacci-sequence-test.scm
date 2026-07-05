@@ -78,7 +78,7 @@
 (define (fib3 n)
   (round_ (/ (expt_ φ n) (sqrt_ 5))))
 
-(test "fib1"
+(test "fibonacci-sequence1"
       (lambda ()
         (assert-eq (fib1 0) 0)
         (assert-eq (fib1 1) 1)
@@ -90,7 +90,7 @@
         (assert-eq (fib1 7) 13)
         (assert-eq (fib1 8) 21)))
 
-(test "fib2"
+(test "fibonacci-sequence2"
       (lambda ()
         (assert-eq (fib2 0) 0)
         (assert-eq (fib2 1) 1)
@@ -102,7 +102,7 @@
         (assert-eq (fib2 7) 13)
         (assert-eq (fib2 8) 21)))
 
-(test "fib3"
+(test "fibonacci-sequence3"
       (lambda ()
         (assert-eq (fib3 0) 0.0)
         (assert-eq (fib3 1) 1.0)
