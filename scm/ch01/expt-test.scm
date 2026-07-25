@@ -19,7 +19,7 @@
         (assert-eq (expt2 2 8) 256)
         (assert-eq (expt2 2 11) 2048)))
 
-(test "expt1"
+(test "fast-expt1"
       (lambda ()
         (assert-eq (fast-expt1 2 0) 1)
         (assert-eq (fast-expt1 2 1) 2)
