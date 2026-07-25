@@ -24,3 +24,4 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | .. | count-change                  | scm      |
 | .. | tribonacci-like-sequence      | scm      |
 | .. | pascal-triangle               | scm      |
+| .. | sine                          | scm      |

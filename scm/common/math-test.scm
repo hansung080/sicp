@@ -1,5 +1,5 @@
-(load "../common/testing.scm")
 (load "math.scm")
+(load "testing.scm")
 
 (test "abs_"
       (lambda ()
