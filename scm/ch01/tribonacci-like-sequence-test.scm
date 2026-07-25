@@ -21,9 +21,9 @@
 
 ;; State Update Rule for Recursive Procedure That Generates an Iterative Process (Tail-Recursive Procedure)
 ;;
-;;   a <- b
-;;   b <- c
-;;   c <- a + b + c
+;;   a' <- b
+;;   b' <- c
+;;   c' <- a + b + c
 ;;
 ;; Iterative Process
 ;;

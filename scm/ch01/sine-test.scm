@@ -7,8 +7,8 @@
 
 ;; Sine Recurrence Relation (x is an angle in radians)
 ;; 
-;;   sin x = x                            (|x| <= 0.1)
-;;   sin x = 3sin(x / 3) - 4sin^3(x / 3)  (|x| > 0.1)
+;;   sin x = x                        (|x| <= 0.1)
+;;   sin x = 3sin(x/3) - 4sin^3(x/3)  (|x| > 0.1)
 ;;
 ;; Substitution Model for (sine 12.15)
 ;;   - `p` is called 5 times.

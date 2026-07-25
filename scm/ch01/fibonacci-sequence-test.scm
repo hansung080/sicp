@@ -50,8 +50,8 @@
 
 ;; State Update Rule for Recursive Procedure That Generates an Iterative Process (Tail-Recursive Procedure)
 ;;
-;;   a <- b
-;;   b <- a + b
+;;   a' <- b
+;;   b' <- a + b
 ;; 
 ;; Iterative Process
 ;;
