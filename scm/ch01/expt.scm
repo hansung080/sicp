@@ -99,5 +99,4 @@
         ((even?_ n) (square (fast-expt1 b (/ n 2))))
         (else (* b (fast-expt1 b (- n 1))))))
 
-
 (define expt_ expt1)

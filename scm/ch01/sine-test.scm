@@ -1,10 +1,6 @@
 (load "../common/math.scm")
 (load "../common/testing.scm")
 
-(define (p x)
-  (- (* 3 x)
-     (* 4 (cube x))))
-
 ;; Sine Recurrence Relation (x is an angle in radians)
 ;; 
 ;;   sin x = x                        (|x| <= 0.1)
@@ -33,6 +29,10 @@
   (if (not (> (abs_ angle) 0.1))
       angle
       (p (sine (/ angle 3.0)))))
+
+(define (p x)
+  (- (* 3 x)
+     (* 4 (cube x))))
 
 (test "sine"
       (lambda ()
