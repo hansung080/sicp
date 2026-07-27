@@ -33,6 +33,7 @@
 ;;   i=1:      a b c
 ;;   i=2:        a b c
 ;;   ...
+;;
 (define (f2 n)
   (define (iter i a b c)
     (if (= i n)

@@ -25,6 +25,7 @@
 ;; Order of Growth for (sine angle)
 ;;
 ;;   Θ(log3(angle))
+;;
 (define (sine angle)
   (if (not (> (abs_ angle) 0.1))
       angle

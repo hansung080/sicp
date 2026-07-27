@@ -18,6 +18,7 @@
 ;;   (inc (inc 7))
 ;;   (inc 8)
 ;;   9
+;;
 (define (add1 a b)
   (if (= a 0)
       b
@@ -31,6 +32,7 @@
 ;;   (add2 1 8)
 ;;   (add2 0 9)
 ;;   9
+;;
 (define (add2 a b)
   (if (= a 0)
       b

@@ -17,6 +17,7 @@
 ;;   (* 5 (* 4 6))
 ;;   (* 5 24)
 ;;   120
+;;
 (define (factorial1 n)
   (if (= n 0)
       1
@@ -32,6 +33,7 @@
 ;;   (iter 1 120)
 ;;   (iter 0 120)
 ;;   120
+;;
 (define (factorial2 n)
   (define (iter i result)
     (if (= i 0)

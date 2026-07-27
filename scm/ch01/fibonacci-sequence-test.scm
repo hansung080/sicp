@@ -42,6 +42,7 @@
 ;;        (fib1 2)      (fib1 1)  (fib1 1) (fib1 0)  (fib1 1) (fib1 0)  1
 ;;   (fib1 1) (fib1 0)  1         1        0         1        0
 ;;   1        0
+;;
 (define (fib1 n)
   (cond ((= n 0) 0)
         ((= n 1) 1)
@@ -61,6 +62,7 @@
 ;;   i=1:        a b
 ;;   i=2:          a b
 ;;   ...
+;;
 (define (fib2 n)
   (define (iter i a b)
     (if (= i n)
@@ -73,6 +75,7 @@
 ;; Fibonacci Sequence Formula Using Golden Ratio (φ)
 ;;
 ;;   Fib(n) = round(φ^n / sqrt(5))  (φ^2 = φ + 1, φ = (1 + sqrt(5)) / 2 = 1.6180...)
+;;
 (define φ (/ (+ 1 (sqrt_ 5)) 2))
 
 (define (fib3 n)
