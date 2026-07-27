@@ -26,3 +26,4 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | .. | pascal-triangle               | scm      |
 | .. | sine                          | scm      |
 | .. | expt                          | scm      |
+| .. | mul                           | scm      |
