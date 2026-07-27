@@ -13,7 +13,7 @@
 ;;
 ;;   Pascal(row, col) = 1  (col = 1)
 ;;   Pascal(row, col) = 1  (col = row)
-;;   Pascal(row, col) = Pascal(row - 1, col - 1) + Pascal(row - 1, col)  (otherwise)
+;;   Pascal(row, col) = Pascal(row-1, col-1) + Pascal(row-1, col)  (otherwise)
 ;;
 ;; Recursive Procedure That Generates a Tree-Recursive Process
 (define (pascal row col)
