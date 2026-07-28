@@ -47,11 +47,9 @@
 ;; Logarithmic-Iterative Process (time complexity: Θ(log2(b)), space complexity: Θ(1))
 ;;
 ;;   When b = 0:
-;;
 ;;     Return s.
 ;;
 ;;   When b is even:
-;;
 ;;     s + a * b = s + {a * (b / 2)} * 2 = s + (a * 2) * (b / 2) = s' + a' * b'
 ;;
 ;;     s' <- s
@@ -59,7 +57,6 @@
 ;;     b' <- b / 2
 ;;
 ;;   When b is odd:
-;;
 ;;     s + a * b = s + a + a * (b - 1) = (s + a) + a * (b - 1) = s' + a' * b'
 ;;
 ;;     s' <- s + a

@@ -49,12 +49,14 @@
         (else (+ (fib1 (- n 1))
                  (fib1 (- n 2))))))
 
-;; State Update Rule for Recursive Procedure That Generates an Iterative Process (Tail-Recursive Procedure)
+;; Iteration Rule for Recursive Procedure That Generates a Linear-Iterative Process (Tail-Recursive Procedure)
+;;
+;;   Loop Invariant: (a, b) = (Fib(i), Fib(i+1))
 ;;
 ;;   a' <- b
 ;;   b' <- a + b
 ;; 
-;; Iterative Process
+;; Linear-Iterative Process
 ;;
 ;;   n:        0 1 2 3 4 5 6  7  8 ...
 ;;   (fib2 n): 0 1 1 2 3 5 8 13 21 ...
@@ -80,6 +82,60 @@
 
 (define (fib3 n)
   (round_ (/ (expt_ φ n) (sqrt_ 5))))
+
+;; Iteration Rule for Recursive Procedure That Generates a Logarithmic-Iterative Process (Tail-Recursive Procedure)
+;;
+;;   Let T is the iteration rule for a linear-iterative process:
+;;     T(a, b) = (a + b, a)
+;;     T^n(1, 0) = (Fib(n+1), Fib(n))
+;;
+;;   Let Tpq is the iteration rule for a logarithmic-iterative process:
+;;     Tpq(a, b) = (bq + aq + ap, bp + aq)
+;;     T01(a, b) = T(a, b)
+;;     Tp'q'(a, b) = Tpq(Tpq(a, b)) = Tpq^2(a, b)
+;;
+;;   Find p' and q' such that Tp'q'(a, b) = Tpq^2(a, b):
+;;     Tpq^2(a, b) = ((bp + aq)q + (bq + aq + ap)q + (bq + aq + ap)p,    (bp + aq)p + (bq + aq + ap)q)
+;;                 = (bpq + aq^2 + bq^2 + aq^2 + apq + bpq + apq + ap^2, bp^2 + apq + bq^2 + aq^2 + apq)
+;;                 = (b(2pq + q^2) + a(2pq + q^2) + a(p^2 + q^2),        b(p^2 + q^2) + a(2pq + q^2))
+;;     p' = p^2 + q^2
+;;     q' = 2pq + q^2
+;;
+;;   Thus, the iteration rule is:
+;;     When i = 0:
+;;       Return b.
+;;
+;;     When i is even:
+;;       i' <- i/2
+;;       a' <- a
+;;       b' <- b
+;;       p' <- p^2 + q^2
+;;       q' <- 2pq + q^2
+;;
+;;     When n is odd:
+;;       i' <- i-1
+;;       a' <- bq + aq + ap
+;;       b' <- bp + aq
+;;       p' <- p
+;;       q' <- q
+;;
+(define (fib4 n)
+  (define (iter i a b p q)
+    (cond ((= i 0)
+           b)
+          ((even?_ i)
+           (iter (/ i 2)
+                 a
+                 b
+                 (+ (* p p) (* q q))
+                 (+ (* 2 p q) (* q q))))
+          (else
+           (iter (- i 1)
+                 (+ (* b q) (* a q) (* a p))
+                 (+ (* b p) (* a q))
+                 p
+                 q))))
+  (iter n 1 0 0 1))
 
 (test "fibonacci-sequence1"
       (lambda ()
@@ -116,3 +172,15 @@
         (assert-eq (fib3 6) 8.0)
         (assert-eq (fib3 7) 13.0)
         (assert-eq (fib3 8) 21.0)))
+
+(test "fibonacci-sequence4"
+      (lambda ()
+        (assert-eq (fib4 0) 0)
+        (assert-eq (fib4 1) 1)
+        (assert-eq (fib4 2) 1)
+        (assert-eq (fib4 3) 2)
+        (assert-eq (fib4 4) 3)
+        (assert-eq (fib4 5) 5)
+        (assert-eq (fib4 6) 8)
+        (assert-eq (fib4 7) 13)
+        (assert-eq (fib4 8) 21)))

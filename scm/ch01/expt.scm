@@ -104,11 +104,9 @@
 ;; Logarithmic-Iterative Process (time complexity: Θ(log2(n)), space complexity: Θ(1))
 ;;
 ;;   When n = 0:
-;;
 ;;     Return a.
 ;;
 ;;   When n is even:
-;;
 ;;     ab^n = a{b^(n/2)}^2 = a(b^2)^(n/2) = a'b'^n'
 ;;
 ;;     a' <- a
@@ -116,7 +114,6 @@
 ;;     n' <- n/2
 ;;
 ;;   When n is odd:
-;;
 ;;     ab^n = abb^(n-1) = (ab)b^(n-1) = a'b'^n'
 ;;
 ;;     a' <- ab

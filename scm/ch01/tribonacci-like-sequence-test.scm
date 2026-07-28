@@ -8,7 +8,8 @@
 ;;   Trib(n) = Fib(n-1) + Fib(n-2) + Fib(n-3)  (n >= 3)
 ;;
 ;; Tribonacci-like Sequence Recurrence Relation
-;;   f(n) = n  (n < 3)
+;;
+;;   f(n) = n                         (n < 3)
 ;;   f(n) = f(n-1) + f(n-2) + f(n-3)  (n >= 3)
 ;;
 ;; Recursive Procedure That Generates a Tree-Recursive Process
@@ -19,13 +20,15 @@
          (f1 (- n 2))
          (f1 (- n 3)))))
 
-;; State Update Rule for Recursive Procedure That Generates an Iterative Process (Tail-Recursive Procedure)
+;; Iteration Rule for Recursive Procedure That Generates a Linear-Iterative Process (Tail-Recursive Procedure)
+;;
+;;   Loop Invariant: (a, b, c) = (f(i), f(i+1), f(i+2))
 ;;
 ;;   a' <- b
 ;;   b' <- c
 ;;   c' <- a + b + c
 ;;
-;; Iterative Process
+;; Linear-Iterative Process
 ;;
 ;;   n:      0 1 2 3 4  5  6  7  8 ...
 ;;   (f2 n): 0 1 2 3 6 11 20 37 68 ...
