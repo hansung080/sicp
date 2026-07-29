@@ -51,10 +51,12 @@
 
 ;; Iteration Rule for Recursive Procedure That Generates a Linear-Iterative Process (Tail-Recursive Procedure)
 ;;
-;;   Loop Invariant: (a, b) = (Fib(i), Fib(i+1))
+;;   Loop Invariant:
+;;     (a, b) = (Fib(i), Fib(i+1))
 ;;
-;;   a' <- b
-;;   b' <- a + b
+;;   Iteration Rule:
+;;     a' <- b
+;;     b' <- a + b
 ;; 
 ;; Linear-Iterative Process
 ;;

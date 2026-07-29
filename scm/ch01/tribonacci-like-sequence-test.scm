@@ -22,11 +22,13 @@
 
 ;; Iteration Rule for Recursive Procedure That Generates a Linear-Iterative Process (Tail-Recursive Procedure)
 ;;
-;;   Loop Invariant: (a, b, c) = (f(i), f(i+1), f(i+2))
+;;   Loop Invariant:
+;;     (a, b, c) = (f(i), f(i+1), f(i+2))
 ;;
-;;   a' <- b
-;;   b' <- c
-;;   c' <- a + b + c
+;;   Iteration Rule:
+;;     a' <- b
+;;     b' <- c
+;;     c' <- a + b + c
 ;;
 ;; Linear-Iterative Process
 ;;
