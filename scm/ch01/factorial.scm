@@ -26,20 +26,20 @@
 ;; Substitution Model for Recursive Procedure That Generates an Iterative Process (Tail-Recursive Procedure)
 ;;
 ;;   (factorial2 5)
-;;   (iter 5 1)
-;;   (iter 4 5)
-;;   (iter 3 20)
-;;   (iter 2 60)
-;;   (iter 1 120)
-;;   (iter 0 120)
+;;   (iter 1 5)
+;;   (iter 5 4)
+;;   (iter 20 3)
+;;   (iter 60 2)
+;;   (iter 120 1)
+;;   (iter 120 0)
 ;;   120
 ;;
 (define (factorial2 n)
-  (define (iter i result)
+  (define (iter result i)
     (if (= i 0)
         result
-        (iter (- i 1)
-              (* result i))))
-  (iter n 1))
+        (iter (* result i)
+              (- i 1))))
+  (iter 1 n))
 
 (define factorial factorial2)

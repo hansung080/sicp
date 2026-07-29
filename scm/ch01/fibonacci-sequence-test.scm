@@ -66,13 +66,13 @@
 ;;   ...
 ;;
 (define (fib2 n)
-  (define (iter i a b)
+  (define (iter a b i)
     (if (= i n)
         a
-        (iter (+ i 1)
-              b
-              (+ a b))))
-  (iter 0 0 1))
+        (iter b
+              (+ a b)
+              (+ i 1))))
+  (iter 0 1 0))
 
 ;; Fibonacci Sequence Formula Using Golden Ratio (φ)
 ;;
@@ -106,36 +106,36 @@
 ;;       Return b.
 ;;
 ;;     When i is even:
-;;       i' <- i/2
 ;;       a' <- a
 ;;       b' <- b
 ;;       p' <- p^2 + q^2
 ;;       q' <- 2pq + q^2
+;;       i' <- i/2
 ;;
 ;;     When n is odd:
-;;       i' <- i-1
 ;;       a' <- bq + aq + ap
 ;;       b' <- bp + aq
 ;;       p' <- p
 ;;       q' <- q
+;;       i' <- i-1
 ;;
 (define (fib4 n)
-  (define (iter i a b p q)
+  (define (iter a b p q i)
     (cond ((= i 0)
            b)
           ((even?_ i)
-           (iter (/ i 2)
-                 a
+           (iter a
                  b
                  (+ (* p p) (* q q))
-                 (+ (* 2 p q) (* q q))))
+                 (+ (* 2 p q) (* q q))
+                 (/ i 2)))
           (else
-           (iter (- i 1)
-                 (+ (* b q) (* a q) (* a p))
+           (iter (+ (* b q) (* a q) (* a p))
                  (+ (* b p) (* a q))
                  p
-                 q))))
-  (iter n 1 0 0 1))
+                 q
+                 (- i 1)))))
+  (iter 1 0 0 1 n))
 
 (test "fibonacci-sequence1"
       (lambda ()

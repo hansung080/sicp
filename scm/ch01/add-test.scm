@@ -1,10 +1,10 @@
 (load "../common/testing.scm")
 
-(define (inc x)
-  (+ x 1))
+(define (inc n)
+  (+ n 1))
 
-(define (dec x)
-  (- x 1))
+(define (dec n)
+  (- n 1))
 
 ;; Substitution Model for Recursive Procedure That Generates a Recursive Process
 ;;

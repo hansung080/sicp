@@ -38,14 +38,14 @@
 ;;   ...
 ;;
 (define (f2 n)
-  (define (iter i a b c)
+  (define (iter a b c i)
     (if (= i n)
         a
-        (iter (+ i 1)
-              b
+        (iter b
               c
-              (+ a b c))))
-  (iter 0 0 1 2))
+              (+ a b c)
+              (+ i 1))))
+  (iter 0 1 2 0))
 
 (test "tribonacci-like-sequence1"
       (lambda ()
