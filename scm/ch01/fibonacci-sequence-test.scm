@@ -87,11 +87,11 @@
 
 ;; Iteration Rule for Recursive Procedure That Generates a Logarithmic-Iterative Process (Tail-Recursive Procedure)
 ;;
-;;   Let T is the iteration rule for a linear-iterative process:
+;;   Let T be the iteration rule for a linear-iterative process:
 ;;     T(a, b) = (a + b, a)
 ;;     T^n(1, 0) = (Fib(n+1), Fib(n))
 ;;
-;;   Let Tpq is the iteration rule for a logarithmic-iterative process:
+;;   Let Tpq be the iteration rule for a logarithmic-iterative process:
 ;;     Tpq(a, b) = (bq + aq + ap, bp + aq)
 ;;     T01(a, b) = T(a, b)
 ;;     Tp'q'(a, b) = Tpq(Tpq(a, b)) = Tpq^2(a, b)

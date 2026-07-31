@@ -27,3 +27,4 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | .. | sine                          | scm      |
 | .. | expt                          | scm      |
 | .. | mul                           | scm      |
+| .. | gcd                           | scm      |

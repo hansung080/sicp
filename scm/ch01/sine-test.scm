@@ -22,9 +22,10 @@
 ;;   (p -0.7895631144708228)
 ;;   -0.39980345741334
 ;;
-;; Order of Growth for (sine angle)
+;; Order of Growth for (sine angle) Which Generates a Logarithmic-Recursive Process
 ;;
-;;   Θ(log3(angle))
+;;   Time Complexity:  Θ(log3(angle))
+;;   Space Complexity: Θ(log3(angle))
 ;;
 (define (sine angle)
   (if (not (> (abs_ angle) 0.1))
