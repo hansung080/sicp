@@ -1,21 +1,22 @@
 (load "../common/testing.scm")
 
-;; Pascal's Triangle
+;; Pascal's Triangle (Tree-Recursive Process)
 ;;
-;;       1
-;;      1 1
-;;     1 2 1
-;;    1 3 3 1
-;;   1 4 6 4 1
-;;      ...
+;;   Recurrence Relation
 ;;
-;; Pascal's Triangle Recurrence Relation
+;;     Pascal(row, col) = 1  (col = 1)
+;;     Pascal(row, col) = 1  (col = row)
+;;     Pascal(row, col) = Pascal(row-1, col-1) + Pascal(row-1, col)  (otherwise)
 ;;
-;;   Pascal(row, col) = 1  (col = 1)
-;;   Pascal(row, col) = 1  (col = row)
-;;   Pascal(row, col) = Pascal(row-1, col-1) + Pascal(row-1, col)  (otherwise)
+;;   Pascal's Triangle
 ;;
-;; Recursive Procedure That Generates a Tree-Recursive Process
+;;         1
+;;        1 1
+;;       1 2 1
+;;      1 3 3 1
+;;     1 4 6 4 1
+;;        ...
+;;
 (define (pascal row col)
   (cond ((= col 1) 1)
         ((= col row) 1)

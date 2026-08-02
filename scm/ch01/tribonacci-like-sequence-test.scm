@@ -1,18 +1,19 @@
 (load "../common/testing.scm")
 
-;; Tribonacci Sequence Recurrence Relation
+;; Tree-Recursive Process
 ;;
-;;   Trib(0) = 0
-;;   Trib(1) = 0
-;;   Trib(2) = 1
-;;   Trib(n) = Fib(n-1) + Fib(n-2) + Fib(n-3)  (n >= 3)
+;;   Tribonacci Sequence Recurrence Relation
 ;;
-;; Tribonacci-like Sequence Recurrence Relation
+;;     Trib(0) = 0
+;;     Trib(1) = 0
+;;     Trib(2) = 1
+;;     Trib(n) = Fib(n-1) + Fib(n-2) + Fib(n-3)  (n >= 3)
 ;;
-;;   f(n) = n                         (n < 3)
-;;   f(n) = f(n-1) + f(n-2) + f(n-3)  (n >= 3)
+;;   Tribonacci-like Sequence Recurrence Relation
 ;;
-;; Recursive Procedure That Generates a Tree-Recursive Process
+;;     f(n) = n                         (n < 3)
+;;     f(n) = f(n-1) + f(n-2) + f(n-3)  (n >= 3)
+;;
 (define (f1 n)
   (if (< n 3)
       n
@@ -20,24 +21,26 @@
          (f1 (- n 2))
          (f1 (- n 3)))))
 
-;; Iteration Rule for Recursive Procedure That Generates a Linear-Iterative Process (Tail-Recursive Procedure)
+;; Linear Iterative Process
 ;;
-;;   Loop Invariant:
-;;     (a, b, c) = (f(i), f(i+1), f(i+2))
+;;   Iteration Rule
 ;;
-;;   Iteration Rule:
 ;;     a' <- b
 ;;     b' <- c
 ;;     c' <- a + b + c
 ;;
-;; Linear-Iterative Process
+;;   Loop Invariant
 ;;
-;;   n:      0 1 2 3 4  5  6  7  8 ...
-;;   (f2 n): 0 1 2 3 6 11 20 37 68 ...
-;;   i=0:    a b c
-;;   i=1:      a b c
-;;   i=2:        a b c
-;;   ...
+;;     (a, b, c) = (f(i), f(i+1), f(i+2))
+;;
+;;   Iteration Process
+;;
+;;     n:      0 1 2 3 4  5  6  7  8 ...
+;;     (f2 n): 0 1 2 3 6 11 20 37 68 ...
+;;     i=0:    a b c
+;;     i=1:      a b c
+;;     i=2:        a b c
+;;     ...
 ;;
 (define (f2 n)
   (define (iter a b c i)

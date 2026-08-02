@@ -1,22 +1,25 @@
-;; Euclidean Algorithm (using subtraction)
+;; Euclidean Algorithm Using Subtraction (Linear Iterative Process)
 ;;
-;;   Let:
-;;     A and B are positive integers, and G is the greatest common divisor of them.
+;;   Iteration Rule
 ;;
-;;     A = a * G
-;;     B = b * G
+;;     Let:
+;;       A and B are positive integers, and G is the greatest common divisor of them.
 ;;
-;;   Then:
-;;     a and b are coprime, and (a - b) and b are coprime.
+;;       A = a * G
+;;       B = b * G
 ;;
-;;     A - B = (a - b) * G
+;;     Then:
+;;       a and b are coprime, and (a - b) and b are coprime.
 ;;
-;;   Thus:
-;;     GCD(A, B) = GCD(A - B, B)
-;;     GCD(A, B) = GCD(B, A)
-;;     GCD(0, B) = B
+;;       A - B = (a - b) * G
 ;;
-;;   Example:
+;;     Thus:
+;;       GCD(A, B) = GCD(A - B, B)
+;;       GCD(A, B) = GCD(B, A)
+;;       GCD(0, B) = B
+;;
+;;   Example
+;;
 ;;     GCD(40, 206)
 ;;     = GCD(206, 40)
 ;;     = GCD(166, 40)
@@ -38,10 +41,10 @@
 ;;     = GCD(0, 2)
 ;;     = 2
 ;;
-;; Order of Growth for (slow-gcd a b) Which Generates a Linear-Iterative Process
+;;   Order of Growth
 ;;
-;;   Time Complexity:  Θ(a + b)
-;;   Space Complexity: Θ(1)
+;;     time complexity:  Θ(a + b)
+;;     space complexity: Θ(1)
 ;;
 (define (slow-gcd a b)
   (cond ((= b 0) a) ; special case where b is initially 0
@@ -49,9 +52,8 @@
         ((< a b) (slow-gcd (- b a) a))
         (else (slow-gcd (- a b) b))))
 
-;; Euclidean Algorithm (using remainder)
+;; Euclidean Algorithm Using Remainder (Logarithmic Iterative Process)
 (define (fast-gcd a b)
   0)
 
 (define gcd_ fast-gcd)
-

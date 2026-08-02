@@ -7,23 +7,37 @@
 (define (halve x)
   (/ x 2))
 
-;; Linear-Recursive Process (time complexity: Θ(b), space complexity: Θ(b))
+;; Linear Recursive Process
 ;;
-;;   a * 0 = 0
-;;   a * b = a + a * (b - 1)  (b >= 1)
+;;   Recurrence Relation
+;;
+;;     a * 0 = 0
+;;     a * b = a + a * (b - 1)  (b >= 1)
+;;
+;;   Order of Growth
+;;
+;;     time complexity:  Θ(b)
+;;     space complexity: Θ(b)
 ;;
 (define (mul1 a b)
   (if (= b 0)
       0
       (+ a (mul1 a (- b 1)))))
 
-;; Linear-Iterative Process (time complexity: Θ(b), space complexity: Θ(1))
+;; Linear Iterative Process
 ;;
-;;   s + a * b = s + a + a * (b - 1) = (s + a) + a * (b - 1) = s' + a' * b'
+;;   Iteration Rule
 ;;
-;;   s' <- s + a
-;;   a' <- a
-;;   b' <- b - 1
+;;     s + a * b = s + a + a * (b - 1) = (s + a) + a * (b - 1) = s' + a' * b'
+;;
+;;     s' <- s + a
+;;     a' <- a
+;;     b' <- b - 1
+;;
+;;   Order of Growth
+;;
+;;     time complexity:  Θ(b)
+;;     space complexity: Θ(1)
 ;;
 (define (mul2 a b)
   (define (iter s b)
@@ -33,35 +47,49 @@
   (iter 0 b))
 
 
-;; Logarithmic-Recursive Process (time complexity: Θ(log2(b)), space complexity: Θ(log2(b)))
+;; Logarithmic Recursive Process
 ;;
-;;   a * 0 = 0
-;;   a * b = {a * (b / 2)} * 2  (b is even)
-;;   a * b = a + a * (b - 1)    (b is odd)
+;;   Recurrence Relation
+;;
+;;     a * 0 = 0
+;;     a * b = {a * (b / 2)} * 2  (b is even)
+;;     a * b = a + a * (b - 1)    (b is odd)
+;;
+;;   Order of Growth
+;;
+;;     time complexity:  Θ(log2(b))
+;;     space complexity: Θ(log2(b))
 ;;
 (define (fast-mul1 a b)
   (cond ((= b 0) 0)
         ((even?_ b) (double (fast-mul1 a (halve b))))
         (else (+ a (fast-mul1 a (- b 1))))))
 
-;; Logarithmic-Iterative Process (time complexity: Θ(log2(b)), space complexity: Θ(1))
+;; Logarithmic Iterative Process
 ;;
-;;   When b = 0:
-;;     Return s.
+;;   Iteration Rule
 ;;
-;;   When b is even:
-;;     s + a * b = s + {a * (b / 2)} * 2 = s + (a * 2) * (b / 2) = s' + a' * b'
+;;     When b = 0:
+;;       Return s.
 ;;
-;;     s' <- s
-;;     a' <- a * 2
-;;     b' <- b / 2
+;;     When b is even:
+;;       s + a * b = s + {a * (b / 2)} * 2 = s + (a * 2) * (b / 2) = s' + a' * b'
 ;;
-;;   When b is odd:
-;;     s + a * b = s + a + a * (b - 1) = (s + a) + a * (b - 1) = s' + a' * b'
+;;       s' <- s
+;;       a' <- a * 2
+;;       b' <- b / 2
 ;;
-;;     s' <- s + a
-;;     a' <- a
-;;     b' <- b - 1
+;;     When b is odd:
+;;       s + a * b = s + a + a * (b - 1) = (s + a) + a * (b - 1) = s' + a' * b'
+;;
+;;       s' <- s + a
+;;       a' <- a
+;;       b' <- b - 1
+;;
+;;   Order of Growth
+;;
+;;     time complexity:  Θ(log2(b))
+;;     space complexity: Θ(1)
 ;;
 (define (fast-mul2 a b)
   (define (iter s a b)
