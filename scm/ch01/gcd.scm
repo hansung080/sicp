@@ -53,7 +53,50 @@
         (else (slow-gcd (- a b) b))))
 
 ;; Euclidean Algorithm Using Remainder (Logarithmic Iterative Process)
-(define (fast-gcd a b)
-  0)
+;;
+;;   Iteration Rule
+;;
+;;     Transform:
+;;       GCD(A, B) = GCD(A - B, B)
+;;                 = GCD(A - B - B, B)
+;;                 = GCD(A - B - B - B, B)
+;;                 ...
+;;                 = GCD(A - B * Q, B)
+;;                 = GCD(A % B, B)  (because A = B * Q + R; R = A % B)
+;;                 = GCD(B, A % B)  (because A % B < B)
+;;
+;;     Thus:
+;;       GCD(A, B) = GCD(B, A % B)
+;;       GCD(A, 0) = A
+;;
+;;   Example
+;;
+;;     GCD(40, 206)
+;;     = GCD(206, 40)
+;;     = GCD(40, 6)
+;;     = GCD(6, 4)
+;;     = GCD(4, 2)
+;;     = GCD(2, 0)
+;;     = 2
+;;
+;;   Order of Growth
+;;
+;;     Lamé's Theorem:
+;;       n >= Fib(k)  (n = min(a, b); k denotes the number of steps required to compute the GCD.)
+;;
+;;     Then:
+;;       n >= Fib(k) = round(φ^k / sqrt(5)) ≈ φ^k / sqrt(5)
+;;       φ^k <= n * sqrt(5)
+;;       k <= logφ(n * sqrt(5)) = logφ(n) + logφ(sqrt(5))
+;;       k = Θ(logφ(n))
+;;
+;;     Thus:
+;;       time complexity:  Θ(logφ(n))  (n = min(a, b))
+;;       space complexity: Θ(1)
+;;
+(define (gcd0 a b)
+  (if (= b 0)
+      a
+      (gcd0 b (remainder a b))))
 
-(define gcd_ fast-gcd)
+(define gcd_ gcd0)
