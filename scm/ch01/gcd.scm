@@ -1,9 +1,13 @@
+;; Mathematical Definition of GCD
+;;
+;;   GCD is the greatest positive integer that divides both integers.
+;;
 ;; Euclidean Algorithm Using Subtraction (Linear Iterative Process)
 ;;
 ;;   Iteration Rule
 ;;
 ;;     Let:
-;;       A and B are positive integers, and G is the greatest common divisor of them.
+;;       A and B are nonnegative integers, and G is the greatest common divisor of them.
 ;;
 ;;       A = a * G
 ;;       B = b * G

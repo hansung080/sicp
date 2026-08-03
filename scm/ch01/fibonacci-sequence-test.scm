@@ -98,6 +98,13 @@
 ;;
 ;;     Fib(n) = round(φ^n / sqrt(5))  (φ^2 = φ + 1; φ = (1 + sqrt(5)) / 2 = 1.6180... (golden ratio))
 ;;
+;;   Proof
+;;
+;;     Refer to the two web pages below.
+;;
+;;     https://sicp-solutions.net/post/sicp-solution-exercise-1-13/
+;;     https://studyingeugene.github.io/sicp/chapter-1/exercise-1-13/
+;;
 ;;   Order of Growth
 ;;
 ;;     The time and space complexities depend on the implementation of expt_, which is currently implemented as fast-expt2.
