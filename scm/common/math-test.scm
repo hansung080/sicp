@@ -107,12 +107,12 @@
 
 (test "round-half-away-from-zero2"
       (lambda ()
-        (assert-eq (round-half-away-from-zero2 0) 0.0) ; exact integer -> inexact real
-        (assert-eq (round-half-away-from-zero2 1) 1.0) ; exact integer -> inexact real
+        (assert-eq (round-half-away-from-zero2 0) 0.0) ; inexact->exact
+        (assert-eq (round-half-away-from-zero2 1) 1.0) ; inexact->exact
         (assert-eq (round-half-away-from-zero2 1.4) 1.0)
         (assert-eq (round-half-away-from-zero2 1.5) 2.0)
         (assert-eq (round-half-away-from-zero2 1.6) 2.0)
-        (assert-eq (round-half-away-from-zero2 -1) -1.0) ; exact integer -> inexact real
+        (assert-eq (round-half-away-from-zero2 -1) -1.0) ; inexact->exact
         (assert-eq (round-half-away-from-zero2 -1.4) -1.0)
         (assert-eq (round-half-away-from-zero2 -1.5) -2.0)
         (assert-eq (round-half-away-from-zero2 -1.6) -2.0)))
@@ -176,3 +176,48 @@
         (assert-eq (average -1 -3) -2)
         (assert-eq (average 1.5 3.5) 2.5)
         (assert-eq (average -1.5 -3.5) -2.5)))
+
+(test "<<"
+      (lambda ()
+        (assert-eq (<< 4 0) 4)
+        (assert-eq (<< 4 1) 8)
+        (assert-eq (<< 4 2) 16)
+        (assert-eq (<< -4 0) -4)
+        (assert-eq (<< -4 1) -8)
+        (assert-eq (<< -4 2) -16)
+        (assert-eq (<< 5 0) 5)
+        (assert-eq (<< 5 1) 10)
+        (assert-eq (<< 5 2) 20)
+        (assert-eq (<< -5 0) -5)
+        (assert-eq (<< -5 1) -10)
+        (assert-eq (<< -5 2) -20)))
+
+(test ">>1"
+      (lambda ()
+        (assert-eq (>>1 4 0) 4)
+        (assert-eq (>>1 4 1) 2)
+        (assert-eq (>>1 4 2) 1)
+        (assert-eq (>>1 -4 0) -4)
+        (assert-eq (>>1 -4 1) -2)
+        (assert-eq (>>1 -4 2) -1)
+        (assert-eq (>>1 5 0) 5)
+        (assert-eq (>>1 5 1) 2)
+        (assert-eq (>>1 5 2) 1)
+        (assert-eq (>>1 -5 0) -5)
+        (assert-eq (>>1 -5 1) -3)
+        (assert-eq (>>1 -5 2) -2)))
+
+(test ">>2"
+      (lambda ()
+        (assert-eq (>>2 4 0) 4)
+        (assert-eq (>>2 4 1) 2)
+        (assert-eq (>>2 4 2) 1)
+        (assert-eq (>>2 -4 0) -4)
+        (assert-eq (>>2 -4 1) -2)
+        (assert-eq (>>2 -4 2) -1)
+        (assert-eq (>>2 5 0) 5)
+        (assert-eq (>>2 5 1) 2)
+        (assert-eq (>>2 5 2) 1)
+        (assert-eq (>>2 -5 0) -5)
+        (assert-eq (>>2 -5 1) -3)
+        (assert-eq (>>2 -5 2) -2)))

@@ -1,3 +1,10 @@
+;; Unlike the built-in quotient, which raises an error if m or n is not an integer,
+;; the user-defined quotient_ does not.
+;; ```
+;; (define (quotient_ m n)
+;;   (truncate (/ m n)))
+;; ```
+;;
 ;; Unlike the built-in remainder, which raises an error if m or n is not an integer,
 ;; the user-defined remainder_ does not.
 ;; ```
@@ -111,3 +118,18 @@
 
 (define (average x y)
   (/ (+ x y) 2))
+
+(define (<< m n)
+  (* m (expt 2 n)))
+
+(define (>>1 m n)
+  (inexact->exact
+   (floor_ (/ m (expt 2 n)))))
+
+(define (>>2 m n)
+  (let ((d (expt 2 n)))
+    (if (>= m 0)
+        (quotient m d)
+        (- (quotient (+ (- m) d -1) d)))))
+
+(define >> >>2)

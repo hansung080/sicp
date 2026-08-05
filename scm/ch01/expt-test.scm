@@ -3,6 +3,9 @@
 
 (test "expt1"
       (lambda ()
+        (assert-eq (expt1 0 0) 1)
+        (assert-eq (expt1 0 1) 0)
+        (assert-eq (expt1 0 2) 0)
         (assert-eq (expt1 2 0) 1)
         (assert-eq (expt1 2 1) 2)
         (assert-eq (expt1 2 2) 4)
@@ -12,6 +15,9 @@
 
 (test "expt2"
       (lambda ()
+        (assert-eq (expt2 0 0) 1)
+        (assert-eq (expt2 0 1) 0)
+        (assert-eq (expt2 0 2) 0)
         (assert-eq (expt2 2 0) 1)
         (assert-eq (expt2 2 1) 2)
         (assert-eq (expt2 2 2) 4)
@@ -21,6 +27,9 @@
 
 (test "fast-expt1"
       (lambda ()
+        (assert-eq (fast-expt1 0 0) 1)
+        (assert-eq (fast-expt1 0 1) 0)
+        (assert-eq (fast-expt1 0 2) 0)
         (assert-eq (fast-expt1 2 0) 1)
         (assert-eq (fast-expt1 2 1) 2)
         (assert-eq (fast-expt1 2 2) 4)
@@ -30,6 +39,9 @@
 
 (test "fast-expt2"
       (lambda ()
+        (assert-eq (fast-expt2 0 0) 1)
+        (assert-eq (fast-expt2 0 1) 0)
+        (assert-eq (fast-expt2 0 2) 0)
         (assert-eq (fast-expt2 2 0) 1)
         (assert-eq (fast-expt2 2 1) 2)
         (assert-eq (fast-expt2 2 2) 4)
