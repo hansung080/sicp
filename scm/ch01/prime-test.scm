@@ -1,0 +1,32 @@
+(load "../common/testing.scm")
+(load "prime.scm")
+
+(test "prime0?"
+      (lambda ()
+        ;; Test for normal numbers.
+        (assert-eq (prime0? 0) #f)
+        (assert-eq (prime0? 1) #f)
+        (assert-eq (prime0? 2) #t)
+        (assert-eq (prime0? 3) #t)
+        (assert-eq (prime0? 4) #f)
+        (assert-eq (prime0? 5) #t)
+        (assert-eq (prime0? 6) #f)
+        (assert-eq (prime0? 7) #t)
+        (assert-eq (prime0? 8) #f)
+        (assert-eq (prime0? 9) #f)
+        (assert-eq (prime0? 10) #f)
+        (assert-eq (prime0? 11) #t)
+        (assert-eq (prime0? 23) #t)
+        (assert-eq (prime0? 149) #t)
+        (assert-eq (prime0? 299) #f)
+        (assert-eq (prime0? 529) #f)
+        (assert-eq (prime0? 823) #t)
+        (assert-eq (prime0? 1483) #t)
+        ;; Test for Carmichael numbers.
+        (assert-eq (prime0? 561) #f)
+        (assert-eq (prime0? 1105) #f)
+        (assert-eq (prime0? 1729) #f)
+        (assert-eq (prime0? 2465) #f)
+        (assert-eq (prime0? 2821) #f)
+        (assert-eq (prime0? 6601) #f)))
+

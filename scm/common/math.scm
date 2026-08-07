@@ -133,3 +133,6 @@
         (- (quotient (+ (- m) d -1) d)))))
 
 (define >> >>2)
+
+(define (divide? x y)
+  (= (remainder x y) 0))
