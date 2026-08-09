@@ -134,5 +134,36 @@
 
 (define >> >>2)
 
-(define (divide? x y)
-  (= (remainder x y) 0))
+(define (divide? m n)
+  (= (remainder m n) 0))
+
+;; Expmod (Logarithmic Recursive Process)
+;;
+;;   Remainder Property
+;;
+;;     (a * b) % m = {(a % m) * (b % m)} % m
+;;     (a * b) % m = {(a % m) * b} % m
+;;     (a * b) % m = {a * (b % m)} % m
+;;
+;;   Recurrence Relation
+;;
+;;     b^0 % m = error (m = 0), 0 (m = 1 or -1), 1 (else)
+;;     b^n % m = {b^(n/2) % m}^2 % m    (n is even)
+;;     b^n % m = b * {b^(n-1) % m} % m  (n is odd)
+;;
+;;   Order of Growth
+;;
+;;     time complexity:  Θ(log2(n))
+;;     space complexity: Θ(log2(n))
+;;
+(define (expmod b n m)
+  (cond ((= n 0)
+         (cond ((= m 0) (remainder 0 0))
+               ((or (= m 1) (= m -1)) 0)
+               (else 1)))
+        ((even?_ n)
+         (remainder (square (expmod b (/ n 2) m))
+                    m))
+        (else
+         (remainder (* b (expmod b (- n 1) m))
+                    m))))
