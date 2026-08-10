@@ -1,7 +1,7 @@
 (load "../common/math.scm")
 
-;; BAD: good-enough1? fails for very small and very large numbers.
-;;      good-enough2? addresses that issue, but still suffers from accuracy issues caused by the tolerance.
+;; BAD: `good-enough1?` fails for very small and very large numbers.
+;;      `good-enough2?` addresses that issue, but still suffers from accuracy issues caused by the tolerance.
 (define (sqrt1 x)
   (define tolerance 0.001)
   ;; WORSE: absolute error: |y^2 - x| < tolerance
@@ -19,8 +19,8 @@
         (try (improve guess))))
   (try 1.0))
 
-;; BEST: good-enough1?, good-enough2?, and good-enough3? succeed for very small and very large numbers.
-;;       good-enough3? is the best for accuracy.
+;; BEST: `good-enough1?`, `good-enough2?`, and `good-enough3?` succeed for very small and very large numbers.
+;;       `good-enough3?` is the best for accuracy.
 (define (sqrt2 x)
   (define tolerance 0.00000000001)
   ;; GOOD: absolute error: |y - y''| < tolerance

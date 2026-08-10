@@ -1,0 +1,35 @@
+(load "../common/benchmarking.scm")
+(load "prime.scm")
+
+(define (timed-prime-test n)
+  (define prime? prime0?)
+  (define (report)
+    (display n)
+    (display " => ")
+    (display (elapsed-microseconds (lambda () (prime? n))))
+    (display "μs")
+    (newline))
+  (if (prime? n)
+      (report)))
+
+(define (search-for-primes lower upper)
+  (define (iter n)
+    (if (<= n upper)
+        (begin
+          (timed-prime-test n)
+          (iter (+ n 2)))))
+  (iter (if (odd?_ lower)
+            lower
+            (+ lower 1))))
+
+(bench "prime0?"
+       (lambda ()
+         (display "# Benchmark prime0?")
+         (newline)
+         (search-for-primes 1000 1019)
+         (newline)
+         (search-for-primes 10000 10037)
+         (newline)
+         (search-for-primes 100000 100043)
+         (newline)
+         (search-for-primes 1000000 1000037)))

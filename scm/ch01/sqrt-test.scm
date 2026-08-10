@@ -20,7 +20,7 @@
         (assert-eq (sqrt1 0.000001)
                    0.0010000001533016628) ; good-enough1?: 0.031260655525445276
         (assert-eq (sqrt1 10000000000000000000000000000000000000000000000000000000000000000)
-                   1.0000046085713034e+32))) ; good-enough1?: sqrt1 does not terminate
+                   1.0000046085713034e+32))) ; good-enough1?: `sqrt1` does not terminate
 
 (test "sqrt2"
       (lambda ()
