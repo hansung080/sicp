@@ -8,25 +8,27 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 
 ## Examples
 
-| Ch | Example                       | Language |
-|----|-------------------------------|----------|
-| 01 | basics                        | scm      |
-| .. | arithmetic-expressions        | scm      |
-| .. | sum-of-squares-for-2greaters  | scm      |
-| .. | compound-operators            | scm      |
-| .. | applicative-order-evaluations | scm      |
-| .. | sqrt                          | scm      |
-| .. | cbrt                          | scm      |
-| .. | factorial                     | scm      |
-| .. | add                           | scm      |
-| .. | ackermann-function            | scm      |
-| .. | fibonacci-sequence            | scm      |
-| .. | count-change                  | scm      |
-| .. | tribonacci-like-sequence      | scm      |
-| .. | pascal-triangle               | scm      |
-| .. | sine                          | scm      |
-| .. | expt                          | scm      |
-| .. | mul                           | scm      |
-| .. | gcd                           | scm      |
-| .. | lcm                           | scm      |
-| .. | prime                         | scm      |
+### Chapter 01
+
+| Example                       | Language |
+|-------------------------------|----------|
+| basics                        | scm      |
+| arithmetic-expressions        | scm      |
+| sum-of-squares-for-2greaters  | scm      |
+| compound-operators            | scm      |
+| applicative-order-evaluations | scm      |
+| sqrt                          | scm      |
+| cbrt                          | scm      |
+| factorial                     | scm      |
+| add                           | scm      |
+| ackermann-function            | scm      |
+| fibonacci-sequence            | scm      |
+| count-change                  | scm      |
+| tribonacci-like-sequence      | scm      |
+| pascal-triangle               | scm      |
+| sine                          | scm      |
+| expt                          | scm      |
+| mul                           | scm      |
+| gcd                           | scm      |
+| lcm                           | scm      |
+| prime                         | scm      |

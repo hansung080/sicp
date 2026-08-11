@@ -24,8 +24,6 @@
 
 (bench "prime0?"
        (lambda ()
-         (display "# Benchmark prime0?")
-         (newline)
          (search-for-primes 1000 1019)
          (newline)
          (search-for-primes 10000 10037)
