@@ -65,7 +65,7 @@
 ;;     space complexity: Θ(log2(n))
 ;;
 (define (fast-prime1? n)
-  (fast-prime1-with-times1? n 20))
+  (fast-prime1-with-times? n 20))
 
 (define (fast-prime1-with-times? n times)
   (define (fermat-test? n)
