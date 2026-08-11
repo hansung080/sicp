@@ -1,8 +1,7 @@
 (load "../common/benchmarking.scm")
 (load "prime.scm")
 
-(define (timed-prime-test n)
-  (define prime? prime0?)
+(define (timed-prime-test prime? n)
   (define (report)
     (display n)
     (display " => ")
@@ -12,11 +11,11 @@
   (if (prime? n)
       (report)))
 
-(define (search-for-primes lower upper)
+(define (search-for-primes prime? lower upper)
   (define (iter n)
     (if (<= n upper)
         (begin
-          (timed-prime-test n)
+          (timed-prime-test prime? n)
           (iter (+ n 2)))))
   (iter (if (odd?_ lower)
             lower
@@ -24,10 +23,23 @@
 
 (bench "prime0?"
        (lambda ()
-         (search-for-primes 1000 1019)
+         (search-for-primes prime0? 1000 1019)
          (newline)
-         (search-for-primes 10000 10037)
+         (search-for-primes prime0? 10000 10037)
          (newline)
-         (search-for-primes 100000 100043)
+         (search-for-primes prime0? 100000 100043)
          (newline)
-         (search-for-primes 1000000 1000037)))
+         (search-for-primes prime0? 1000000 1000037)
+         (newline)))
+
+(bench "fast-prime1-with-times10?"
+       (lambda ()
+         (define (fast-prime1-with-times10? n)
+           (fast-prime1-with-times? n 10))
+         (search-for-primes fast-prime1-with-times10? 1000 1019)
+         (newline)
+         (search-for-primes fast-prime1-with-times10? 10000 10037)
+         (newline)
+         (search-for-primes fast-prime1-with-times10? 100000 100043)
+         (newline)
+         (search-for-primes fast-prime1-with-times10? 1000000 1000037)))

@@ -65,15 +65,18 @@
 ;;     space complexity: Θ(log2(n))
 ;;
 (define (fast-prime1? n)
+  (fast-prime1-with-times1? n 20))
+
+(define (fast-prime1-with-times? n times)
   (define (fermat-test? n)
     (define (try a)
       (= (expmod a n n) a))
     (try (+ (random (- n 1)) 1)))
-  (define (iter times)
+  (define (iter i)
     (cond ((<= n 1) #f)
-          ((= times 0) #t)
-          ((fermat-test? n) (iter (- times 1)))
+          ((= i 0) #t)
+          ((fermat-test? n) (iter (- i 1)))
           (else #f)))
-  (iter 20))
+  (iter times))
 
 (define prime? prime0?)
