@@ -222,16 +222,16 @@
         (assert-eq (>>2 -5 1) -3)
         (assert-eq (>>2 -5 2) -2)))
 
-(test "divide?"
+(test "divides?"
       (lambda ()
-        (assert-eq (divide? 0 2) #t)
-        (assert-eq (divide? 1 2) #f)
-        (assert-eq (divide? 2 2) #t)
-        (assert-eq (divide? 3 2) #f)
-        (assert-eq (divide? 4 2) #t)
-        (assert-eq (divide? -4 2) #t)
-        (assert-eq (divide? 4 -2) #t)
-        (assert-eq (divide? -4 -2) #t)))
+        (assert-eq (divides? 2 0) #t)
+        (assert-eq (divides? 2 1) #f)
+        (assert-eq (divides? 2 2) #t)
+        (assert-eq (divides? 2 3) #f)
+        (assert-eq (divides? 2 4) #t)
+        (assert-eq (divides? 2 -4) #t)
+        (assert-eq (divides? -2 4) #t)
+        (assert-eq (divides? -2 -4) #t)))
 
 (test "expmod"
       (lambda ()

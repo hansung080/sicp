@@ -42,4 +42,17 @@
          (newline)
          (search-for-primes fast-prime1-with-times10? 100000 100043)
          (newline)
-         (search-for-primes fast-prime1-with-times10? 1000000 1000037)))
+         (search-for-primes fast-prime1-with-times10? 1000000 1000037)
+         (newline)))
+
+(bench "fast-prime2-with-times10?"
+       (lambda ()
+         (define (fast-prime2-with-times10? n)
+           (fast-prime2-with-times? n 10))
+         (search-for-primes fast-prime2-with-times10? 1000 1019)
+         (newline)
+         (search-for-primes fast-prime2-with-times10? 10000 10037)
+         (newline)
+         (search-for-primes fast-prime2-with-times10? 100000 100043)
+         (newline)
+         (search-for-primes fast-prime2-with-times10? 1000000 1000037)))

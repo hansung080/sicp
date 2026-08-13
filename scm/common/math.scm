@@ -134,8 +134,9 @@
 
 (define >> >>2)
 
-(define (divide? m n)
-  (= (remainder m n) 0))
+;; Check whether `divisor` divides `dividend` (i.e. divisor ∣ dividend; ∣ denotes DIVIDES (U+2223)).
+(define (divides? divisor dividend)
+  (= (remainder dividend divisor) 0))
 
 ;; Expmod (Logarithmic Recursive Process)
 ;;
