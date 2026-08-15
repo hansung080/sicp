@@ -169,3 +169,48 @@
   (iter times))
 
 (define prime? prime0?)
+
+;; Sieve of Eratosthenes
+;;
+;;   The Sieve of Eratosthenes is an algorithm that finds prime numbers by repeatedly eliminating composite numbers
+;;   from 2 up to a given limit.
+;;
+;;           2(O)   3(O)   4(X)   5(O)   6(X)   7(O)   8(X)   9(X)  10(X)
+;;   11(O)  12(X)  13(O)  14(X)  15(X)  16(X)  17(O)  18(X)  19(O)  20(X)
+;;   21(X)  22(X)  23(O)  24(X)  25(X)  26(X)  27(X)  28(X)  29(O)  30(X)
+;;   ...
+;;
+(define (primes-up-to limit)
+  (let ((composites (make-vector (+ limit 1) #f)))
+    (let ((half (quotient limit 2)))
+      (define (sieve i)
+        (define (mark-multiples j)
+          (if (<= j limit)
+              (begin
+                (vector-set! composites j #t)
+                (mark-multiples (+ j i)))))
+        (if (<= i half)
+            (begin
+              (if (not (vector-ref composites i))
+                  (mark-multiples (+ i i)))
+              (sieve (+ i 1)))))
+      (sieve 2))
+
+    (define (count-primes count i)
+      (cond ((> i limit)
+             count)
+            ((vector-ref composites i)
+             (count-primes count (+ i 1)))
+            (else
+             (count-primes (+ count 1) (+ i 1)))))
+
+    (let ((primes (make-vector (count-primes 0 2))))
+      (define (store-primes i j)
+        (cond ((> i limit)
+               primes)
+              ((vector-ref composites i)
+               (store-primes (+ i 1) j))
+              (else
+               (vector-set! primes j i)
+               (store-primes (+ i 1) (+ j 1)))))
+      (store-primes 2 0))))

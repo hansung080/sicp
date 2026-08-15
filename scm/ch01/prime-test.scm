@@ -87,3 +87,11 @@
         (assert-eq (fast-prime2? 2465) #f)
         (assert-eq (fast-prime2? 2821) #f)
         (assert-eq (fast-prime2? 6601) #f)))
+
+(test "primes-up-to"
+      (lambda ()
+        (assert-eq (primes-up-to 0) (vector))
+        (assert-eq (primes-up-to 1) (vector))
+        (assert-eq (primes-up-to 2) (vector 2))
+        (assert-eq (primes-up-to 3) (vector 2 3))
+        (assert-eq (primes-up-to 30) (vector 2 3 5 7 11 13 17 19 23 29))))

@@ -1,11 +1,11 @@
 (define (test name thunk)
   (thunk))
 
-(define (assert predicate)
-  (if (not predicate)
+(define (assert condition)
+  (if (not condition)
       (begin
         (display "ASSERTION FAILED: ")
-        (write predicate)
+        (write condition)
         (newline))))
 
 (define (assert-eq left right)
