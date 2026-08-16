@@ -14,7 +14,7 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 |-------------------------------|----------|
 | basics                        | scm      |
 | arithmetic-expressions        | scm      |
-| sum-of-squares-for-2greaters  | scm      |
+| sum-of-squares-of-two-largest | scm      |
 | compound-operators            | scm      |
 | applicative-order-evaluations | scm      |
 | sqrt                          | scm      |
