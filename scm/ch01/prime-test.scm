@@ -88,10 +88,42 @@
         (assert-eq (fast-prime2? 2821) #f)
         (assert-eq (fast-prime2? 6601) #f)))
 
-(test "primes-up-to"
+(test "primes-up-to/list"
       (lambda ()
-        (assert-eq (primes-up-to 0) (vector))
-        (assert-eq (primes-up-to 1) (vector))
-        (assert-eq (primes-up-to 2) (vector 2))
-        (assert-eq (primes-up-to 3) (vector 2 3))
-        (assert-eq (primes-up-to 30) (vector 2 3 5 7 11 13 17 19 23 29))))
+        (assert-eq (primes-up-to/list 0) '())
+        (assert-eq (primes-up-to/list 1) '())
+        (assert-eq (primes-up-to/list 2) '(2))
+        (assert-eq (primes-up-to/list 3) '(2 3))
+        (assert-eq (primes-up-to/list 4) '(2 3))
+        (assert-eq (primes-up-to/list 5) '(2 3 5))
+        (assert-eq (primes-up-to/list 30) '(2 3 5 7 11 13 17 19 23 29))))
+
+(test "primes-between/list"
+      (lambda ()
+        (assert-eq (primes-between/list 0 0) '())
+        (assert-eq (primes-between/list 0 5) '(2 3 5))
+        (assert-eq (primes-between/list 2 2) '(2))
+        (assert-eq (primes-between/list 2 3) '(2 3))
+        (assert-eq (primes-between/list 5 5) '(5))
+        (assert-eq (primes-between/list 5 11) '(5 7 11))
+        (assert-eq (primes-between/list 6 5) '())))
+
+(test "primes-up-to/vector"
+      (lambda ()
+        (assert-eq (primes-up-to/vector 0) (vector))
+        (assert-eq (primes-up-to/vector 1) (vector))
+        (assert-eq (primes-up-to/vector 2) (vector 2))
+        (assert-eq (primes-up-to/vector 3) (vector 2 3))
+        (assert-eq (primes-up-to/vector 4) (vector 2 3))
+        (assert-eq (primes-up-to/vector 5) (vector 2 3 5))
+        (assert-eq (primes-up-to/vector 30) (vector 2 3 5 7 11 13 17 19 23 29))))
+
+(test "primes-between/vector"
+      (lambda ()
+        (assert-eq (primes-between/vector 0 0) (vector))
+        (assert-eq (primes-between/vector 0 5) (vector 2 3 5))
+        (assert-eq (primes-between/vector 2 2) (vector 2))
+        (assert-eq (primes-between/vector 2 3) (vector 2 3))
+        (assert-eq (primes-between/vector 5 5) (vector 5))
+        (assert-eq (primes-between/vector 5 11) (vector 5 7 11))
+        (assert-eq (primes-between/vector 6 5) (vector))))
