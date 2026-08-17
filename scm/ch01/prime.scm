@@ -170,7 +170,25 @@
 
 (define prime? prime0?)
 
-;; Sieve of Eratosthenes
+;; Basic Prime Search (Using prime? Procedure)
+(define (primes1-up-to limit)
+  (primes1-up-to/by limit prime?))
+
+(define (primes1-between lower upper)
+  (primes1-between/by lower upper prime?))
+
+(define (primes1-up-to/by limit prime?)
+  (primes1-between 2 limit))
+
+(define (primes1-between/by lower upper prime?)
+  (define (collect primes i)
+    (cond ((> i upper) (reverse primes))
+          ((prime? i) (collect (cons i primes) (+ i 2)))
+          (else (collect primes (+ i 2)))))
+  (collect (if (and (<= lower 2) (>= upper 2)) '(2) '())
+           (if (odd?_ lower) lower (+ lower 1))))
+
+;; Eratosthenes Prime Search (Using Sieve of Eratosthenes)
 ;;
 ;;   The Sieve of Eratosthenes is an algorithm that finds prime numbers by repeatedly eliminating composite numbers
 ;;   from 2 up to a given limit.
@@ -197,25 +215,25 @@
           composites))
     (sieve 2)))
 
-(define (primes-up-to/list limit)
-  (primes-between/list 2 limit))
+(define (primes2-up-to/list limit)
+  (primes2-between/list 2 limit))
 
-(define (primes-between/list lower upper)
+(define (primes2-between/list lower upper)
   (let ((lower (if (< lower 2) 2 lower))
         (composites (composites-up-to upper)))
-    (define (collect-primes primes i)
+    (define (collect primes i)
       (cond ((> i upper)
              (reverse primes))
             ((vector-ref composites i)
-             (collect-primes primes (+ i 1)))
+             (collect primes (+ i 1)))
             (else
-             (collect-primes (cons i primes) (+ i 1)))))
-    (collect-primes '() lower)))
+             (collect (cons i primes) (+ i 1)))))
+    (collect '() lower)))
 
-(define (primes-up-to/vector limit)
-  (primes-between/vector 2 limit))
+(define (primes2-up-to/vector limit)
+  (primes2-between/vector 2 limit))
 
-(define (primes-between/vector lower upper)
+(define (primes2-between/vector lower upper)
   (let ((lower (if (< lower 2) 2 lower))
         (composites (composites-up-to upper)))
     (define (count-primes count i)
@@ -236,5 +254,5 @@
                (store-primes (+ i 1) (+ j 1)))))
       (store-primes lower 0))))
 
-(define primes-up-to primes-up-to/list)
-(define primes-between primes-between/list)
+(define primes-up-to primes2-up-to/list)
+(define primes-between primes2-between/list)
