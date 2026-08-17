@@ -255,4 +255,4 @@
       (store-primes lower 0))))
 
 (define primes-up-to primes2-up-to/list)
-(define primes-between primes2-between/list)
+(define primes-between primes1-between)
