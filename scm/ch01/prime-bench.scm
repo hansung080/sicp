@@ -60,11 +60,11 @@
 
 (bench "(primes-up-to 100)"
        (lambda ()
-         (report "(primes1-up-to/prime0? 100)"
+         (report "(primes1-up-to/by/prime0? 100)"
                  (lambda () (primes1-up-to/by 100 prime0?)))
-         (report "(primes1-up-to/fast-prime1? 100)"
+         (report "(primes1-up-to/by/fast-prime1? 100)"
                  (lambda () (primes1-up-to/by 100 fast-prime1?)))
-         (report "(primes1-up-to/fast-prime2? 100)"
+         (report "(primes1-up-to/by/fast-prime2? 100)"
                  (lambda () (primes1-up-to/by 100 fast-prime2?)))
          (report "(primes2-up-to/list 100)"
                  (lambda () (primes2-up-to/list 100)))
@@ -74,11 +74,11 @@
 
 (bench "(length (primes-up-to 1000))"
        (lambda ()
-         (report "(length (primes1-up-to/prime0? 1000))"
+         (report "(length (primes1-up-to/by/prime0? 1000))"
                  (lambda () (length (primes1-up-to/by 1000 prime0?))))
-         (report "(length (primes1-up-to/fast-prime1? 1000))"
+         (report "(length (primes1-up-to/by/fast-prime1? 1000))"
                  (lambda () (length (primes1-up-to/by 1000 fast-prime1?))))
-         (report "(length (primes1-up-to/fast-prime2? 1000))"
+         (report "(length (primes1-up-to/by/fast-prime2? 1000))"
                  (lambda () (length (primes1-up-to/by 1000 fast-prime2?))))
          (report "(length (primes2-up-to/list 1000))"
                  (lambda () (length (primes2-up-to/list 1000))))
@@ -88,11 +88,11 @@
 
 (bench "(primes-between 1000000 1000037)"
        (lambda ()
-         (report "(primes1-between/prime0? 1000000 1000037)"
+         (report "(primes1-between/by/prime0? 1000000 1000037)"
                  (lambda () (primes1-between/by 1000000 1000037 prime0?)))
-         (report "(primes1-between/fast-prime1? 1000000 1000037)"
+         (report "(primes1-between/by/fast-prime1? 1000000 1000037)"
                  (lambda () (primes1-between/by 1000000 1000037 fast-prime1?)))
-         (report "(primes1-between/fast-prime2? 1000000 1000037)"
+         (report "(primes1-between/by/fast-prime2? 1000000 1000037)"
                  (lambda () (primes1-between/by 1000000 1000037 fast-prime2?)))
          (report "(primes2-between/list 1000000 1000037)"
                  (lambda () (primes2-between/list 1000000 1000037)))
