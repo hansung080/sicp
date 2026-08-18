@@ -1,10 +1,5 @@
+(load "../common/math.scm")
 (load "../common/testing.scm")
-
-(define (inc n)
-  (+ n 1))
-
-(define (dec n)
-  (- n 1))
 
 ;; Substitution Model for a Recursive Process
 ;;

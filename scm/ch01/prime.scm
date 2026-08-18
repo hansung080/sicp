@@ -1,6 +1,5 @@
-(load "../common/math.scm")
-
 (#%require sicp) ; for random
+(load "../common/math.scm")
 
 ;; Mathematical Definition of Prime Number
 ;;

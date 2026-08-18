@@ -177,6 +177,24 @@
         (assert-eq (average 1.5 3.5) 2.5)
         (assert-eq (average -1.5 -3.5) -2.5)))
 
+(test "identity"
+      (lambda ()
+        (assert-eq (identity 0) 0)
+        (assert-eq (identity 3) 3)
+        (assert-eq (identity -3) -3)))
+
+(test "inc"
+      (lambda ()
+        (assert-eq (inc 0) 1)
+        (assert-eq (inc 3) 4)
+        (assert-eq (inc -3) -2)))
+
+(test "dec"
+      (lambda ()
+        (assert-eq (dec 0) -1)
+        (assert-eq (dec 3) 2)
+        (assert-eq (dec -3) -4)))
+
 (test "<<"
       (lambda ()
         (assert-eq (<< 4 0) 4)
