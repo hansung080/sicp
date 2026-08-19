@@ -55,21 +55,20 @@
 
 ;; Riemann Integral Approximation
 ;;
-;;   Assumption
-;;
-;;     Assume b − a = n * dx for some integer n.
-;;
 ;;   Left Riemann Sum
 ;;
-;;     ∫<a, b>f(x)dx ≈ {f(a) + f(a + dx) + f(a + 2dx) + ... + f(b - dx)} * dx
+;;     ∫<a, b>f(x)dx ≈ {f(a) + f(a + dx) + f(a + 2dx) + ... + f(a + n*dx)} * dx
+;;     where n is the largest integer such that a + n*dx <= b
 ;;
 ;;   Midpoint Riemann Sum (implemented by integral)
 ;;
-;;     ∫<a, b>f(x)dx ≈ {f(a + dx/2) + f(a + dx/2 + dx) + f(a + dx/2 + 2dx) + ... + f(b - dx/2)} * dx
+;;     ∫<a, b>f(x)dx ≈ {f(a + dx/2) + f(a + dx/2 + dx) + f(a + dx/2 + 2dx) + ... + f(a + dx/2 + n*dx)} * dx
+;;     where n is the largest integer such that a + dx/2 + n*dx <= b
 ;;
 ;;   Right Riemann Sum
 ;;
-;;     ∫<a, b>f(x)dx ≈ {f(a + dx) + f(a + 2dx) + f(a + 3dx) + ... + f(b)} * dx
+;;     ∫<a, b>f(x)dx ≈ {f(a + dx) + f(a + 2dx) + f(a + 3dx) + ... + f(a + n*dx)} * dx
+;;     where n is the largest integer such that a + n*dx <= b
 ;;
 (define (integral1 f a b dx)
   (define (add-dx x)
@@ -77,4 +76,22 @@
   (* (sum1 f (+ a (/ dx 2.0)) add-dx b)
      dx))
 
-(define integral integral1)
+;; Simpson Integral Approximation
+;;
+;;   Simpson's rule
+;;
+;;     For even n, let h = (b - a) / n and y_k = f(a + kh):
+;;       ∫<a, b>f(x)dx ≈ {y_0 + 4y_1 + 2y_2 + 4y_3 + 2y_4 + ... + 2y_(n-2) + 4y_(n-1) + y_n} * (h / 3)
+;;                     = [y_0 + 4{y_1 + y_3 + ... + y_(n-1)} + 2{y_2 + y_4 + ... + y_(n-2)} + y_n] * (h / 3)
+;;
+(define (simpson-integral1 f a b n) ; `n` must be even.
+  (define h (/ (- b a) n))
+  (define (add-2h x)
+    (+ x h h))
+  (* (+ (f a)
+        (* 4 (sum1 f (+ a h) add-2h b))
+        (* 2 (sum1 f (+ a h h) add-2h b))
+        (f b))
+     (/ h 3)))
+
+(define integral simpson-integral1)

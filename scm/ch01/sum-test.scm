@@ -19,4 +19,6 @@
 (test "integral"
       (lambda ()
         (assert-eq (integral1 cube 0 1 0.01) 0.24998750000000042)
-        (assert-eq (integral1 cube 0 1 0.001) 0.249999875000001)))
+        (assert-eq (integral1 cube 0 1 0.001) 0.249999875000001)
+        (assert-eq (simpson-integral1 cube 0 1 100.0) 0.25000000000000044)
+        (assert-eq (simpson-integral1 cube 0 1 1000.0) 0.25000000000000083)))
