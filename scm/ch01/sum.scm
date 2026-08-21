@@ -1,15 +1,24 @@
 (load "../common/math.scm")
 
-;; Higher-Order Sum (Linear Recursive Process)
+;; Higher-Order Sum
 ;;
 ;;   sum(term, a, next, b) = term(a) + term(next(a)) + term(next(next(a))) + ... + term(b)
 ;;
+;; Linear Recursive Process
 (define (sum1 term a next b)
   (if (> a b)
       0
       (+ (term a)
          (sum1 term (next a) next b))))
 
+;; Linear Iterative Process
+(define (sum2 term a next b)
+  (define (iter result a)
+    (if (> a b)
+        result
+        (iter (+ result (term a))
+              (next a))))
+  (iter 0 a))
 
 (define (sum-integers0 a b)
   (if (> a b)
@@ -18,6 +27,9 @@
 
 (define (sum-integers1 a b)
   (sum1 identity a inc b))
+
+(define (sum-integers2 a b)
+  (sum2 identity a inc b))
 
 (define sum-integers sum-integers0)
 
@@ -28,6 +40,9 @@
 
 (define (sum-cubes1 a b)
   (sum1 cube a inc b))
+
+(define (sum-cubes2 a b)
+  (sum2 cube a inc b))
 
 (define sum-cubes sum-cubes0)
 
@@ -44,12 +59,18 @@
       0
       (+ (/ 1.0 (* a (+ a 2))) (pi-sum0 (+ a 4) b))))
 
-(define (pi-sum1 a b)
+(define (pi-sum-by a b sum)
   (define (term x)
     (/ 1.0 (* x (+ x 2))))
   (define (next x)
     (+ x 4))
-  (sum1 term a next b))
+  (sum term a next b))
+
+(define (pi-sum1 a b)
+  (pi-sum-by a b sum1))
+
+(define (pi-sum2 a b)
+  (pi-sum-by a b sum2))
 
 (define pi-sum pi-sum0)
 
@@ -70,11 +91,17 @@
 ;;     ∫<a, b>f(x)dx ≈ {f(a + dx) + f(a + 2dx) + f(a + 3dx) + ... + f(a + n*dx)} * dx
 ;;     where n is the largest integer such that a + n*dx <= b
 ;;
-(define (integral1 f a b dx)
+(define (integral-by f a b dx sum)
   (define (add-dx x)
     (+ x dx))
-  (* (sum1 f (+ a (/ dx 2.0)) add-dx b)
+  (* (sum f (+ a (/ dx 2.0)) add-dx b)
      dx))
+
+(define (integral1 f a b dx)
+  (integral-by f a b dx sum1))
+
+(define (integral2 f a b dx)
+  (integral-by f a b dx sum2))
 
 ;; Simpson Integral Approximation
 ;;
@@ -84,14 +111,22 @@
 ;;       ∫<a, b>f(x)dx ≈ {y_0 + 4y_1 + 2y_2 + 4y_3 + 2y_4 + ... + 2y_(n-2) + 4y_(n-1) + y_n} * (h / 3)
 ;;                     = [y_0 + 4{y_1 + y_3 + ... + y_(n-1)} + 2{y_2 + y_4 + ... + y_(n-2)} + y_n] * (h / 3)
 ;;
-(define (simpson-integral1 f a b n) ; `n` must be even.
+;; Precondition:
+;;   `n` must be even.
+(define (simpson-integral-by f a b n sum)
   (define h (/ (- b a) n))
   (define (add-2h x)
     (+ x h h))
   (* (+ (f a)
-        (* 4 (sum1 f (+ a h) add-2h b))
-        (* 2 (sum1 f (+ a h h) add-2h b))
+        (* 4 (sum f (+ a h) add-2h b))
+        (* 2 (sum f (+ a h h) add-2h b))
         (f b))
      (/ h 3)))
 
-(define integral simpson-integral1)
+(define (simpson-integral1 f a b n)
+  (simpson-integral-by f a b n sum1))
+
+(define (simpson-integral2 f a b n)
+  (simpson-integral-by f a b n sum2))
+
+(define integral simpson-integral2)
