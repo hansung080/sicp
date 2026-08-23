@@ -21,6 +21,7 @@
 ;;   Thus:
 ;;     L = 0            (A = 0 or B = 0)
 ;;     L = (A * B) / G  (otherwise; A, B, G, and L are nonnegative integers)
+;;       = (A / G) * B
 ;;
 ;;   Note:
 ;;     For arbitrary integers A and B:
@@ -29,4 +30,4 @@
 (define (lcm_ a b)
   (if (or (= a 0) (= b 0))
       0
-      (/ (* a b) (gcd_ a b))))
+      (* (/ a (gcd_ a b)) b)))
