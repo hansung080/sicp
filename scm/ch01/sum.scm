@@ -36,7 +36,8 @@
 (define (sum-cubes0 a b)
   (if (> a b)
       0
-      (+ (cube a) (sum-cubes0 (+ a 1) b))))
+      (+ (cube a)
+         (sum-cubes0 (+ a 1) b))))
 
 (define (sum-cubes1 a b)
   (sum1 cube a inc b))
@@ -57,7 +58,8 @@
 (define (pi-sum0 a b)
   (if (> a b)
       0
-      (+ (/ 1.0 (* a (+ a 2))) (pi-sum0 (+ a 4) b))))
+      (+ (/ 1.0 (* a (+ a 2)))
+         (pi-sum0 (+ a 4) b))))
 
 (define (pi-sum-by a b sum)
   (define (term x)
@@ -94,7 +96,7 @@
 (define (integral-by f a b dx sum)
   (define (add-dx x)
     (+ x dx))
-  (* (sum f (+ a (/ dx 2.0)) add-dx b)
+  (* (sum f (+ a (/ dx 2)) add-dx b)
      dx))
 
 (define (integral1 f a b dx)

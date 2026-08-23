@@ -33,3 +33,4 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | lcm                           | scm      |
 | prime                         | scm      |
 | sum                           | scm      |
+| product                       | scm      |

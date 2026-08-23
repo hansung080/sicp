@@ -3,15 +3,15 @@
 
 (test "sum-integers"
       (lambda ()
-        (assert-eq (sum-integers0 2 4) 9)
-        (assert-eq (sum-integers1 2 4) 9)
-        (assert-eq (sum-integers2 2 4) 9)))
+        (assert-eq (sum-integers0 1 4) 10)
+        (assert-eq (sum-integers1 1 4) 10)
+        (assert-eq (sum-integers2 1 4) 10)))
 
 (test "sum-cubes"
       (lambda ()
-        (assert-eq (sum-cubes0 2 4) 99)
-        (assert-eq (sum-cubes1 2 4) 99)
-        (assert-eq (sum-cubes2 2 4) 99)))
+        (assert-eq (sum-cubes0 1 4) 100)
+        (assert-eq (sum-cubes1 1 4) 100)
+        (assert-eq (sum-cubes2 1 4) 100)))
 
 (test "pi-sum"
       (lambda ()
