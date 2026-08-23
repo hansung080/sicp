@@ -20,6 +20,8 @@
               (next a))))
   (iter 0 a))
 
+(define sum sum2)
+
 (define (sum-integers0 a b)
   (if (> a b)
       0

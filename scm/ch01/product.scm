@@ -18,6 +18,8 @@
               (next a))))
   (iter 1 a))
 
+(define product product2)
+
 ;; Wallis Product for π/2
 ;;
 ;;   (2 * 2 * 4 * 4 * 6 * 6 * ...) / (1 * 3 * 3 * 5 * 5 * 7 * ...) = π/2
@@ -72,3 +74,5 @@
 
 (define (pi-product4 a b)
   (pi-product-by2 a b product2))
+
+(define pi-product pi-product0)
