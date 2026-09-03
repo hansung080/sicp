@@ -35,3 +35,4 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | sum                           | scm      |
 | product                       | scm      |
 | accumulate                    | scm      |
+| half-interval-method          | scm      |

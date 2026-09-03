@@ -23,7 +23,7 @@
         (else (+ (pascal (- row 1) (- col 1))
                  (pascal (- row 1) col)))))
 
-(define (display-pascal-triangle height)
+(define (print-pascal-triangle height)
   (define (row-iter row)
     (define (space-iter space)
       (if (<= space (- height row))
@@ -63,7 +63,7 @@
         (assert-eq (pascal 5 4) 4)
         (assert-eq (pascal 5 5) 1)))
 
-;; (display-pascal-triangle 5)
+;; (print-pascal-triangle 5)
 ;; Output:
 ;;     1
 ;;    1 1

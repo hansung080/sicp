@@ -12,16 +12,22 @@
 ;;   (- m (* n (truncate (/ m n)))))
 ;; ```
 
-(define (abs_ x)
-  (if (< x 0)
-      (- x)
-      x))
-
 (define (even?_ n)
   (= (remainder n 2) 0))
 
 (define (odd?_ n)
   (not (even?_ n)))
+
+(define (positive?_ x)
+  (> x 0))
+
+(define (negative?_ x)
+  (< x 0))
+
+(define (abs_ x)
+  (if (< x 0)
+      (- x)
+      x))
 
 ;; floor(x) = the greatest integer less than or equal to x
 (define (floor_ x)

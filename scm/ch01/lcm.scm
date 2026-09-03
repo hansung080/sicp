@@ -1,4 +1,4 @@
-(load "gcd.scm")
+(load "../ch01/gcd.scm")
 
 ;; Mathematical Definition of LCM
 ;;

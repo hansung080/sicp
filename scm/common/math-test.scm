@@ -1,14 +1,6 @@
 (load "math.scm")
 (load "testing.scm")
 
-(test "abs_"
-      (lambda ()
-        (assert-eq (abs_ 0) 0)
-        (assert-eq (abs_ 3) 3)
-        (assert-eq (abs_ -3) 3)
-        (assert-eq (abs_ 3.5) 3.5)
-        (assert-eq (abs_ -3.5) 3.5)))
-
 (test "even?_"
       (lambda ()
         (assert-eq (even?_ 0) #t)
@@ -32,6 +24,30 @@
         (assert-eq (odd?_ -2) #f)
         (assert-eq (odd?_ -3) #t)
         (assert-eq (odd?_ -4) #f)))
+
+(test "positive?_"
+      (lambda ()
+        (assert-eq (positive?_ 0) #f)
+        (assert-eq (positive?_ 3) #t)
+        (assert-eq (positive?_ -3) #f)
+        (assert-eq (positive?_ 3.5) #t)
+        (assert-eq (positive?_ -3.5) #f)))
+
+(test "negative?_"
+      (lambda ()
+        (assert-eq (negative?_ 0) #f)
+        (assert-eq (negative?_ 3) #f)
+        (assert-eq (negative?_ -3) #t)
+        (assert-eq (negative?_ 3.5) #f)
+        (assert-eq (negative?_ -3.5) #t)))
+
+(test "abs_"
+      (lambda ()
+        (assert-eq (abs_ 0) 0)
+        (assert-eq (abs_ 3) 3)
+        (assert-eq (abs_ -3) 3)
+        (assert-eq (abs_ 3.5) 3.5)
+        (assert-eq (abs_ -3.5) 3.5)))
 
 (test "truncate"
       (lambda ()
