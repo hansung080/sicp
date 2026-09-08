@@ -26,7 +26,7 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | count-change                  | scm      |
 | tribonacci-like-sequence      | scm      |
 | pascal-triangle               | scm      |
-| sine                          | scm      |
+| sin                           | scm      |
 | expt                          | scm      |
 | mul                           | scm      |
 | gcd                           | scm      |
@@ -35,4 +35,5 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | sum                           | scm      |
 | product                       | scm      |
 | accumulate                    | scm      |
+| polynomial-roots              | scm      |
 | half-interval-method          | scm      |
