@@ -17,7 +17,7 @@
         ;; error: function values must have opposite signs: 1.0 3.0 => 1.0 1.0
         ;; (assert-eq (half-interval-method (lambda (x) (+ (- (* x x) (* 4 x)) 4)) 1.0 3.0) 2.0)
         ;; x^3 - 2x - 3 = 0
-        ;; -> x_0 = cbrt{3/2 + sqrt(211/108)} + cbrt{3/2 - sqrt(211/108)}
-        ;; -> x_0 ≈ 1.8932891963 or x_1|x_2 ≈ -0.9466445982 +|- 0.5636143500i
+        ;; -> x_1 = cbrt{3/2 + sqrt(211/108)} + cbrt{3/2 - sqrt(211/108)}
+        ;; -> x_1 ≈ 1.8932891963 or x_2|x_3 ≈ -0.9466445982 +|- 0.5636143500i
         (assert-eq (depressed-cubic-root 1 -2 -3) 1.8932891963044978)
         (assert-eq (half-interval-method (lambda (x) (- (* x x x) (* 2 x) 3)) 1.0 2.0) 1.89306640625)))
