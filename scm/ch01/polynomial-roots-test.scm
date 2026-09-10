@@ -10,12 +10,10 @@
 
 (test "depressed-cubic-root"
       (lambda ()
-        ;; x^3 - 2x - 3 = 0
-        ;; -> x_1 = cbrt{3/2 + sqrt(211/108)} + cbrt{3/2 - sqrt(211/108)}
-        ;; -> x_1 ≈ 1.8932891963 or x_2|x_3 ≈ -0.9466445982 +|- 0.5636143500i
+        ;; x^3 - 2x - 3 = 0 -> x_1 = cbrt{3/2 + sqrt(211/108)} + cbrt{3/2 - sqrt(211/108)} ≈ 1.8932891963
         (assert-eq (depressed-cubic-root 1 -2 -3) 1.8932891963044978)))
 
 (test "cubic-root"
       (lambda ()
-        ;; x^3 - 2x - 3 = 0 (see depressed-cubic-root test)
+        ;; x^3 - 2x - 3 = 0 -> x_1 = cbrt{3/2 + sqrt(211/108)} + cbrt{3/2 - sqrt(211/108)} ≈ 1.8932891963
         (assert-eq (cubic-root 1 0 -2 -3) 1.8932891963044978)))
