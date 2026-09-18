@@ -82,17 +82,17 @@
 ;;
 ;;   Left Riemann Sum
 ;;
-;;     ∫<a, b>f(x)dx ≈ {f(a) + f(a + dx) + f(a + 2dx) + ... + f(a + n*dx)} * dx
+;;     ∫<a..b>f(x)dx ≈ {f(a) + f(a + dx) + f(a + 2dx) + ... + f(a + n*dx)} * dx
 ;;     where n is the largest integer such that a + n*dx <= b
 ;;
 ;;   Midpoint Riemann Sum (implemented by integral)
 ;;
-;;     ∫<a, b>f(x)dx ≈ {f(a + dx/2) + f(a + dx/2 + dx) + f(a + dx/2 + 2dx) + ... + f(a + dx/2 + n*dx)} * dx
+;;     ∫<a..b>f(x)dx ≈ {f(a + dx/2) + f(a + dx/2 + dx) + f(a + dx/2 + 2dx) + ... + f(a + dx/2 + n*dx)} * dx
 ;;     where n is the largest integer such that a + dx/2 + n*dx <= b
 ;;
 ;;   Right Riemann Sum
 ;;
-;;     ∫<a, b>f(x)dx ≈ {f(a + dx) + f(a + 2dx) + f(a + 3dx) + ... + f(a + n*dx)} * dx
+;;     ∫<a..b>f(x)dx ≈ {f(a + dx) + f(a + 2dx) + f(a + 3dx) + ... + f(a + n*dx)} * dx
 ;;     where n is the largest integer such that a + n*dx <= b
 ;;
 (define (integral-by f a b dx sum)
@@ -112,7 +112,7 @@
 ;;   Simpson's rule
 ;;
 ;;     For even n, let h = (b - a) / n and y_k = f(a + kh):
-;;       ∫<a, b>f(x)dx ≈ {y_0 + 4y_1 + 2y_2 + 4y_3 + 2y_4 + ... + 2y_(n-2) + 4y_(n-1) + y_n} * (h / 3)
+;;       ∫<a..b>f(x)dx ≈ {y_0 + 4y_1 + 2y_2 + 4y_3 + 2y_4 + ... + 2y_(n-2) + 4y_(n-1) + y_n} * (h / 3)
 ;;                     = [y_0 + 4{y_1 + y_3 + ... + y_(n-1)} + 2{y_2 + y_4 + ... + y_(n-2)} + y_n] * (h / 3)
 ;;
 ;; Precondition:
