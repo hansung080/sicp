@@ -37,3 +37,4 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | accumulate                    | scm      |
 | polynomial-roots              | scm      |
 | half-interval-method          | scm      |
+| fixed-point                   | scm      |
