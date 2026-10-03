@@ -16,7 +16,7 @@
                    1.392849702964866)
         (assert-eq (cube (cbrt 1000))
                    1000.0)
-        ;; Test for very small and very large numbers.
+        ;; Test for very small and large numbers.
         (assert-eq (cbrt 0.000000001)
                    0.001)
         (assert-eq (cbrt 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000)
