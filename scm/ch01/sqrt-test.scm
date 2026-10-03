@@ -16,7 +16,7 @@
                    1.7739279023207892) ; good-enough1?: termination failure
         (assert-eq (square (sqrt1 1000))
                    1000.000369924366) ; good-enough1?: 1000.0
-        ;; Test for very small and very large numbers.
+        ;; Test for very small and large numbers.
         (assert-eq (sqrt1 0.000001)
                    0.0010000001533016628) ; good-enough1?: 0.001, good-enough2?: 0.031260655525445276
         (assert-eq (sqrt1 10000000000000000000000000000000000000000000000000000000000000000)
@@ -37,7 +37,7 @@
                    1.773771228186423) ; good-enough2? and good-enough3?: 1.7737712281868727
         (assert-eq (square (sqrt2 1000))
                    1000.0) ; good-enough2? and good-enough3?: 1000.0000000000343
-        ;; Test for very small and very large numbers.
+        ;; Test for very small and large numbers.
         (assert-eq (sqrt2 0.000001)
                    0.001) ; good-enough2? and good-enough3?: 0.0010000000000000117
         (assert-eq (sqrt2 10000000000000000000000000000000000000000000000000000000000000000)

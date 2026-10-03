@@ -14,7 +14,7 @@
 ;; Square Root by Iterating Until Reaching the Answer (BAD)
 ;;
 ;;   `good-enough1?` fails to terminate even for normal numbers.
-;;   `good-enough2?` fails for very small and very large numbers.
+;;   `good-enough2?` fails for very small and large numbers.
 ;;   `good-enough3?` addresses that issue, but still suffers from accuracy issues caused by the tolerance.
 ;;
 (define (sqrt1 x)
@@ -39,7 +39,7 @@
 
 ;; Square Root by Iterating Until Reaching a Fixed Point (BEST)
 ;;
-;;   `good-enough1?`, `good-enough2?`, and `good-enough3?` succeed for very small and very large numbers.
+;;   `good-enough1?`, `good-enough2?`, and `good-enough3?` succeed for very small and large numbers.
 ;;   `good-enough1?` is the best for accuracy.
 ;;
 (define (sqrt2 x)
