@@ -3,7 +3,7 @@
 
 ;; Half-Interval Method (Bisection Method)
 ;;
-;;   This is a method for finding a root of f(x) = 0 when f is a continuous function.
+;;   This is a method for finding a root of the equation f(x) = 0 when f is a continuous function.
 ;;   The method is based on the fact that if there are two points a and b such that f(a) < 0 < f(b),
 ;;   then there is at least one root of f between a and b.
 ;;
