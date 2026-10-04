@@ -2,7 +2,7 @@
 
 ;; Fixed Point of Function
 ;;
-;;   For a function f, a value x_0 that satisfies f(x_0) = x_0 is called a fixed point of f.
+;;   A root x of the equation f(x) = x is called a fixed point of the function f.
 ;;   In other words, if we give f an initial guess and repeatedly apply f as shown below,
 ;;   the value that remains unchanged under f is called a fixed point of f.
 ;;
