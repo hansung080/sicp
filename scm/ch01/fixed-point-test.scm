@@ -1,6 +1,7 @@
 (load "../common/testing.scm")
 (load "fixed-point.scm")
 (load "half-interval-method.scm")
+(load "polynomial-roots.scm")
 
 (define (sqrt0 x)
   (fixed-point-with (lambda (y) (average (/ x y) y))
@@ -11,6 +12,35 @@
   (fixed-point-with (lambda (y) (/ (+ (/ x (square y))
                                       (* 2 y))
                                    3))
+                    1.0
+                    close-exact?))
+
+;; Golden Ratio
+;;
+;;   Find the golden ratio by finding a root of the equation:
+;;     φ^2 = φ + 1
+;;     φ^2 - φ - 1 = 0
+;;     φ = (1 + sqrt(5)) / 2 = 1.6180...
+;;   
+;;   Find the golden ratio by finding a fixed point of the function:
+;;     φ^2 = φ + 1
+;;     φ = 1 + 1 / φ
+;;     Let f(φ) = 1 + 1 / φ = φ
+;;     Then φ is a fixed point of f(φ) = 1 + 1 / φ
+;;
+(define (golden-ratio1)
+  (/ (+ 1 (sqrt0 5)) 2))
+
+(define (golden-ratio2)
+  (car (quadratic-roots 1 -1 -1)))
+
+(define (golden-ratio3)
+  (half-interval-method (lambda (x) (- (* x x) x 1))
+                        1.0
+                        2.0))
+
+(define (golden-ratio4)
+  (fixed-point-with (lambda (x) (+ 1 (/ 1 x)))
                     1.0
                     close-exact?))
 
@@ -64,3 +94,10 @@
                    0.001)
         (assert-eq (cbrt0 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000)
                    1e+32)))
+
+(test "golden-ratio"
+      (lambda ()
+        (assert-eq (golden-ratio1) 1.618033988749895)
+        (assert-eq (golden-ratio2) 1.618033988749895)
+        (assert-eq (golden-ratio3) 1.61767578125)
+        (assert-eq (golden-ratio4) 1.618033988749895)))
