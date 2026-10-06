@@ -25,8 +25,7 @@
 ;;   Find the golden ratio by finding a fixed point of the function:
 ;;     φ^2 = φ + 1
 ;;     φ = 1 + 1 / φ
-;;     Let f(φ) = 1 + 1 / φ = φ
-;;     Then φ is a fixed point of f(φ) = 1 + 1 / φ
+;;     Thus φ is a fixed point of f(φ) = 1 + 1 / φ
 ;;
 (define (golden-ratio1)
   (/ (+ 1 (sqrt0 5)) 2))
@@ -43,6 +42,30 @@
   (fixed-point-with (lambda (x) (+ 1 (/ 1 x)))
                     1.0
                     close-exact?))
+
+
+;; A Root of The Equation x^x = y
+;;
+;;   x^x = y
+;;   log(x^x) = log(y)
+;;   x * log(x) = log(y)
+;;   x = log(y) / log(x)
+;;   2x = log(y) / log(x) + x
+;;   x = (log(y) / log(x) + x) / 2
+;;
+;;   Without average damping, find a fixed point of the function (takes 38 iterations):
+;;     f(x) = log(y) / log(x)
+;;
+;;   With average damping, find a fixed point of the function (takes 14 iterations):
+;;     f(x) = (log(y) / log(x) + x) / 2
+;;
+(define (x^x-root1 y)
+  (fixed-point (lambda (x) (/ (log y) (log x)))
+               1.1))
+
+(define (x^x-root2 y)
+  (fixed-point (lambda (x) (average (/ (log y) (log x)) x))
+               1.1))
 
 (test "fixed-point"
       (lambda ()
@@ -101,3 +124,8 @@
         (assert-eq (golden-ratio2) 1.618033988749895)
         (assert-eq (golden-ratio3) 1.61767578125)
         (assert-eq (golden-ratio4) 1.618033988749895)))
+
+(test "x^x-root"
+      (lambda ()
+        (assert-eq (x^x-root1 1000) 4.555530807938518)
+        (assert-eq (x^x-root2 1000) 4.55553957996306)))
