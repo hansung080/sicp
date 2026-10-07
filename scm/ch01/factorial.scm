@@ -49,20 +49,20 @@
 ;;   Substitution Model
 ;;
 ;;     (factorial2 5)
-;;     (iter 1 5)
-;;     (iter 5 4)
-;;     (iter 20 3)
-;;     (iter 60 2)
-;;     (iter 120 1)
-;;     (iter 120 0)
+;;     (iter 1 1)
+;;     (iter 1 2)
+;;     (iter 2 3)
+;;     (iter 6 4)
+;;     (iter 24 5)
+;;     (iter 120 6)
 ;;     120
 ;;
 (define (factorial2 n)
   (define (iter result i)
-    (if (= i 0)
+    (if (> i n)
         result
         (iter (* result i)
-              (- i 1))))
-  (iter 1 n))
+              (+ i 1))))
+  (iter 1 1))
 
 (define factorial factorial2)
