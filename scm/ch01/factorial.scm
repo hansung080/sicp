@@ -37,7 +37,7 @@
 ;;   Iteration Rule
 ;;
 ;;     result' <- result * i
-;;     i'      <- i - 1
+;;     i'      <- i + 1
 ;;
 ;;   Order of Growth
 ;;
