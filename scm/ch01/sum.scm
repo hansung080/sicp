@@ -4,14 +4,14 @@
 ;;
 ;;   sum(term, a, next, b) = term(a) + term(next(a)) + term(next(next(a))) + ... + term(b)
 ;;
-;; Linear Recursive Process
+;; Recursive Process
 (define (sum1 term a next b)
   (if (> a b)
       0
       (+ (term a)
          (sum1 term (next a) next b))))
 
-;; Linear Iterative Process
+;; Iterative Process
 (define (sum2 term a next b)
   (define (iter result a)
     (if (> a b)

@@ -15,7 +15,7 @@
                     1.0
                     close-exact?))
 
-;; Golden Ratio
+;; Golden Ratio (φ)
 ;;
 ;;   Find the golden ratio by finding a root of the equation:
 ;;     φ^2 = φ + 1

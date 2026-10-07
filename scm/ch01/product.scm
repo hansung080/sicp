@@ -2,14 +2,14 @@
 ;;
 ;;   product(term, a, next, b) = term(a) * term(next(a)) * term(next(next(a))) * ... * term(b)
 ;;
-;; Linear Recursive Process
+;; Recursive Process
 (define (product1 term a next b)
   (if (> a b)
       1
       (* (term a)
          (product1 term (next a) next b))))
 
-;; Linear Iterative Process
+;; Iterative Process
 (define (product2 term a next b)
   (define (iter result a)
     (if (> a b)

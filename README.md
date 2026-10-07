@@ -38,3 +38,4 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | polynomial-roots              | scm      |
 | half-interval-method          | scm      |
 | fixed-point                   | scm      |
+| cont-frac                     | scm      |
