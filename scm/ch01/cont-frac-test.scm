@@ -1,9 +1,28 @@
 (load "../common/testing.scm")
 (load "cont-frac.scm")
 
+;; Substitution Model for a Recursive Process
+;;
+;;   (cont-frac1 (lambda (i) i) (lambda (i) i) 3)
+;;   (recur 1)
+;;   (/ 1 (+ 1 (recur 2)))
+;;   (/ 1 (+ 1 (/ 2 (+ 2 (recur 3)))))
+;;   (/ 1 (+ 1 (/ 2 (+ 2 (/ 3 3)))))
+;;   (/ 1 (+ 1 (/ 2 (+ 2 1))))
+;;   (/ 1 (+ 1 (/ 2 3)))
+;;   (/ 1 (+ 1 2/3))
+;;   (/ 1 5/3)
+;;   3/5
+;;
 (define (cont-frac1-exam)
-  (cont-frac1 (lamda (i) i)
-              (lamba (i) i)
+  (cont-frac1 (lambda (i) i)
+              (lambda (i) i)
+              3))
+
+;; Substitution Model for an Iterative Process
+(define (cont-frac2-exam)
+  (cont-frac2 (lambda (i) i)
+              (lambda (i) i)
               3))
 
 ;; Reciprocal of Golden Ratio (1/φ)
@@ -16,6 +35,10 @@
 ;;     1/φ = φ - 1
 ;;
 (define (golden-ratio-recip) 0)
+
+(test "cont-frac-exam"
+      (lambda ()
+        (assert-eq (cont-frac1-exam) 3/5)))
 
 (test "golden-ratio-recip"
       (lambda ()
