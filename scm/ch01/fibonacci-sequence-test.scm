@@ -19,12 +19,17 @@
 ;;
 ;;     The number of nodes represents time complexity, and the height represents space complexity.
 ;;
-;;                                              (fib1 5)
-;;                            (fib1 4)                             (fib1 3)
-;;                 (fib1 3)              (fib1 2)           (fib1 2)      (fib1 1)
-;;          (fib1 2)      (fib1 1)  (fib1 1) (fib1 0)  (fib1 1) (fib1 0)  1
-;;     (fib1 1) (fib1 0)  1         1        0         1        0
-;;     1        0
+;;                                     Fib(5)
+;;                                     /    \
+;;                     Fib(4)                          Fib(3)
+;;                     /    \                          /    \
+;;             Fib(3)          Fib(2)          Fib(2)          Fib(1)
+;;             /    \          /    \          /    \             |
+;;         Fib(2)  Fib(1)  Fib(1)  Fib(0)  Fib(1)  Fib(0)         1
+;;         /    \     |       |       |       |       |
+;;     Fib(1)  Fib(0) 1       1       0       1       0
+;;        |       |
+;;        1       0
 ;;
 ;;   Substitution Model
 ;;
@@ -65,9 +70,8 @@
 ;;     a' <- b
 ;;     b' <- a + b
 ;;
-;;   Loop Invariant
-;;
-;;     (a, b) = (Fib(i), Fib(i+1))
+;;     Loop invariant:
+;;       (a, b) = (Fib(i), Fib(i+1))
 ;;
 ;;   Order of Growth
 ;;
@@ -76,12 +80,23 @@
 ;;
 ;;   Iteration Process
 ;;
-;;     n:        0 1 2 3 4 5 6  7  8 ...
-;;     (fib2 n): 0 1 1 2 3 5 8 13 21 ...
-;;     i=0:      a b
-;;     i=1:        a b
-;;     i=2:          a b
+;;     n:      0, 1, 2, 3, 4, 5, 6,  7,  8, ...
+;;     Fib(n): 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
+;;     i=0:    a  b
+;;     i=1:       a  b
+;;     i=2:          a  b
 ;;     ...
+;;
+;;   Substitution Model
+;;
+;;     (fib2 5)
+;;     (iter 0 1 0)
+;;     (iter 1 1 1)
+;;     (iter 1 2 2)
+;;     (iter 2 3 3)
+;;     (iter 3 5 4)
+;;     (iter 5 8 5)
+;;     5
 ;;
 (define (fib2 n)
   (define (iter a b i)

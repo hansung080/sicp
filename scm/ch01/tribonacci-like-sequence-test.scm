@@ -29,17 +29,16 @@
 ;;     b' <- c
 ;;     c' <- a + b + c
 ;;
-;;   Loop Invariant
-;;
-;;     (a, b, c) = (f(i), f(i+1), f(i+2))
+;;     Loop invariant:
+;;       (a, b, c) = (f(i), f(i+1), f(i+2))
 ;;
 ;;   Iteration Process
 ;;
-;;     n:      0 1 2 3 4  5  6  7  8 ...
-;;     (f2 n): 0 1 2 3 6 11 20 37 68 ...
-;;     i=0:    a b c
-;;     i=1:      a b c
-;;     i=2:        a b c
+;;     n:    0, 1, 2, 3, 4,  5,  6,  7,  8, ...
+;;     f(n): 0, 1, 2, 3, 6, 11, 20, 37, 68, ...
+;;     i=0:  a  b  c
+;;     i=1:     a  b  c
+;;     i=2:        a  b  c
 ;;     ...
 ;;
 (define (f2 n)
