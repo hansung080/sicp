@@ -43,7 +43,6 @@
                     1.0
                     close-exact?))
 
-
 ;; A Root of The Equation x^x = y
 ;;
 ;;   x^x = y
