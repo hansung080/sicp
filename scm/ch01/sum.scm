@@ -109,7 +109,7 @@
 
 ;; Simpson Integral Approximation
 ;;
-;;   Simpson's rule
+;;   Simpson's Rule
 ;;
 ;;     For even n, let h = (b - a) / n and y_k = f(a + kh):
 ;;       ∫<a..b>f(x)dx ≈ {y_0 + 4y_1 + 2y_2 + 4y_3 + 2y_4 + ... + 2y_(n-2) + 4y_(n-1) + y_n} * (h / 3)
