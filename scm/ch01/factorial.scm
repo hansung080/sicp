@@ -7,8 +7,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(n)
-;;     space complexity: Θ(n)
+;;     Time complexity:  Θ(n)
+;;     Space complexity: Θ(n)
 ;;
 ;;   Substitution Model
 ;;
@@ -43,8 +43,8 @@
 ;;
 ;;     Scheme provides proper tail recursion, ensuring that tail-recursive procedures run in constant space.
 ;;
-;;     time complexity:  Θ(n)
-;;     space complexity: Θ(1)
+;;     Time complexity:  Θ(n)
+;;     Space complexity: Θ(1)
 ;;
 ;;   Substitution Model
 ;;

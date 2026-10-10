@@ -12,8 +12,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(φ^n)
-;;     space complexity: Θ(n)
+;;     Time complexity:  Θ(φ^n)
+;;     Space complexity: Θ(n)
 ;;
 ;;   Recursion Tree
 ;;
@@ -75,8 +75,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(n)
-;;     space complexity: Θ(1)
+;;     Time complexity:  Θ(n)
+;;     Space complexity: Θ(1)
 ;;
 ;;   Iteration Process
 ;;
@@ -125,8 +125,8 @@
 ;;     The time and space complexities depend on the implementation of expt_,
 ;;     which is currently implemented as fast-expt2.
 ;;
-;;     time complexity:  Θ(log2(n))
-;;     space complexity: Θ(1)
+;;     Time complexity:  Θ(log2(n))
+;;     Space complexity: Θ(1)
 ;;
 (define φ (/ (+ 1 (sqrt_ 5)) 2))
 
@@ -173,8 +173,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(log2(n))
-;;     space complexity: Θ(1)
+;;     Time complexity:  Θ(log2(n))
+;;     Space complexity: Θ(1)
 ;;
 (define (fib4 n)
   (define (iter a b p q i)

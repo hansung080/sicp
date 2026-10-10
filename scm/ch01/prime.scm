@@ -14,8 +14,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(sqrt(n))
-;;     space complexity: Θ(1)
+;;     Time complexity:  Θ(sqrt(n))
+;;     Space complexity: Θ(1)
 ;;
 (define (prime0? n)
   (define (smallest-divisor n)
@@ -71,8 +71,8 @@
 ;;
 ;;     The time and space complexities depend on the implementation of expmod.
 ;;
-;;     time complexity:  Θ(log2(n))
-;;     space complexity: Θ(log2(n))
+;;     Time complexity:  Θ(log2(n))
+;;     Space complexity: Θ(log2(n))
 ;;
 (define (fast-prime1? n)
   (fast-prime1-with-times? n 20))
@@ -132,8 +132,8 @@
 ;;
 ;;     The time and space complexities depend on the implementation of checked-expmod.
 ;;
-;;     time complexity:  Θ(log2(n))
-;;     space complexity: Θ(log2(n))
+;;     Time complexity:  Θ(log2(n))
+;;     Space complexity: Θ(log2(n))
 ;;
 (define (fast-prime2? n)
   (fast-prime2-with-times? n 20))

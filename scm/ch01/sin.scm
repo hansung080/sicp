@@ -11,8 +11,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(log3(x))
-;;     space complexity: Θ(log3(x))
+;;     Time complexity:  Θ(log3(x))
+;;     Space complexity: Θ(log3(x))
 ;;
 ;;   Substitution Model
 ;;

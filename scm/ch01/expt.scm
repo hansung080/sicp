@@ -9,8 +9,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(n)
-;;     space complexity: Θ(n)
+;;     Time complexity:  Θ(n)
+;;     Space complexity: Θ(n)
 ;;
 ;;   Substitution Model
 ;;
@@ -50,8 +50,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(n)
-;;     space complexity: Θ(1)
+;;     Time complexity:  Θ(n)
+;;     Space complexity: Θ(1)
 ;;
 ;;   Substitution Model
 ;;
@@ -84,8 +84,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(log2(n))
-;;     space complexity: Θ(log2(n))
+;;     Time complexity:  Θ(log2(n))
+;;     Space complexity: Θ(log2(n))
 ;;
 ;;   Substitution Models
 ;;
@@ -143,8 +143,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(log2(n))
-;;     space complexity: Θ(1)
+;;     Time complexity:  Θ(log2(n))
+;;     Space complexity: Θ(1)
 ;;
 ;;   Substitution Models
 ;;

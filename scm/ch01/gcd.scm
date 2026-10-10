@@ -47,8 +47,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(a + b)
-;;     space complexity: Θ(1)
+;;     Time complexity:  Θ(a + b)
+;;     Space complexity: Θ(1)
 ;;
 (define (slow-gcd a b)
   (cond ((= b 0) a) ; special case where b is initially 0
@@ -95,8 +95,8 @@
 ;;       k = Θ(logφ(n))
 ;;
 ;;     Thus:
-;;       time complexity:  Θ(logφ(n))  (n = min(a, b))
-;;       space complexity: Θ(1)
+;;       Time complexity:  Θ(logφ(n))  (n = min(a, b))
+;;       Space complexity: Θ(1)
 ;;
 (define (gcd0 a b)
   (if (= b 0)

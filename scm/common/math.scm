@@ -169,8 +169,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(log2(n))
-;;     space complexity: Θ(log2(n))
+;;     Time complexity:  Θ(log2(n))
+;;     Space complexity: Θ(log2(n))
 ;;
 (define (expmod b n m)
   (cond ((= n 0)

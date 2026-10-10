@@ -16,8 +16,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(b)
-;;     space complexity: Θ(b)
+;;     Time complexity:  Θ(b)
+;;     Space complexity: Θ(b)
 ;;
 (define (mul1 a b)
   (if (= b 0)
@@ -36,8 +36,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(b)
-;;     space complexity: Θ(1)
+;;     Time complexity:  Θ(b)
+;;     Space complexity: Θ(1)
 ;;
 (define (mul2 a b)
   (define (iter s b)
@@ -57,8 +57,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(log2(b))
-;;     space complexity: Θ(log2(b))
+;;     Time complexity:  Θ(log2(b))
+;;     Space complexity: Θ(log2(b))
 ;;
 (define (fast-mul1 a b)
   (cond ((= b 0) 0)
@@ -88,8 +88,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(log2(b))
-;;     space complexity: Θ(1)
+;;     Time complexity:  Θ(log2(b))
+;;     Space complexity: Θ(1)
 ;;
 (define (fast-mul2 a b)
   (define (iter s a b)
@@ -119,8 +119,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(log2(a))
-;;     space complexity: Θ(log2(a))
+;;     Time complexity:  Θ(log2(a))
+;;     Space complexity: Θ(log2(a))
 ;;
 (define (russe-mul1 a b)
   (cond ((= a 0) 0)
@@ -146,8 +146,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     time complexity:  Θ(log2(a))
-;;     space complexity: Θ(1)
+;;     Time complexity:  Θ(log2(a))
+;;     Space complexity: Θ(1)
 ;;
 (define (russe-mul2 a b)
   (define (iter result a b)
