@@ -13,11 +13,11 @@
         (assert-eq (sum-cubes1 1 4) 100)
         (assert-eq (sum-cubes2 1 4) 100)))
 
-(test "pi-sum"
+(test "pi-over-eight"
       (lambda ()
-        (assert-eq (* (pi-sum0 1 1000) 8) 3.139592655589783)
-        (assert-eq (* (pi-sum1 1 1000) 8) 3.139592655589783)
-        (assert-eq (* (pi-sum2 1 1000) 8) 3.139592655589782)))
+        (assert-eq (* (pi-over-eight0 1 1000) 8) 3.139592655589783)
+        (assert-eq (* (pi-over-eight1 1 1000) 8) 3.139592655589783)
+        (assert-eq (* (pi-over-eight2 1 1000) 8) 3.139592655589782)))
 
 (test "integral"
       (lambda ()

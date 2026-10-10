@@ -24,24 +24,24 @@
 ;;
 ;;   (2 * 2 * 4 * 4 * 6 * 6 * ...) / (1 * 3 * 3 * 5 * 5 * 7 * ...) = π/2
 ;;
-;; Infinite Product for π/4 (implemented by pi-product)
+;; Infinite Product for π/4 (implemented by pi-over-four)
 ;;
 ;;   (2 * 4 * 4 * 6 * 6 * 8 * ...) / (3 * 3 * 5 * 5 * 7 * 7 * ...)
 ;;   = {(2 * 4) / (3 * 3)} * {(4 * 6) / (5 * 5)} * {(6 * 8) / (7 * 7)} * ...
 ;;   = π/4
 ;;
-(define (pi-product0 a b)
+(define (pi-over-four0 a b)
   (if (> a b)
       1.0
       (* (/ (* a (+ a 2))
             (* (+ a 1) (+ a 1)))
-         (pi-product0 (+ a 2) b))))
+         (pi-over-four0 (+ a 2) b))))
 
 ;; DrRacket/Scheme uses arbitrary-precision exact integers and 64-bit IEEE 754 inexact floats.
 ;;
 ;; GOOD: Each term satisfies 0 < term(x) < 1, and the final product converges to π/4.
 ;;       Thus, it avoids both the large intermediate integers and float overflow.
-(define (pi-product-by1 a b product)
+(define (pi-over-four-by1 a b product)
   (define (term x)
     (exact->inexact
      (/ (* x (+ x 2))
@@ -53,7 +53,7 @@
 ;; BAD: If `x` is an exact integer, the intermediate products can become very large,
 ;;      potentially causing performance and memory overhead.
 ;;      If `x` is an inexact float, float overflow can occur.
-(define (pi-product-by2 a b product)
+(define (pi-over-four-by2 a b product)
   (define (term-dividend x)
     (* x (+ x 2)))
   (define (term-divisor x)
@@ -64,16 +64,16 @@
    (/ (product term-dividend a next b)
       (product term-divisor (+ a 1) next (+ b 1)))))
 
-(define (pi-product1 a b)
-  (pi-product-by1 a b product1))
+(define (pi-over-four1 a b)
+  (pi-over-four-by1 a b product1))
 
-(define (pi-product2 a b)
-  (pi-product-by1 a b product2))
+(define (pi-over-four2 a b)
+  (pi-over-four-by1 a b product2))
 
-(define (pi-product3 a b)
-  (pi-product-by2 a b product1))
+(define (pi-over-four3 a b)
+  (pi-over-four-by2 a b product1))
 
-(define (pi-product4 a b)
-  (pi-product-by2 a b product2))
+(define (pi-over-four4 a b)
+  (pi-over-four-by2 a b product2))
 
-(define pi-product pi-product0)
+(define pi-over-four pi-over-four0)

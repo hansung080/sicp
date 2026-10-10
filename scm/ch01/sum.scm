@@ -53,30 +53,30 @@
 ;;
 ;;   1 - 1/3 + 1/5 - 1/7 + ... = π/4
 ;;
-;; Infinite Series for π/8 (implemented by pi-sum)
+;; Infinite Series for π/8 (implemented by pi-over-eight)
 ;;
 ;;   1/(1*3) + 1/(5*7) + 1/(9*11) + ... = π/8
 ;;
-(define (pi-sum0 a b)
+(define (pi-over-eight0 a b)
   (if (> a b)
       0
       (+ (/ 1.0 (* a (+ a 2)))
-         (pi-sum0 (+ a 4) b))))
+         (pi-over-eight0 (+ a 4) b))))
 
-(define (pi-sum-by a b sum)
+(define (pi-over-eight-by a b sum)
   (define (term x)
     (/ 1.0 (* x (+ x 2))))
   (define (next x)
     (+ x 4))
   (sum term a next b))
 
-(define (pi-sum1 a b)
-  (pi-sum-by a b sum1))
+(define (pi-over-eight1 a b)
+  (pi-over-eight-by a b sum1))
 
-(define (pi-sum2 a b)
-  (pi-sum-by a b sum2))
+(define (pi-over-eight2 a b)
+  (pi-over-eight-by a b sum2))
 
-(define pi-sum pi-sum0)
+(define pi-over-eight pi-over-eight0)
 
 ;; Riemann Integral Approximation
 ;;
