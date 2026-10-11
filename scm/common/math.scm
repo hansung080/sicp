@@ -1,15 +1,22 @@
-;; Unlike the built-in quotient, which raises an error if m or n is not an integer,
-;; the user-defined quotient_ does not.
+;; Unlike the built-in `quotient`, which raises an error if `m` or `n` is not an integer,
+;; the user-defined `quotient_` does not.
 ;; ```
 ;; (define (quotient_ m n)
 ;;   (truncate (/ m n)))
 ;; ```
 ;;
-;; Unlike the built-in remainder, which raises an error if m or n is not an integer,
-;; the user-defined remainder_ does not.
+;; Unlike the built-in `remainder`, which raises an error if `m` or `n` is not an integer,
+;; the user-defined `remainder_` does not.
 ;; ```
 ;; (define (remainder_ m n)
 ;;   (- m (* n (truncate (/ m n)))))
+;; ```
+;;
+;; Unlike the built-in `modulo`, which raises an error if `m` or `n` is not an integer,
+;; the user-defined `modulo_` does not.
+;; ```
+;; (define (modulo_ m n)
+;;   (- m (* n (floor (/ m n)))))
 ;; ```
 
 (define (even?_ n)
