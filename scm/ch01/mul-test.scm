@@ -124,8 +124,8 @@
 ;;
 (define (russe-mul1 a b)
   (cond ((= a 0) 0)
-        ((even?_ a) (russe-mul1 (>> a 1) (<< b 1)))
-        (else (+ b (russe-mul1 (>> a 1) (<< b 1))))))
+        ((even?_ a) (russe-mul1 (rshift a 1) (lshift b 1)))
+        (else (+ b (russe-mul1 (rshift a 1) (lshift b 1))))))
 
 ;; À la Russe Algorithm (Russian Peasant Multiplication, Logarithmic Iterative Process)
 ;;
@@ -152,8 +152,8 @@
 (define (russe-mul2 a b)
   (define (iter result a b)
     (cond ((= a 0) result)
-          ((even?_ a) (iter result (>> a 1) (<< b 1)))
-          (else (iter (+ result b) (>> a 1) (<< b 1)))))
+          ((even?_ a) (iter result (rshift a 1) (lshift b 1)))
+          (else (iter (+ result b) (rshift a 1) (lshift b 1)))))
   (iter 0 a b))
 
 (test "mul1"

@@ -141,20 +141,20 @@
 (define (dec x)
   (- x 1))
 
-(define (<< m n)
+(define (lshift m n)
   (* m (expt 2 n)))
 
-(define (>>1 m n)
+(define (rshift1 m n)
   (inexact->exact
    (floor_ (/ m (expt 2 n)))))
 
-(define (>>2 m n)
+(define (rshift2 m n)
   (let ((d (expt 2 n)))
     (if (>= m 0)
         (quotient m d)
         (- (quotient (+ (- m) d -1) d)))))
 
-(define >> >>2)
+(define rshift rshift2)
 
 ;; Check whether `divisor` divides `dividend` (i.e. divisor ∣ dividend; ∣ denotes DIVIDES (U+2223)).
 (define (divides? divisor dividend)
