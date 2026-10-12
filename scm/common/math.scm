@@ -145,6 +145,7 @@
 (define (divides? divisor dividend)
   (= (remainder dividend divisor) 0))
 
+;; Expt (Logarithmic Iterative Process)
 (define (expt0 b n)
   (define (iter a b n)
     (cond ((= n 0) a)
@@ -152,7 +153,7 @@
           (else (iter (* a b) b (- n 1)))))
   (iter 1 b n))
 
-;; Expmod (Logarithmic Recursive Process)
+;; Exprem (Logarithmic Recursive Process)
 ;;
 ;;   Remainder Property
 ;;
