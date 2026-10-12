@@ -43,7 +43,7 @@
                     1.0
                     close-exact?))
 
-;; A Root of The Equation x^x = y
+;; A Root of The Equation x^x = y (x to the power of x equals y)
 ;;
 ;;   x^x = y
 ;;   log(x^x) = log(y)
@@ -58,11 +58,11 @@
 ;;   With average damping, find a fixed point of the function (takes 14 iterations):
 ;;     f(x) = (log(y) / log(x) + x) / 2
 ;;
-(define (x^x-root1 y)
+(define (x-pow-x-root1 y)
   (fixed-point (lambda (x) (/ (log y) (log x)))
                1.1))
 
-(define (x^x-root2 y)
+(define (x-pow-x-root2 y)
   (fixed-point (lambda (x) (average (/ (log y) (log x)) x))
                1.1))
 
@@ -124,7 +124,7 @@
         (assert-eq (golden-ratio3) 1.61767578125)
         (assert-eq (golden-ratio4) 1.618033988749895)))
 
-(test "x^x-root"
+(test "x-pow-x-root"
       (lambda ()
-        (assert-eq (x^x-root1 1000) 4.555530807938518)
-        (assert-eq (x^x-root2 1000) 4.55553957996306)))
+        (assert-eq (x-pow-x-root1 1000) 4.555530807938518)
+        (assert-eq (x-pow-x-root2 1000) 4.55553957996306)))
