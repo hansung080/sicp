@@ -179,14 +179,14 @@
 ;;     Time complexity:  Θ(log2(n))
 ;;     Space complexity: Θ(log2(n))
 ;;
-(define (expmod b n m)
+(define (exprem b n m)
   (cond ((= n 0)
          (cond ((= m 0) (remainder 0 0))
                ((or (= m 1) (= m -1)) 0)
                (else 1)))
         ((even?_ n)
-         (remainder (square (expmod b (/ n 2) m))
+         (remainder (square (exprem b (/ n 2) m))
                     m))
         (else
-         (remainder (* b (expmod b (- n 1) m))
+         (remainder (* b (exprem b (- n 1) m))
                     m))))
