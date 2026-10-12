@@ -141,24 +141,16 @@
 (define (dec x)
   (- x 1))
 
-(define (lshift m n)
-  (* m (expt 2 n)))
-
-(define (rshift1 m n)
-  (inexact->exact
-   (floor_ (/ m (expt 2 n)))))
-
-(define (rshift2 m n)
-  (let ((d (expt 2 n)))
-    (if (>= m 0)
-        (quotient m d)
-        (- (quotient (+ (- m) d -1) d)))))
-
-(define rshift rshift2)
-
 ;; Check whether `divisor` divides `dividend` (i.e. divisor ∣ dividend; ∣ denotes DIVIDES (U+2223)).
 (define (divides? divisor dividend)
   (= (remainder dividend divisor) 0))
+
+(define (expt0 b n)
+  (define (iter a b n)
+    (cond ((= n 0) a)
+          ((even?_ n) (iter a (* b b) (/ n 2)))
+          (else (iter (* a b) b (- n 1)))))
+  (iter 1 b n))
 
 ;; Expmod (Logarithmic Recursive Process)
 ;;
@@ -190,3 +182,18 @@
         (else
          (remainder (* b (exprem b (- n 1) m))
                     m))))
+
+(define (lshift m n)
+  (* m (expt0 2 n)))
+
+(define (rshift1 m n)
+  (inexact->exact
+   (floor_ (/ m (expt0 2 n)))))
+
+(define (rshift2 m n)
+  (let ((d (expt0 2 n)))
+    (if (>= m 0)
+        (quotient m d)
+        (- (quotient (+ (- m) d -1) d)))))
+
+(define rshift rshift2)
