@@ -1,6 +1,58 @@
 (load "math.scm")
 (load "testing.scm")
 
+(test "quotient_"
+      (lambda ()                           ; q = T(m/n)
+        (assert-eq (quotient_ 0 5) 0)      ; q = T(0/5) = T(0) = 0
+        (assert-eq (quotient_ 0 -5) 0)     ; q = T(0/-5) = T(0) = 0
+        (assert-eq (quotient_ 10 5) 2)     ; q = T(10/5) = T(2) = 2
+        (assert-eq (quotient_ 10 -5) -2)   ; q = T(10/-5) = T(-2) = -2
+        (assert-eq (quotient_ -10 5) -2)   ; q = T(-10/5) = T(-2) = -2
+        (assert-eq (quotient_ -10 -5) 2)   ; q = T(-10/-5) = T(2) = 2
+        (assert-eq (quotient_ 11 5) 2)     ; q = T(11/5) = T(2.2) = 2
+        (assert-eq (quotient_ 11 -5) -2)   ; q = T(11/-5) = T(-2.2) = -2
+        (assert-eq (quotient_ -11 5) -2)   ; q = T(-11/5) = T(-2.2) = -2
+        (assert-eq (quotient_ -11 -5) 2))) ; q = T(-11/-5) = T(2.2) = 2
+
+(test "floor-quotient"
+      (lambda ()                                ; q = F(m/n)
+        (assert-eq (floor-quotient 0 5) 0)      ; q = F(0/5) = F(0) = 0
+        (assert-eq (floor-quotient 0 -5) 0)     ; q = F(0/-5) = F(0) = 0
+        (assert-eq (floor-quotient 10 5) 2)     ; q = F(10/5) = F(2) = 2
+        (assert-eq (floor-quotient 10 -5) -2)   ; q = F(10/-5) = F(-2) = -2
+        (assert-eq (floor-quotient -10 5) -2)   ; q = F(-10/5) = F(-2) = -2
+        (assert-eq (floor-quotient -10 -5) 2)   ; q = F(-10/-5) = F(2) = 2
+        (assert-eq (floor-quotient 11 5) 2)     ; q = F(11/5) = F(2.2) = 2
+        (assert-eq (floor-quotient 11 -5) -3)   ; q = F(11/-5) = F(-2.2) = -3
+        (assert-eq (floor-quotient -11 5) -3)   ; q = F(-11/5) = F(-2.2) = -3
+        (assert-eq (floor-quotient -11 -5) 2))) ; q = F(-11/-5) = F(2.2) = 2
+
+(test "remainder_"
+      (lambda ()                             ; q = T(m/n)                  -> r = m - (n * q)
+        (assert-eq (remainder_ 0 5) 0)       ; q = T(0/5) = T(0) = 0       -> r = 0 - (5 * 0) = 0
+        (assert-eq (remainder_ 0 -5) 0)      ; q = T(0/-5) = T(0) = 0      -> r = 0 - (-5 * 0) = 0
+        (assert-eq (remainder_ 10 5) 0)      ; q = T(10/5) = T(2) = 2      -> r = 10 - (5 * 2) = 0
+        (assert-eq (remainder_ 10 -5) 0)     ; q = T(10/-5) = T(-2) = -2   -> r = 10 - (-5 * -2) = 0
+        (assert-eq (remainder_ -10 5) 0)     ; q = T(-10/5) = T(-2) = -2   -> r = -10 - (5 * -2) = 0
+        (assert-eq (remainder_ -10 -5) 0)    ; q = T(-10/-5) = T(2) = 2    -> r = -10 - (-5 * 2) = 0
+        (assert-eq (remainder_ 11 5) 1)      ; q = T(11/5) = T(2.2) = 2    -> r = 11 - (5 * 2) = 1
+        (assert-eq (remainder_ 11 -5) 1)     ; q = T(11/-5) = T(-2.2) = -2 -> r = 11 - (-5 * -2) = 1
+        (assert-eq (remainder_ -11 5) -1)    ; q = T(-11/5) = T(-2.2) = -2 -> r = -11 - (5 * -2) = -1
+        (assert-eq (remainder_ -11 -5) -1))) ; q = T(-11/-5) = T(2.2) = 2  -> r = -11 - (-5 * 2) = -1
+
+(test "modulo_"
+      (lambda ()                          ; q = F(m/n)                  -> r = m - (n * q)
+        (assert-eq (modulo_ 0 5) 0)       ; q = F(0/5) = F(0) = 0       -> r = 0 - (5 * 0) = 0
+        (assert-eq (modulo_ 0 -5) 0)      ; q = F(0/-5) = F(0) = 0      -> r = 0 - (-5 * 0) = 0
+        (assert-eq (modulo_ 10 5) 0)      ; q = F(10/5) = F(2) = 2      -> r = 10 - (5 * 2) = 0
+        (assert-eq (modulo_ 10 -5) 0)     ; q = F(10/-5) = F(-2) = -2   -> r = 10 - (-5 * -2) = 0
+        (assert-eq (modulo_ -10 5) 0)     ; q = F(-10/5) = F(-2) = -2   -> r = -10 - (5 * -2) = 0
+        (assert-eq (modulo_ -10 -5) 0)    ; q = F(-10/-5) = F(2) = 2    -> r = -10 - (-5 * 2) = 0
+        (assert-eq (modulo_ 11 5) 1)      ; q = F(11/5) = F(2.2) = 2    -> r = 11 - (5 * 2) = 1
+        (assert-eq (modulo_ 11 -5) -4)    ; q = F(11/-5) = F(-2.2) = -3 -> r = 11 - (-5 * -3) = -4
+        (assert-eq (modulo_ -11 5) 4)     ; q = F(-11/5) = F(-2.2) = -3 -> r = -11 - (5 * -3) = 4
+        (assert-eq (modulo_ -11 -5) -1))) ; q = F(-11/-5) = F(2.2) = 2  -> r = -11 - (-5 * 2) = -1
+
 (test "even?_"
       (lambda ()
         (assert-eq (even?_ 0) #t)
