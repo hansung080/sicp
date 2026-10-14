@@ -1,3 +1,20 @@
+(define (positive?_ x)
+  (> x 0))
+
+(define (negative?_ x)
+  (< x 0))
+
+(define (even?_ n)
+  (= (remainder_ n 2) 0))
+
+(define (odd?_ n)
+  (not (even?_ n)))
+
+(define (abs_ x)
+  (if (< x 0)
+      (- x)
+      x))
+
 ;; Return the quotient of truncating division.
 (define (quotient_ m n)
   (truncate (/ m n)))
@@ -13,23 +30,6 @@
 ;; Return the remainder of floor division.
 (define (modulo_ m n)
   (- m (* n (floor-quotient m n))))
-
-(define (even?_ n)
-  (= (remainder_ n 2) 0))
-
-(define (odd?_ n)
-  (not (even?_ n)))
-
-(define (positive?_ x)
-  (> x 0))
-
-(define (negative?_ x)
-  (< x 0))
-
-(define (abs_ x)
-  (if (< x 0)
-      (- x)
-      x))
 
 ;; Return the greatest integer less than or equal to `x`.
 (define (floor_ x)
@@ -118,15 +118,6 @@
 
 (define round_ round-half-to-even)
 
-(define (square x)
-  (* x x))
-
-(define (cube x)
-  (* x x x))
-
-(define (average x y)
-  (/ (+ x y) 2))
-
 (define (identity x)
   x)
 
@@ -135,6 +126,15 @@
 
 (define (dec x)
   (- x 1))
+
+(define (square x)
+  (* x x))
+
+(define (cube x)
+  (* x x x))
+
+(define (average x y)
+  (/ (+ x y) 2))
 
 ;; Check whether `divisor` divides `dividend` (i.e. divisor ∣ dividend; ∣ denotes DIVIDES (U+2223)).
 (define (divides? divisor dividend)

@@ -1,6 +1,54 @@
 (load "math.scm")
 (load "testing.scm")
 
+(test "positive?_"
+      (lambda ()
+        (assert-eq (positive?_ 0) #f)
+        (assert-eq (positive?_ 3) #t)
+        (assert-eq (positive?_ -3) #f)
+        (assert-eq (positive?_ 3.5) #t)
+        (assert-eq (positive?_ -3.5) #f)))
+
+(test "negative?_"
+      (lambda ()
+        (assert-eq (negative?_ 0) #f)
+        (assert-eq (negative?_ 3) #f)
+        (assert-eq (negative?_ -3) #t)
+        (assert-eq (negative?_ 3.5) #f)
+        (assert-eq (negative?_ -3.5) #t)))
+
+(test "even?_"
+      (lambda ()
+        (assert-eq (even?_ 0) #t)
+        (assert-eq (even?_ 1) #f)
+        (assert-eq (even?_ 2) #t)
+        (assert-eq (even?_ 3) #f)
+        (assert-eq (even?_ 4) #t)
+        (assert-eq (even?_ -1) #f)
+        (assert-eq (even?_ -2) #t)
+        (assert-eq (even?_ -3) #f)
+        (assert-eq (even?_ -4) #t)))
+
+(test "odd?_"
+      (lambda ()
+        (assert-eq (odd?_ 0) #f)
+        (assert-eq (odd?_ 1) #t)
+        (assert-eq (odd?_ 2) #f)
+        (assert-eq (odd?_ 3) #t)
+        (assert-eq (odd?_ 4) #f)
+        (assert-eq (odd?_ -1) #t)
+        (assert-eq (odd?_ -2) #f)
+        (assert-eq (odd?_ -3) #t)
+        (assert-eq (odd?_ -4) #f)))
+
+(test "abs_"
+      (lambda ()
+        (assert-eq (abs_ 0) 0)
+        (assert-eq (abs_ 3) 3)
+        (assert-eq (abs_ -3) 3)
+        (assert-eq (abs_ 3.5) 3.5)
+        (assert-eq (abs_ -3.5) 3.5)))
+
 (test "quotient_"
       (lambda ()                           ; q = T(m/n)
         (assert-eq (quotient_ 0 5) 0)      ; q = T(0/5) = T(0) = 0
@@ -52,54 +100,6 @@
         (assert-eq (modulo_ 11 -5) -4)    ; q = F(11/-5) = F(-2.2) = -3 -> r = 11 - (-5 * -3) = -4
         (assert-eq (modulo_ -11 5) 4)     ; q = F(-11/5) = F(-2.2) = -3 -> r = -11 - (5 * -3) = 4
         (assert-eq (modulo_ -11 -5) -1))) ; q = F(-11/-5) = F(2.2) = 2  -> r = -11 - (-5 * 2) = -1
-
-(test "even?_"
-      (lambda ()
-        (assert-eq (even?_ 0) #t)
-        (assert-eq (even?_ 1) #f)
-        (assert-eq (even?_ 2) #t)
-        (assert-eq (even?_ 3) #f)
-        (assert-eq (even?_ 4) #t)
-        (assert-eq (even?_ -1) #f)
-        (assert-eq (even?_ -2) #t)
-        (assert-eq (even?_ -3) #f)
-        (assert-eq (even?_ -4) #t)))
-
-(test "odd?_"
-      (lambda ()
-        (assert-eq (odd?_ 0) #f)
-        (assert-eq (odd?_ 1) #t)
-        (assert-eq (odd?_ 2) #f)
-        (assert-eq (odd?_ 3) #t)
-        (assert-eq (odd?_ 4) #f)
-        (assert-eq (odd?_ -1) #t)
-        (assert-eq (odd?_ -2) #f)
-        (assert-eq (odd?_ -3) #t)
-        (assert-eq (odd?_ -4) #f)))
-
-(test "positive?_"
-      (lambda ()
-        (assert-eq (positive?_ 0) #f)
-        (assert-eq (positive?_ 3) #t)
-        (assert-eq (positive?_ -3) #f)
-        (assert-eq (positive?_ 3.5) #t)
-        (assert-eq (positive?_ -3.5) #f)))
-
-(test "negative?_"
-      (lambda ()
-        (assert-eq (negative?_ 0) #f)
-        (assert-eq (negative?_ 3) #f)
-        (assert-eq (negative?_ -3) #t)
-        (assert-eq (negative?_ 3.5) #f)
-        (assert-eq (negative?_ -3.5) #t)))
-
-(test "abs_"
-      (lambda ()
-        (assert-eq (abs_ 0) 0)
-        (assert-eq (abs_ 3) 3)
-        (assert-eq (abs_ -3) 3)
-        (assert-eq (abs_ 3.5) 3.5)
-        (assert-eq (abs_ -3.5) 3.5)))
 
 (test "truncate"
       (lambda ()
@@ -221,6 +221,24 @@
         (assert-eq (round-half-to-odd -1.5) -1.0)
         (assert-eq (round-half-to-odd -1.6) -2.0)))
 
+(test "identity"
+      (lambda ()
+        (assert-eq (identity 0) 0)
+        (assert-eq (identity 3) 3)
+        (assert-eq (identity -3) -3)))
+
+(test "inc"
+      (lambda ()
+        (assert-eq (inc 0) 1)
+        (assert-eq (inc 3) 4)
+        (assert-eq (inc -3) -2)))
+
+(test "dec"
+      (lambda ()
+        (assert-eq (dec 0) -1)
+        (assert-eq (dec 3) 2)
+        (assert-eq (dec -3) -4)))
+
 (test "square"
       (lambda ()
         (assert-eq (square 0) 0)
@@ -244,24 +262,6 @@
         (assert-eq (average -1 -3) -2)
         (assert-eq (average 1.5 3.5) 2.5)
         (assert-eq (average -1.5 -3.5) -2.5)))
-
-(test "identity"
-      (lambda ()
-        (assert-eq (identity 0) 0)
-        (assert-eq (identity 3) 3)
-        (assert-eq (identity -3) -3)))
-
-(test "inc"
-      (lambda ()
-        (assert-eq (inc 0) 1)
-        (assert-eq (inc 3) 4)
-        (assert-eq (inc -3) -2)))
-
-(test "dec"
-      (lambda ()
-        (assert-eq (dec 0) -1)
-        (assert-eq (dec 3) 2)
-        (assert-eq (dec -3) -4)))
 
 (test "divides?"
       (lambda ()
