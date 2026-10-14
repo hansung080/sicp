@@ -225,7 +225,9 @@
       (lambda ()
         (assert-eq (identity 0) 0)
         (assert-eq (identity 3) 3)
-        (assert-eq (identity -3) -3)))
+        (assert-eq (identity -3) -3)
+        (assert-eq (identity 3.5) 3.5)
+        (assert-eq (identity -3.5) -3.5)))
 
 (test "inc"
       (lambda ()
