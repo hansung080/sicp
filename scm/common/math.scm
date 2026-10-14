@@ -15,7 +15,7 @@
   (- m (* n (floor-quotient m n))))
 
 (define (even?_ n)
-  (= (remainder n 2) 0))
+  (= (remainder_ n 2) 0))
 
 (define (odd?_ n)
   (not (even?_ n)))
@@ -138,7 +138,7 @@
 
 ;; Check whether `divisor` divides `dividend` (i.e. divisor ∣ dividend; ∣ denotes DIVIDES (U+2223)).
 (define (divides? divisor dividend)
-  (= (remainder dividend divisor) 0))
+  (= (remainder_ dividend divisor) 0))
 
 ;; Expt (Logarithmic Iterative Process)
 (define (expt0 b n)
@@ -169,15 +169,15 @@
 ;;
 (define (exprem b n m)
   (cond ((= n 0)
-         (cond ((= m 0) (remainder 0 0))
+         (cond ((= m 0) (remainder_ 0 0))
                ((or (= m 1) (= m -1)) 0)
                (else 1)))
         ((even?_ n)
-         (remainder (square (exprem b (/ n 2) m))
-                    m))
+         (remainder_ (square (exprem b (/ n 2) m))
+                     m))
         (else
-         (remainder (* b (exprem b (- n 1) m))
-                    m))))
+         (remainder_ (* b (exprem b (- n 1) m))
+                     m))))
 
 (define (lshift m n)
   (* m (expt0 2 n)))
@@ -189,7 +189,7 @@
 (define (rshift2 m n)
   (let ((d (expt0 2 n)))
     (if (>= m 0)
-        (quotient m d)
-        (- (quotient (+ (- m) d -1) d)))))
+        (quotient_ m d)
+        (- (quotient_ (+ (- m) d -1) d)))))
 
 (define rshift rshift2)

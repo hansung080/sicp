@@ -1,3 +1,4 @@
+(load "../common/math.scm")
 (load "../common/testing.scm")
 (load "cont-frac.scm")
 
@@ -89,7 +90,7 @@
 (define (euler-number1 k)
   (+ 2 (cont-frac1 (lambda (i) 1.0)
                    (lambda (i)
-                     (if (= (modulo i 3) 2)
+                     (if (= (modulo_ i 3) 2)
                          (* 2 (/ (+ i 1) 3))
                          1))
                    k)))
@@ -97,7 +98,7 @@
 (define (euler-number2 k)
   (+ 2 (cont-frac2 (lambda (i) 1.0)
                    (lambda (i)
-                     (if (= (modulo i 3) 2)
+                     (if (= (modulo_ i 3) 2)
                          (* 2 (/ (+ i 1) 3))
                          1))
                    k)))

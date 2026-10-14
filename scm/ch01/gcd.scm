@@ -1,3 +1,5 @@
+(load "../common/math.scm")
+
 ;; Mathematical Definition of GCD
 ;;
 ;;   GCD is the greatest positive integer that divides both integers.
@@ -101,6 +103,6 @@
 (define (gcd0 a b)
   (if (= b 0)
       a
-      (gcd0 b (remainder a b))))
+      (gcd0 b (remainder_ a b))))
 
 (define gcd_ gcd0)
