@@ -39,3 +39,4 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | half-interval-method          | scm      |
 | fixed-point                   | scm      |
 | cont-frac                     | scm      |
+| tan                           | scm      |
