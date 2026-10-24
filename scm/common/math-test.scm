@@ -221,14 +221,6 @@
         (assert-eq (round-half-to-odd -1.5) -1.0)
         (assert-eq (round-half-to-odd -1.6) -2.0)))
 
-(test "identity"
-      (lambda ()
-        (assert-eq (identity 0) 0)
-        (assert-eq (identity 3) 3)
-        (assert-eq (identity -3) -3)
-        (assert-eq (identity 3.5) 3.5)
-        (assert-eq (identity -3.5) -3.5)))
-
 (test "inc"
       (lambda ()
         (assert-eq (inc 0) 1)
@@ -240,6 +232,14 @@
         (assert-eq (dec 0) -1)
         (assert-eq (dec 3) 2)
         (assert-eq (dec -3) -4)))
+
+(test "identity"
+      (lambda ()
+        (assert-eq (identity 0) 0)
+        (assert-eq (identity 3) 3)
+        (assert-eq (identity -3) -3)
+        (assert-eq (identity 3.5) 3.5)
+        (assert-eq (identity -3.5) -3.5)))
 
 (test "square"
       (lambda ()
@@ -305,6 +305,12 @@
         (assert-eq (exprem 2 0 -1) 0)
         (assert-eq (exprem 2 1 -1) 0)
         (assert-eq (exprem 2 2 -1) 0)))
+
+(test "deriv"
+      (lambda ()
+        (assert-eq ((deriv identity) 10) 0.9999999999621422)
+        (assert-eq ((deriv square) 10) 20.00000999942131)
+        (assert-eq ((deriv cube) 10) 300.0002999897333)))
 
 (test "lshift"
       (lambda ()

@@ -118,14 +118,14 @@
 
 (define round_ round-half-to-even)
 
-(define (identity x)
-  x)
-
 (define (inc n)
   (+ n 1))
 
 (define (dec n)
   (- n 1))
+
+(define (identity x)
+  x)
 
 (define (square x)
   (* x x))
@@ -140,7 +140,7 @@
 (define (divides? divisor dividend)
   (= (remainder_ dividend divisor) 0))
 
-;; Expt (Logarithmic Iterative Process)
+;; Exponentiation (Logarithmic Iterative Process)
 (define (expt0 b n)
   (define (iter a b n)
     (cond ((= n 0) a)
@@ -148,7 +148,7 @@
           (else (iter (* a b) b (- n 1)))))
   (iter 1 b n))
 
-;; Exprem (Logarithmic Recursive Process)
+;; Modular Exponentiation (Logarithmic Recursive Process)
 ;;
 ;;   Remainder Property
 ;;
@@ -178,6 +178,20 @@
         (else
          (remainder_ (* b (exprem b (- n 1) m))
                      m))))
+
+;; Derivative
+;;
+;;   Find the derivative of f at a (differential coefficient):
+;;     f'(a) = lim<b->a>[{f(b) - f(a)} / (b - a)]
+;;           = lim<h->0>[{f(a + h) - f(a)} / h]  (let h = b - a)
+;;
+;;   Find the derivative of f:
+;;     f'(x) = df(x)/dx = lim<h->0>[{f(x + h) - f(x)} / h]
+;;
+(define (deriv f)
+  (define dx 0.00001)
+  (lambda (x) (/ (- (f (+ x dx)) (f x))
+                 dx)))
 
 (define (lshift m n)
   (* m (expt0 2 n)))
