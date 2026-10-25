@@ -17,7 +17,7 @@
 ;;             = f(x)f''(x) / {f'(x)}^2
 ;;       g'(r) = 0  (because f(r) = 0)
 ;;
-;; Newton's Method vs Gradient Descent
+;; Newton's Method and Gradient Descent
 ;;
 ;;   Newton's method for a root of f (an x such that f(x) = 0):
 ;;     x_(n+1) = x_n - f(x_n) / f'(x_n)
