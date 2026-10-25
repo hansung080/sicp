@@ -40,7 +40,7 @@
 ;;     x_(n+1) = x_n - f'(x_n) / f''(x_n)
 ;;
 ;;   Gradient descent for a stationary point of f (an x such that f'(x) = 0):
-;;     x_(n+1) = x_n - η * f'(x_n)  (η is learning rate)
+;;     x_(n+1) = x_n - η * f'(x_n)  (η is the learning rate)
 ;;
 ;;   Notes:
 ;;     - Gradient descent uses a learning rate to control the update size without requiring
