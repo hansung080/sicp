@@ -11,7 +11,7 @@
 ;;   3y = x / y^2 + 2y
 ;;   y = (x / y^2 + 2y) / 3
 ;;
-;; Cube Root by Iterating Until Reaching a Fixed Point
+;; Cube Root by Iterating Until Reaching a Fixed Point Using Average Damping
 (define (cbrt x)
   ;; no error: y = y''
   (define (good-enough? guess next-guess)
