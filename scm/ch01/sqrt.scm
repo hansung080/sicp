@@ -11,7 +11,7 @@
 ;;   2y = x / y + y
 ;;   y = (x / y + y) / 2
 ;;
-;; Square Root by Iterating Until Reaching a Root Using Average Damping (BAD)
+;; Square Root by Iterating Until Reaching the Root Using Average Damping (BAD)
 ;;
 ;;   `good-enough1?` fails to terminate even for normal numbers.
 ;;   `good-enough2?` fails for very small and large numbers.
@@ -37,7 +37,7 @@
         (try (improve guess))))
   (try 1.0))
 
-;; Square Root by Iterating Until Reaching a Fixed Point Using Average Damping (BEST)
+;; Square Root by Iterating Until Reaching the Fixed Point Using Average Damping (BEST)
 ;;
 ;;   `good-enough1?`, `good-enough2?`, and `good-enough3?` succeed for very small and large numbers.
 ;;   `good-enough1?` is the best for accuracy.
