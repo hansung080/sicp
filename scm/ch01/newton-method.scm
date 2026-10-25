@@ -9,9 +9,23 @@
 ;;     g(x) = x - f(x) / f'(x)  (f'(x) != 0)
 ;;
 ;;     Note:
+;;       |g'(r)| < 1 is a sufficient condition for convergence near the fixed point r.
+;;
+;;       g'(x_n) ≈ {g(x_(n+1)) - g(x_n)} / {x_(n+1) - x_n}
+;;       g(x_(n+1)) - g(x_n) ≈ g'(x_n) * {x_(n+1) - x_n}
+;;       x_(n+2) - r ≈ g'(r) * {x_(n+1) - r}  (because g(r) = r where r is the fixed point)
+;;       x_(n+1) - r ≈ g'(r) * (x_n - r)
+;;       |x_(n+1) - r| ≈ |g'(r)| * |x_n - r|
+;;
+;;       Thus:
+;;         At each iteration, the error relative to the fixed point depends on |g'(r)|.
+;;         - |g'(r)| < 1: The error decreases (convergence).
+;;         - |g'(r)| > 1: The error increases (divergence).
+;;         - |g'(r)| = 1: Convergence cannot be determined from the derivative alone.
+;;
 ;;       The Newton transform converges rapidly to a fixed point because g'(r) = 0 at the fixed point r,
-;;       allowing quadratic convergence near the fixed point.
-;;       (Note that |g'(r)| < 1 must hold for the iteration to converge to the fixed point.)
+;;       allowing quadratic convergence near the fixed point. (Quadratic convergence means the error decreases
+;;       approximately in proportion to the square of the previous error.)
 ;;
 ;;       g'(x) = 1 - {f'(x)f'(x) - f(x)f''(x)} / {f'(x)}^2
 ;;             = f(x)f''(x) / {f'(x)}^2
