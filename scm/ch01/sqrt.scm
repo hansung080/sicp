@@ -11,56 +11,65 @@
 ;;   2y = x / y + y
 ;;   y = (x / y + y) / 2
 ;;
-;; Square Root by Iterating Until Reaching the Root Using Average Damping (BAD)
-;;
-;;   `good-enough1?` fails to terminate even for normal numbers.
-;;   `good-enough2?` fails for very small and large numbers.
-;;   `good-enough3?` addresses that issue, but still suffers from accuracy issues caused by the tolerance.
-;;
-(define (sqrt1 x)
-  (define tolerance 0.001)
-  ;; WORST: no error: y^2 = x
-  (define (good-enough1? guess)
-    (= (square guess) x))
-  ;; WORSE: absolute error: |y^2 - x| < tolerance
-  (define (good-enough2? guess)
-    (< (abs_ (- (square guess) x)) tolerance))
-  ;; BAD: relative error: |(y^2 - x) / x| < tolerance
-  (define (good-enough3? guess)
-    (< (abs_ (/ (- (square guess) x) x)) tolerance))
-  ;; y'' <- (x / y + y) / 2
-  (define (improve guess)
-    (average (/ x guess) guess))
+(define (sqrt-improve guess x)
+  (average (/ x guess) guess))
+
+;; Square Root by Iterating Until Reaching the Root Using Average Damping
+(define (sqrt-with1 x good-enough?)
   (define (try guess)
-    (if (good-enough3? guess)
+    (if (good-enough? guess x)
         guess
-        (try (improve guess))))
+        (try (sqrt-improve guess x))))
   (try 1.0))
 
-;; Square Root by Iterating Until Reaching the Fixed Point Using Average Damping (BEST)
-;;
-;;   `good-enough1?`, `good-enough2?`, and `good-enough3?` succeed for very small and large numbers.
-;;   `good-enough1?` is the best for accuracy.
-;;
+(define sqrt-tolerance1 0.001)
+
+;; WORST: exact equality: y^2 = x
+(define (sqrt1 x)
+  (sqrt-with1 x (lambda (guess x) (= (square guess) x))))
+
+;; WORSE: absolute error: |y^2 - x| < tolerance
 (define (sqrt2 x)
-  (define tolerance 0.00000000001)
-  ;; BEST: no error: y = y''
-  (define (good-enough1? guess next-guess)
-    (= guess next-guess))
-  ;; GOOD: absolute error: |y - y''| < tolerance
-  (define (good-enough2? guess next-guess)
-    (< (abs_ (- guess next-guess)) tolerance))
-  ;; BETTER: relative error: |(y - y'') / y''| < tolerance
-  (define (good-enough3? guess next-guess)
-    (< (abs_ (/ (- guess next-guess) next-guess)) tolerance))
-  ;; y'' <- (x / y + y) / 2
-  (define (improve guess)
-    (average (/ x guess) guess))
+  (sqrt-with1 x (lambda (guess x) (< (abs_ (- (square guess) x)) sqrt-tolerance1))))
+
+;; BAD: relative error: |(y^2 - x) / x| < tolerance
+(define (sqrt3 x)
+  (sqrt-with1 x (lambda (guess x) (< (abs_ (/ (- (square guess) x) x)) sqrt-tolerance1))))
+
+;; Square Root by Iterating Until Reaching the Fixed Point Using Average Damping
+(define (sqrt-with2 x good-enough?)
   (define (try guess)
-    (let ((next-guess (improve guess)))
-      (if (good-enough1? guess next-guess)
+    (let ((next-guess (sqrt-improve guess x)))
+      (if (good-enough? guess next-guess)
           guess
           (try next-guess))))
   (try 1.0))
 
-(define sqrt_ sqrt2)
+(define sqrt-tolerance2 0.00000000001)
+
+;; GOOD: exact equality: y = y_next
+(define (sqrt4 x)
+  (sqrt-with2 x (lambda (guess next-guess) (= guess next-guess))))
+
+;; BETTER: absolute error: |y - y_next| < tolerance
+(define (sqrt5 x)
+  (sqrt-with2 x (lambda (guess next-guess) (< (abs_ (- guess next-guess)) sqrt-tolerance2))))
+
+;; BEST: relative error: |(y - y_next) / y_next| < tolerance
+(define (sqrt6 x)
+  (sqrt-with2 x (lambda (guess next-guess) (< (abs_ (/ (- guess next-guess) next-guess)) sqrt-tolerance2))))
+
+;; Square Root by Iterating Until Reaching the Checked Fixed Point Using Average Damping
+;; BEST+: checked exact equality: y = y_next or y_next = y_prev
+(define (sqrt7 x)
+  (define (good-enough? guess next-guess prev-guess)
+    (or (= guess next-guess)
+        (= next-guess prev-guess)))
+  (define (try guess prev-guess)
+    (let ((next-guess (sqrt-improve guess x)))
+      (if (good-enough? guess next-guess prev-guess)
+          guess
+          (try next-guess guess))))
+  (try 1.0 1.0))
+
+(define sqrt_ sqrt7)

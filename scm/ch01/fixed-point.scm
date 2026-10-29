@@ -12,16 +12,16 @@
 ;;   ...
 ;;   f(x_n) = x_(n+1)  (x_n = x_(n+1); x_n is a fixed point of f)
 ;;
-(define tolerance 0.00001)
+(define fixed-point-tolerance 0.00001)
 
 (define (close-exact? x y)
   (= x y))
 
 (define (close-abs-err? x y)
-  (< (abs_ (- x y)) tolerance))
+  (< (abs_ (- x y)) fixed-point-tolerance))
 
 (define (close-rel-err? x y)
-  (< (abs_ (/ (- x y) y)) tolerance))
+  (< (abs_ (/ (- x y) y)) fixed-point-tolerance))
 
 (define (fixed-point-with f initial-guess close-enough?)
   (define (try guess)
