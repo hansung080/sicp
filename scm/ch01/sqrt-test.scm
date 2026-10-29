@@ -111,22 +111,22 @@
 (test "sqrt5"
       (lambda ()
         ;; Test for normal numbers.
-        (assert-eq (sqrt5 0) 1.4551915228366852e-11)
+        (assert-eq (sqrt5 0) 7.275957614183426e-12)
         (assert-eq (sqrt5 1) 1.0)
-        (assert-eq (sqrt5 2) 1.4142135623746899)
+        (assert-eq (sqrt5 2) 1.414213562373095)
         (assert-eq (sqrt5 3) 1.7320508075688772)
-        (assert-eq (sqrt5 4) 2.000000000000002)
-        (assert-eq (sqrt5 5) 2.236067977499978)
-        (assert-eq (sqrt5 6) 2.4494897427875517)
+        (assert-eq (sqrt5 4) 2.0)
+        (assert-eq (sqrt5 5) 2.23606797749979)
+        (assert-eq (sqrt5 6) 2.449489742783178)
         (assert-eq (sqrt5 7) 2.6457513110645907)
         (assert-eq (sqrt5 8) 2.82842712474619)
         (assert-eq (sqrt5 9) 3.0)
         (assert-eq (sqrt5 10) 3.162277660168379)
         (assert-eq (sqrt5 (+ 100 37)) 11.704699910719626)
-        (assert-eq (sqrt5 (+ (sqrt5 2) (sqrt5 3))) 1.7737712281868727)
-        (assert-eq (square (sqrt5 1000)) 1000.0000000000343)
+        (assert-eq (sqrt5 (+ (sqrt5 2) (sqrt5 3))) 1.773771228186423)
+        (assert-eq (square (sqrt5 1000)) 1000.0)
         ;; Test for very small and large numbers.
-        (assert-eq (sqrt5 0.000001) 0.0010000000000000117)
+        (assert-eq (sqrt5 0.000001) 0.001)
         (assert-eq (sqrt5 10000000000000000000000000000000000000000000000000000000000000000) 1e+32)))
 
 (test "sqrt6"
@@ -134,20 +134,20 @@
         ;; Test for normal numbers.
         ; (assert-eq (sqrt6 0) 0) ; termination failure
         (assert-eq (sqrt6 1) 1.0)
-        (assert-eq (sqrt6 2) 1.4142135623746899)
+        (assert-eq (sqrt6 2) 1.414213562373095)
         (assert-eq (sqrt6 3) 1.7320508075688772)
-        (assert-eq (sqrt6 4) 2.000000000000002)
-        (assert-eq (sqrt6 5) 2.236067977499978)
-        (assert-eq (sqrt6 6) 2.4494897427875517)
+        (assert-eq (sqrt6 4) 2.0)
+        (assert-eq (sqrt6 5) 2.23606797749979)
+        (assert-eq (sqrt6 6) 2.449489742783178)
         (assert-eq (sqrt6 7) 2.6457513110645907)
         (assert-eq (sqrt6 8) 2.82842712474619)
         (assert-eq (sqrt6 9) 3.0)
         (assert-eq (sqrt6 10) 3.162277660168379)
         (assert-eq (sqrt6 (+ 100 37)) 11.704699910719626)
-        (assert-eq (sqrt6 (+ (sqrt6 2) (sqrt6 3))) 1.7737712281868727)
-        (assert-eq (square (sqrt6 1000)) 1000.0000000000343)
+        (assert-eq (sqrt6 (+ (sqrt6 2) (sqrt6 3))) 1.773771228186423)
+        (assert-eq (square (sqrt6 1000)) 1000.0)
         ;; Test for very small and large numbers.
-        (assert-eq (sqrt6 0.000001) 0.0010000000000000117)
+        (assert-eq (sqrt6 0.000001) 0.001)
         (assert-eq (sqrt6 10000000000000000000000000000000000000000000000000000000000000000) 1e+32)))
 
 (test "sqrt7"

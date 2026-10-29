@@ -41,7 +41,7 @@
   (define (try guess)
     (let ((next-guess (sqrt-improve guess x)))
       (if (good-enough? guess next-guess)
-          guess
+          next-guess
           (try next-guess))))
   (try 1.0))
 
@@ -68,7 +68,7 @@
   (define (try guess prev-guess)
     (let ((next-guess (sqrt-improve guess x)))
       (if (good-enough? guess next-guess prev-guess)
-          guess
+          next-guess
           (try next-guess guess))))
   (try 1.0 1.0))
 
