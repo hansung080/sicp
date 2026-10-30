@@ -3,7 +3,7 @@
 
 (test "sqrt"
       (lambda ()
-        ;; Test for normal numbers.
+        ;; Test for ordinary numbers.
         (assert-eq (sqrt 0) 0)
         (assert-eq (sqrt 1) 1)
         (assert-eq (sqrt 2) 1.4142135623730951)
@@ -24,7 +24,7 @@
 
 (test "sqrt1"
       (lambda ()
-        ;; Test for normal numbers.
+        ;; Test for ordinary numbers.
         (assert-eq (sqrt1 0) 1.1113793747425387e-162)
         (assert-eq (sqrt1 1) 1.0)
         ; (assert-eq (sqrt1 2) 1.4142135623730951)  ; termination failure
@@ -46,7 +46,7 @@
 
 (test "sqrt2"
       (lambda ()
-        ;; Test for normal numbers.
+        ;; Test for ordinary numbers.
         (assert-eq (sqrt2 0) 0.03125)
         (assert-eq (sqrt2 1) 1.0)
         (assert-eq (sqrt2 2) 1.4142156862745097)
@@ -68,7 +68,7 @@
 
 (test "sqrt3"
       (lambda ()
-        ;; Test for normal numbers.
+        ;; Test for ordinary numbers.
         ; (assert-eq (sqrt3 0) 0) ; division by zero error
         (assert-eq (sqrt3 1) 1.0)
         (assert-eq (sqrt3 2) 1.4142156862745097)
@@ -89,7 +89,7 @@
 
 (test "sqrt4"
       (lambda ()
-        ;; Test for normal numbers.
+        ;; Test for ordinary numbers.
         (assert-eq (sqrt4 0) 0.0)
         (assert-eq (sqrt4 1) 1.0)
         (assert-eq (sqrt4 2) 1.414213562373095)
@@ -110,7 +110,7 @@
 
 (test "sqrt5"
       (lambda ()
-        ;; Test for normal numbers.
+        ;; Test for ordinary numbers.
         (assert-eq (sqrt5 0) 7.275957614183426e-12)
         (assert-eq (sqrt5 1) 1.0)
         (assert-eq (sqrt5 2) 1.414213562373095)
@@ -131,7 +131,7 @@
 
 (test "sqrt6"
       (lambda ()
-        ;; Test for normal numbers.
+        ;; Test for ordinary numbers.
         ; (assert-eq (sqrt6 0) 0) ; termination failure
         (assert-eq (sqrt6 1) 1.0)
         (assert-eq (sqrt6 2) 1.414213562373095)
@@ -152,7 +152,7 @@
 
 (test "sqrt7"
       (lambda ()
-        ;; Test for normal numbers.
+        ;; Test for ordinary numbers.
         (assert-eq (sqrt7 0) 0.0)
         (assert-eq (sqrt7 1) 1.0)
         (assert-eq (sqrt7 2) 1.414213562373095)

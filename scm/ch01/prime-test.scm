@@ -3,7 +3,7 @@
 
 (test "prime0?"
       (lambda ()
-        ;; Test for normal numbers.
+        ;; Test for ordinary numbers.
         (assert-eq (prime0? 0) #f)
         (assert-eq (prime0? 1) #f)
         (assert-eq (prime0? 2) #t)
@@ -32,7 +32,7 @@
 
 (test "fast-prime1?"
       (lambda ()
-        ;; Test for normal numbers.
+        ;; Test for ordinary numbers.
         (assert-eq (fast-prime1? 0) #f)
         (assert-eq (fast-prime1? 1) #f)
         (assert-eq (fast-prime1? 2) #t)
@@ -61,7 +61,7 @@
 
 (test "fast-prime2?"
       (lambda ()
-        ;; Test for normal numbers.
+        ;; Test for ordinary numbers.
         (assert-eq (fast-prime2? 0) #f)
         (assert-eq (fast-prime2? 1) #f)
         (assert-eq (fast-prime2? 2) #t)

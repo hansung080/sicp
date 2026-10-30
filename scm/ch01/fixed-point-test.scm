@@ -77,7 +77,7 @@
 
 (test "sqrt0"
       (lambda ()
-        ;; Test for normal numbers.
+        ;; Test for ordinary numbers.
         (assert-eq (sqrt0 1) 1.0)
         (assert-eq (sqrt0 2) 1.414213562373095)
         (assert-eq (sqrt0 9) 3.0)
@@ -90,7 +90,7 @@
 
 (test "cbrt0"
       (lambda ()
-        ;; Test for normal numbers.
+        ;; Test for ordinary numbers.
         (assert-eq (cbrt0 1) 1.0)
         (assert-eq (cbrt0 2) 1.2599210498948732)
         (assert-eq (cbrt0 8) 2.0)

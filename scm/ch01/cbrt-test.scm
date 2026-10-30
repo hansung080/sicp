@@ -3,7 +3,7 @@
 
 (test "cbrt"
       (lambda ()
-        ;; Test for normal numbers.
+        ;; Test for ordinary numbers.
         (assert-eq (cbrt 1) 1.0)
         (assert-eq (cbrt 2) 1.2599210498948732)
         (assert-eq (cbrt 8) 2.0)
