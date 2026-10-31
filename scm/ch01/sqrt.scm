@@ -30,7 +30,7 @@
   (sqrt-with1 x (lambda (guess x) (= (square guess) x))))
 
 ;; WORSE: Compute the square root of `x` using absolute error: |y^2 - x| < tolerance,
-;;        which causes a accuracy failure for very small numbers, and termination failure for very large numbers.
+;;        which causes an accuracy failure for very small numbers, and termination failure for very large numbers.
 (define (sqrt2 x)
   (sqrt-with1 x (lambda (guess x) (< (abs_ (- (square guess) x)) sqrt-tolerance1))))
 
