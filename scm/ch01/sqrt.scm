@@ -14,7 +14,7 @@
 (define (sqrt-improve guess x)
   (average (/ x guess) guess))
 
-;; Square Root by Iterating Until Reaching the Root Using Average Damping
+;; Iterating Until Reaching the Root Using Average Damping
 (define (sqrt-with1 x good-enough?)
   (define (try guess)
     (if (good-enough? guess x)
@@ -39,7 +39,7 @@
 (define (sqrt3 x)
   (sqrt-with1 x (lambda (guess x) (< (abs_ (/ (- (square guess) x) x)) sqrt-tolerance1))))
 
-;; Square Root by Iterating Until Reaching the Fixed Point Using Average Damping
+;; Iterating Until Reaching the Fixed Point Using Average Damping
 (define (sqrt-with2 x good-enough?)
   (define (try guess)
     (let ((next-guess (sqrt-improve guess x)))
@@ -65,7 +65,7 @@
 (define (sqrt6 x)
   (sqrt-with2 x (lambda (guess next-guess) (< (abs_ (/ (- guess next-guess) next-guess)) sqrt-tolerance2))))
 
-;; Square Root by Iterating Until Reaching the Checked Fixed Point Using Average Damping
+;; Iterating Until Reaching the Checked Fixed Point Using Average Damping
 ;; BEST+: Compute the square root of `x` using checked exact equality: y = y_next or y_next = y_prev,
 ;;        which resolves the problem with very small and large numbers, and detects a 2-cycle.
 (define (sqrt7 x)

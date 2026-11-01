@@ -133,7 +133,7 @@
 (define (fib3 n)
   (round_ (/ (expt_ φ n) (sqrt_ 5))))
 
-;; Logarithmic Iterative Process (Fast Fibonacci)
+;; Fast Fibonacci (Logarithmic Iterative Process)
 ;;
 ;;   Iteration Rule
 ;;
