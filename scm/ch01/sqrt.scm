@@ -66,6 +66,7 @@
   (sqrt-with2 x (lambda (guess next-guess) (< (abs_ (/ (- guess next-guess) next-guess)) sqrt-tolerance2))))
 
 ;; Iterating Until Reaching the Checked Fixed Point Using Average Damping
+;;
 ;; BEST+: Compute the square root of `x` using checked exact equality: y = y_next or y_next = y_prev,
 ;;        which resolves the problem with very small and large numbers, and detects a 2-cycle.
 (define (sqrt7 x)
