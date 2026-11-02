@@ -51,7 +51,7 @@
 (define sqrt-tolerance2 0.00000000001)
 
 ;; GOOD: Compute the square root of `x` using exact equality: y = y_next,
-;;       which resolves the problem with very small and large numbers, but may cause a cycle for some numbers.
+;;       which resolves the problem with very small and large numbers, but may fail to handle a cycle for some numbers.
 (define (sqrt4 x)
   (sqrt-with2 x (lambda (guess next-guess) (= guess next-guess))))
 
@@ -68,7 +68,7 @@
 ;; Iterating Until Reaching the Checked Fixed Point Using Average Damping
 ;;
 ;; BEST+: Compute the square root of `x` using checked exact equality: y = y_next or y_next = y_prev,
-;;        which resolves the problem with very small and large numbers, and detects a 2-cycle.
+;;        which resolves the problem with very small and large numbers, and detects a 2-cycle to allow termination.
 (define (sqrt7 x)
   (define (good-enough? guess next-guess prev-guess)
     (or (= guess next-guess)
