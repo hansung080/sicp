@@ -2,38 +2,38 @@
 (load "sqrt.scm")
 
 (test "sqrt"
-      (lambda ()
+      (lambda ()                                                    ; Python math.sqrt
         ;; Test for ordinary numbers.
-        (assert-eq (sqrt 0) 0)
-        (assert-eq (sqrt 1) 1)
-        (assert-eq (sqrt 2) 1.4142135623730951)
-        (assert-eq (sqrt 3) 1.7320508075688772)
-        (assert-eq (sqrt 4) 2)
-        (assert-eq (sqrt 5) 2.23606797749979)
-        (assert-eq (sqrt 6) 2.449489742783178)
-        (assert-eq (sqrt 7) 2.6457513110645907)
-        (assert-eq (sqrt 8) 2.8284271247461903)
-        (assert-eq (sqrt 9) 3)
-        (assert-eq (sqrt 10) 3.1622776601683795)
-        (assert-eq (sqrt (+ 100 37)) 11.704699910719626)
-        (assert-eq (sqrt (+ (sqrt 2) (sqrt 3))) 1.7737712281864233)
-        (assert-eq (square (sqrt 1000)) 1000.0)
+        (assert-eq (sqrt 0) 0)                                      ; 0.0
+        (assert-eq (sqrt 1) 1)                                      ; 1.0
+        (assert-eq (sqrt 2) 1.4142135623730951)                     ; 1.4142135623730951
+        (assert-eq (sqrt 3) 1.7320508075688772)                     ; 1.7320508075688772
+        (assert-eq (sqrt 4) 2)                                      ; 2.0
+        (assert-eq (sqrt 5) 2.23606797749979)                       ; 2.23606797749979
+        (assert-eq (sqrt 6) 2.449489742783178)                      ; 2.449489742783178
+        (assert-eq (sqrt 7) 2.6457513110645907)                     ; 2.6457513110645907
+        (assert-eq (sqrt 8) 2.8284271247461903)                     ; 2.8284271247461903
+        (assert-eq (sqrt 9) 3)                                      ; 3.0
+        (assert-eq (sqrt 10) 3.1622776601683795)                    ; 3.1622776601683795
+        (assert-eq (sqrt (+ 100 37)) 11.704699910719626)            ; 11.704699910719626
+        (assert-eq (sqrt (+ (sqrt 2) (sqrt 3))) 1.7737712281864233) ; 1.7737712281864233
+        (assert-eq (square (sqrt 1000)) 1000.0)                     ; 1000.0
         ;; Test for very small and large numbers.
-        (assert-eq (sqrt 0.000001) 0.001)
-        (assert-eq (sqrt 10000000000000000000000000000000000000000000000000000000000000000) 100000000000000000000000000000000)))
+        (assert-eq (sqrt 0.000001) 0.001)                           ; 0.001
+        (assert-eq (sqrt 10000000000000000000000000000000000000000000000000000000000000000) 100000000000000000000000000000000))) ; 1e+32
 
 (test "sqrt1"
       (lambda ()
         ;; Test for ordinary numbers.
         (assert-eq (sqrt1 0) 1.1113793747425387e-162)
         (assert-eq (sqrt1 1) 1.0)
-        ; (assert-eq (sqrt1 2) 1.4142135623730951)  ; termination failure
-        ; (assert-eq (sqrt1 3) 1.7320508075688772)  ; termination failure
+        ; (assert-eq (sqrt1 2) 1.4142135623730951) ; termination failure
+        ; (assert-eq (sqrt1 3) 1.7320508075688772) ; termination failure
         (assert-eq (sqrt1 4) 2.0)
-        ; (assert-eq (sqrt1 5) 2.23606797749979)    ; termination failure
-        ; (assert-eq (sqrt1 6) 2.449489742783178)   ; termination failure
-        ; (assert-eq (sqrt1 7) 2.6457513110645907)  ; termination failure
-        ; (assert-eq (sqrt1 8) 2.8284271247461903)  ; termination failure
+        ; (assert-eq (sqrt1 5) 2.23606797749979)   ; termination failure
+        ; (assert-eq (sqrt1 6) 2.449489742783178)  ; termination failure
+        ; (assert-eq (sqrt1 7) 2.6457513110645907) ; termination failure
+        ; (assert-eq (sqrt1 8) 2.8284271247461903) ; termination failure
         (assert-eq (sqrt1 9) 3.0)
         ; (assert-eq (sqrt1 10) 3.1622776601683795) ; termination failure
         (assert-eq (sqrt1 (+ 100 37)) 11.704699910719626)
@@ -41,7 +41,7 @@
         (assert-eq (square (sqrt1 1000)) 1000.0)
         ;; Test for very small and large numbers.
         (assert-eq (sqrt1 0.000001) 0.001)
-        ; (assert-eq (sqrt1 10000000000000000000000000000000000000000000000000000000000000000) 100000000000000000000000000000000) ; termination failure
+        ; (assert-eq (sqrt1 10000000000000000000000000000000000000000000000000000000000000000) 1e+32) ; termination failure
         ))
 
 (test "sqrt2"
@@ -63,13 +63,13 @@
         (assert-eq (square (sqrt2 1000)) 1000.000369924366)
         ;; Test for very small and large numbers.
         (assert-eq (sqrt2 0.000001) 0.031260655525445276) ; accuracy failure
-        ; (assert-eq (sqrt2 10000000000000000000000000000000000000000000000000000000000000000) 100000000000000000000000000000000) ; termination failure
+        ; (assert-eq (sqrt2 10000000000000000000000000000000000000000000000000000000000000000) 1e+32) ; termination failure
         ))
 
 (test "sqrt3"
       (lambda ()
         ;; Test for ordinary numbers.
-        ; (assert-eq (sqrt3 0) 0) ; division by zero error
+        ; (assert-eq (sqrt3 0) 0.0) ; division by zero error
         (assert-eq (sqrt3 1) 1.0)
         (assert-eq (sqrt3 2) 1.4142156862745097)
         (assert-eq (sqrt3 3) 1.7321428571428572)
