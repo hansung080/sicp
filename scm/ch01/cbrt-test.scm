@@ -2,7 +2,7 @@
 (load "cbrt.scm")
 
 (define (cbrt0 x)
-  (expt x (/ 1 3)))
+  (expt x 1/3))
 
 ;; Scheme `expt` and Python `math.cbrt` produce different results for some of the tests below.
 ;; (Python `math.cbrt` produces correctly rounded results to the precision of IEEE 754 64-bit floating-point numbers.)
