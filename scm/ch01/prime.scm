@@ -69,7 +69,7 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     The time and space complexities depend on the implementation of exprem.
+;;     The time and space complexities depend on the implementation of `exprem`.
 ;;
 ;;     Time complexity:  Θ(log2(n))
 ;;     Space complexity: Θ(log2(n))
@@ -102,7 +102,7 @@
 ;;       - If n is prime, the expression always succeeds.
 ;;       - If n is composite, the expression usually fails, but it may succeed.
 ;;
-;;     In the recursive process of exprem, for an integer x such that 0 < x < n:
+;;     In the recursive process of `exprem`, for an integer x such that 0 < x < n:
 ;;       x^2 % n = 1 % n = 1
 ;;
 ;;     Notes:
@@ -113,11 +113,11 @@
 ;;
 ;;     1. Choose a random integer a in the range [1, n-1].
 ;;     2. Check whether a^(n-1) % n = 1.
-;;        2-1. In the recursive process of exprem, check whether x^2 % n = 1 for x != 1 and x != n-1.
+;;        2-1. In the recursive process of `exprem`, check whether x^2 % n = 1 for x != 1 and x != n-1.
 ;;             2-1-1. If step 2-1 succeeds, n is certainly composite.
-;;                    Thus, exprem returns the special result (0).
+;;                    Thus, `exprem` returns the special result (0).
 ;;             2-1-2. If step 2-1 fails, we cannot distinguish whether n is prime or composite.
-;;                    Thus, exprem returns the normal result.
+;;                    Thus, `exprem` returns the normal result.
 ;;        2-2. If step 2 succeeds, n is probably prime.
 ;;             Thus, repeat from step 1 to increase confidence.
 ;;        2-3. If step 2 fails, n is certainly composite.
@@ -130,7 +130,7 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     The time and space complexities depend on the implementation of checked-exprem.
+;;     The time and space complexities depend on the implementation of `exprem-checked`.
 ;;
 ;;     Time complexity:  Θ(log2(n))
 ;;     Space complexity: Θ(log2(n))
@@ -139,26 +139,26 @@
   (fast-prime2-with-times? n 20))
 
 (define (fast-prime2-with-times? n times)
-  (define (checked-sqrem x m)
+  (define (sqrem-checked x m)
     (if (and (not (or (= x 1)
                       (= x (- m 1))))
              (= (remainder_ (* x x) m) 1))
         0
         (remainder_ (* x x) m)))
-  (define (checked-exprem b n m)
+  (define (exprem-checked b n m)
     (cond ((= n 0)
            (cond ((= m 0) (remainder_ 0 0))
                  ((or (= m 1) (= m -1)) 0)
                  (else 1)))
           ((even?_ n)
-           (checked-sqrem (checked-exprem b (/ n 2) m)
+           (sqrem-checked (exprem-checked b (/ n 2) m)
                           m))
           (else
-           (remainder_ (* b (checked-exprem b (- n 1) m))
+           (remainder_ (* b (exprem-checked b (- n 1) m))
                        m))))
   (define (miller-rabin-test? n)
     (define (try a)
-      (= (checked-exprem a (- n 1) n) 1))
+      (= (exprem-checked a (- n 1) n) 1))
     (try (+ (random (- n 1)) 1)))
   (define (iter i)
     (cond ((<= n 1) #f)
@@ -169,7 +169,7 @@
 
 (define prime? prime0?)
 
-;; Basic Prime Search (Using prime? Procedure)
+;; Basic Prime Search (Using the `prime?` Procedure)
 (define (primes1-up-to limit)
   (primes1-up-to/by limit prime?))
 

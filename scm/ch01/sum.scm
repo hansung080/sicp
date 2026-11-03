@@ -53,7 +53,7 @@
 ;;
 ;;   1 - 1/3 + 1/5 - 1/7 + ... = π/4
 ;;
-;; Infinite Series for π/8 (implemented by pi-over-eight)
+;; Infinite Series for π/8 (implemented by `pi-over-eight`)
 ;;
 ;;   1/(1*3) + 1/(5*7) + 1/(9*11) + ... = π/8
 ;;
@@ -85,7 +85,7 @@
 ;;     ∫<a..b>f(x)dx ≈ {f(a) + f(a + dx) + f(a + 2dx) + ... + f(a + n*dx)} * dx
 ;;     where n is the largest integer such that a + n*dx <= b
 ;;
-;;   Midpoint Riemann Sum (implemented by integral)
+;;   Midpoint Riemann Sum (implemented by `integral`)
 ;;
 ;;     ∫<a..b>f(x)dx ≈ {f(a + dx/2) + f(a + dx/2 + dx) + f(a + dx/2 + 2dx) + ... + f(a + dx/2 + n*dx)} * dx
 ;;     where n is the largest integer such that a + dx/2 + n*dx <= b

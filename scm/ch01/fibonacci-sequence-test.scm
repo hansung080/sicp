@@ -122,8 +122,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     The time and space complexities depend on the implementation of expt_,
-;;     which is currently implemented as fast-expt2.
+;;     The time and space complexities depend on the implementation of `expt_`,
+;;     which is currently implemented as `fast-expt2`.
 ;;
 ;;     Time complexity:  Θ(log2(n))
 ;;     Space complexity: Θ(1)

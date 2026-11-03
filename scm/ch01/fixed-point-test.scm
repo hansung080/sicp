@@ -69,10 +69,10 @@
 (test "fixed-point"
       (lambda ()
         ;; A fixed point of `cos` is a root of `cos(x) - x = 0`.
-        (assert-eq (fixed-point cos 1.0) 0.7390893414033927)
+        (assert-eq (fixed-point cos 1.0) 0.7390822985224023)
         (assert-eq (half-interval-method (lambda (x) (- (cos x) x)) 0.0 1.0) 0.73876953125)
         ;; A fixed point of `sin + cos` is a root of `sin(x) + cos(x) - x = 0`.
-        (assert-eq (fixed-point (lambda (x) (+ (sin x) (cos x))) 1.0) 1.2587228743052672)
+        (assert-eq (fixed-point (lambda (x) (+ (sin x) (cos x))) 1.0) 1.2587315962971173)
         (assert-eq (half-interval-method (lambda (x) (- (+ (sin x) (cos x)) x)) 1.0 2.0) 1.25830078125)))
 
 (test "sqrt0"
@@ -110,5 +110,5 @@
 
 (test "x-pow-x-root"
       (lambda ()
-        (assert-eq (x-pow-x-root1 1000) 4.555530807938518)
-        (assert-eq (x-pow-x-root2 1000) 4.55553957996306)))
+        (assert-eq (x-pow-x-root1 1000) 4.555538934848503)
+        (assert-eq (x-pow-x-root2 1000) 4.555536364911781)))

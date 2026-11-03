@@ -24,7 +24,7 @@
 ;;
 ;;   (2 * 2 * 4 * 4 * 6 * 6 * ...) / (1 * 3 * 3 * 5 * 5 * 7 * ...) = π/2
 ;;
-;; Infinite Product for π/4 (implemented by pi-over-four)
+;; Infinite Product for π/4 (implemented by `pi-over-four`)
 ;;
 ;;   (2 * 4 * 4 * 6 * 6 * 8 * ...) / (3 * 3 * 5 * 5 * 7 * 7 * ...)
 ;;   = {(2 * 4) / (3 * 3)} * {(4 * 6) / (5 * 5)} * {(6 * 8) / (7 * 7)} * ...
