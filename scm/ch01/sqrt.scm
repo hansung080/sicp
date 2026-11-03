@@ -51,17 +51,18 @@
 (define sqrt-tolerance2 0.00000000001)
 
 ;; GOOD: Compute the square root of `x` using exact equality: y = y_next,
-;;       which resolves the problem with very small and large numbers, but may fail to handle a cycle for some numbers.
+;;       which resolves the problem with very small and large numbers, but may cause a termination failure
+;;       due to a cycle.
 (define (sqrt4 x)
   (sqrt-with2 x (lambda (guess next-guess) (= guess next-guess))))
 
 ;; BETTER: Compute the square root of `x` using absolute error: |y - y_next| < tolerance,
-;;         which resolves the problem with very small and large numbers, but may suffer from an accuracy problem.
+;;         which resolves the problem with very small and large numbers, but may cause an accuracy problem.
 (define (sqrt5 x)
   (sqrt-with2 x (lambda (guess next-guess) (< (abs_ (- guess next-guess)) sqrt-tolerance2))))
 
 ;; BEST: Compute the square root of `x` using relative error: |(y - y_next) / y_next| < tolerance,
-;;       which resolves the problem with very small and large numbers, but may suffer from an accuracy problem.
+;;       which resolves the problem with very small and large numbers, but may cause an accuracy problem.
 (define (sqrt6 x)
   (sqrt-with2 x (lambda (guess next-guess) (< (abs_ (/ (- guess next-guess) next-guess)) sqrt-tolerance2))))
 
