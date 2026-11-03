@@ -71,7 +71,7 @@
 (test "sqrt3"
       (lambda ()
         ;; Test for ordinary numbers.
-        ; (assert-eq (sqrt3 0) 0.0) ; division by zero error
+        ; (assert-eq (sqrt3 0) 0.0) ; error: division by zero
         (assert-eq (sqrt3 1) 1.0)
         (assert-eq (sqrt3 2) 1.4142156862745097)
         (assert-eq (sqrt3 3) 1.7321428571428572)
