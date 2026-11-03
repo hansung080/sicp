@@ -2,7 +2,7 @@
 (load "sqrt.scm")
 
 ;; Scheme `sqrt` and Python `math.sqrt` produce identical results for all the tests below.
-;; (Python `math.sqrt` provides correctly rounded results to the precision of IEEE 754 64-bit floating-point numbers.)
+;; (Python `math.sqrt` produces correctly rounded results to the precision of IEEE 754 64-bit floating-point numbers.)
 (test "sqrt"
       (lambda ()                                                    ; Python math.sqrt
         ;; Test for ordinary numbers.
