@@ -92,6 +92,7 @@
         (assert-eq (cbrt3 0.000000001) 0.0010000009808132022)
         (assert-eq (cbrt3 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000) 1.0002023018509312e+32)))
 
+;; The tests `cbrt4`, `cbrt5`, `cbrt6`, and `cbrt7` produce identical results, except for cbrt(0) and cbrt(4).
 (test "cbrt4"
       (lambda ()
         ;; Test for ordinary numbers.

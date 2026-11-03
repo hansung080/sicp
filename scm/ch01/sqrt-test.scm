@@ -89,6 +89,7 @@
         (assert-eq (sqrt3 0.000001) 0.0010000001533016628)
         (assert-eq (sqrt3 10000000000000000000000000000000000000000000000000000000000000000) 1.0000046085713034e+32)))
 
+;; The tests `sqrt4`, `sqrt5`, `sqrt6`, and `sqrt7` produce identical results, except for sqrt(0).
 (test "sqrt4"
       (lambda ()
         ;; Test for ordinary numbers.
