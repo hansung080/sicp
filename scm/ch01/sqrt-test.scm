@@ -1,6 +1,8 @@
 (load "../common/testing.scm")
 (load "sqrt.scm")
 
+;; Scheme `sqrt` and Python `math.sqrt` produce identical results for all the tests below.
+;; (Python `math.sqrt` provides correctly rounded results to the precision of IEEE 754 64-bit floating-point numbers.)
 (test "sqrt"
       (lambda ()                                                    ; Python math.sqrt
         ;; Test for ordinary numbers.
@@ -132,7 +134,7 @@
 (test "sqrt6"
       (lambda ()
         ;; Test for ordinary numbers.
-        ; (assert-eq (sqrt6 0) 0) ; termination failure
+        ; (assert-eq (sqrt6 0) 0.0) ; termination failure
         (assert-eq (sqrt6 1) 1.0)
         (assert-eq (sqrt6 2) 1.414213562373095)
         (assert-eq (sqrt6 3) 1.7320508075688772)
