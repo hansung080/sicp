@@ -10,7 +10,7 @@
   (lambda (x) (weighted-average (f x) x)))
 
 (define (fixed-point-of-transform f transform guess)
-  (fixed-point-with (transform f) guess close-exact?))
+  (fixed-point (transform f) guess))
 
 (define (sqrt1 x)
   (fixed-point-of-transform (lambda (y) (/ x y))
