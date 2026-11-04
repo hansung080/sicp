@@ -54,8 +54,5 @@
   (lambda (x) (- x (/ (f x)
                       ((deriv f) x)))))
 
-(define (newton-method-with f guess close-enough?)
-  (fixed-point-with (newton-transform f) guess close-enough?))
-
 (define (newton-method f guess)
-  (newton-method-with f guess close-abs-err?))
+  (fixed-point (newton-transform f) guess))
