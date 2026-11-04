@@ -49,19 +49,55 @@
 ;;   2x = log(y) / log(x) + x
 ;;   x = (log(y) / log(x) + x) / 2
 ;;
-;;   Without average damping, find a fixed point of the function (takes 38 iterations):
+;;   Without average damping, find a fixed point of the function:
 ;;     f(x) = log(y) / log(x)
 ;;
-;;   With average damping, find a fixed point of the function (takes 14 iterations):
+;;     Notes:
+;;       - `fixed-point-exact` causes a termination failure (2-cycle).
+;;       - `fixed-point-abs-err` takes 38 iterations.
+;;       - `fixed-point-rel-err` takes 34 iterations.
+;;       - `fixed-point-checked` takes 91 iterations.
+;;
+;;   With average damping, find a fixed point of the function:
 ;;     f(x) = (log(y) / log(x) + x) / 2
 ;;
-(define (x-pow-x-root1 y)
-  (fixed-point (lambda (x) (/ (log y) (log x)))
-               1.1))
+;;     Notes:
+;;       - `fixed-point-exact` takes 27 iterations.
+;;       - `fixed-point-abs-err` takes 14 iterations.
+;;       - `fixed-point-rel-err` takes 13 iterations.
+;;       - `fixed-point-checked` takes 27 iterations.
+;;
+(define (x-pow-x-root-without-damping1 y)
+  (fixed-point-exact (lambda (x) (/ (log y) (log x)))
+                     1.1))
 
-(define (x-pow-x-root2 y)
-  (fixed-point (lambda (x) (average (/ (log y) (log x)) x))
-               1.1))
+(define (x-pow-x-root-without-damping2 y)
+  (fixed-point-abs-err (lambda (x) (/ (log y) (log x)))
+                       1.1))
+
+(define (x-pow-x-root-without-damping3 y)
+  (fixed-point-rel-err (lambda (x) (/ (log y) (log x)))
+                       1.1))
+
+(define (x-pow-x-root-without-damping4 y)
+  (fixed-point-checked (lambda (x) (/ (log y) (log x)))
+                       1.1))
+
+(define (x-pow-x-root-with-damping1 y)
+  (fixed-point-exact (lambda (x) (average (/ (log y) (log x)) x))
+                     1.1))
+
+(define (x-pow-x-root-with-damping2 y)
+  (fixed-point-abs-err (lambda (x) (average (/ (log y) (log x)) x))
+                       1.1))
+
+(define (x-pow-x-root-with-damping3 y)
+  (fixed-point-rel-err (lambda (x) (average (/ (log y) (log x)) x))
+                       1.1))
+
+(define (x-pow-x-root-with-damping4 y)
+  (fixed-point-checked (lambda (x) (average (/ (log y) (log x)) x))
+                       1.1))
 
 (test "fixed-point"
       (lambda ()
@@ -129,5 +165,11 @@
 
 (test "x-pow-x-root"
       (lambda ()
-        (assert-eq (x-pow-x-root1 1000) 4.555535705195127)
-        (assert-eq (x-pow-x-root2 1000) 4.555535705195128)))
+        ; (assert-eq (x-pow-x-root-without-damping1 1000) 4.555535705195127) ; termination failure (2-cycle)
+        (assert-eq (x-pow-x-root-without-damping2 1000) 4.555538934848503)
+        (assert-eq (x-pow-x-root-without-damping3 1000) 4.555552779647764)
+        (assert-eq (x-pow-x-root-without-damping4 1000) 4.555535705195127)
+        (assert-eq (x-pow-x-root-with-damping1 1000) 4.555535705195128)
+        (assert-eq (x-pow-x-root-with-damping2 1000) 4.555536364911781)
+        (assert-eq (x-pow-x-root-with-damping3 1000) 4.55553957996306)
+        (assert-eq (x-pow-x-root-with-damping4 1000) 4.555535705195128)))
