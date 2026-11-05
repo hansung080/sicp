@@ -12,27 +12,27 @@
 (define (fixed-point-of-transform f transform guess)
   (fixed-point (transform f) guess))
 
-(define (sqrt1 x)
+(define (sqrt-ad x)
   (fixed-point-of-transform (lambda (y) (/ x y))
                             average-damp
                             1.0))
 
-(define (sqrt2 x)
+(define (sqrt-nt x)
   (fixed-point-of-transform (lambda (y) (- x (square y)))
                             newton-transform
                             1.0))
 
 ;; In general, the Newton transform converges to a fixed point faster than average damping.
-(define sqrt_ sqrt2)
+(define sqrt_ sqrt-ad)
 
-(define (cbrt1 x)
+(define (cbrt-ad x)
   (fixed-point-of-transform (lambda (y) (/ x (square y)))
                             weighted-average-damp
                             1.0))
 
-(define (cbrt2 x)
+(define (cbrt-nt x)
   (fixed-point-of-transform (lambda (y) (- x (cube y)))
                             newton-transform
                             1.0))
 
-(define cbrt cbrt2)
+(define cbrt cbrt-ad)
