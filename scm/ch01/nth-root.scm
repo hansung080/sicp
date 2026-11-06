@@ -17,12 +17,14 @@
                             average-damp
                             1.0))
 
+;; The Newton transform is known to converge to a fixed point faster than average damping, but our test cases show
+;; almost no difference in convergence speed. The Newton transform causes a termination failure due to a numerical
+;; derivative using finite differences for zero and very large numbers.
 (define (sqrt-nt x)
   (fixed-point-of-transform (lambda (y) (- x (square y)))
                             newton-transform
                             1.0))
 
-;; In general, the Newton transform converges to a fixed point faster than average damping.
 (define sqrt_ sqrt-ad)
 
 (define (cbrt-ad x)

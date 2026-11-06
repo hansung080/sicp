@@ -25,7 +25,7 @@
 (test "sqrt-nt"
       (lambda ()
         ;; Test for ordinary numbers.
-        ; (assert-eq (sqrt-nt 0) 0.0) ; termination failure
+        ; (assert-eq (sqrt-nt 0) 0.0) ; termination failure (slow convergence)
         (assert-eq (sqrt-nt 1) 1.0)
         (assert-eq (sqrt-nt 2) 1.4142135623730951)
         (assert-eq (sqrt-nt 3) 1.7320508075688772)
@@ -41,5 +41,48 @@
         (assert-eq (square (sqrt-nt 1000)) 1000.0)
         ;; Test for very small and large numbers.
         (assert-eq (sqrt-nt 0.000001) 0.001)
-        ; (assert-eq (sqrt-nt 10000000000000000000000000000000000000000000000000000000000000000) 1e+32) ; termination failure
+        ; (assert-eq (sqrt-nt 10000000000000000000000000000000000000000000000000000000000000000) 1e+32) ; termination failure (finite-difference cancellation)
+        ))
+
+(test "cbrt-ad"
+      (lambda ()
+        ;; Test for ordinary numbers.
+        (assert-eq (cbrt-ad 0) 5e-324)
+        (assert-eq (cbrt-ad 1) 1.0)
+        (assert-eq (cbrt-ad 2) 1.2599210498948732)
+        (assert-eq (cbrt-ad 3) 1.4422495703074085)
+        (assert-eq (cbrt-ad 4) 1.5874010519681994)
+        (assert-eq (cbrt-ad 5) 1.709975946676697)
+        (assert-eq (cbrt-ad 6) 1.8171205928321397)
+        (assert-eq (cbrt-ad 7) 1.912931182772389)
+        (assert-eq (cbrt-ad 8) 2.0)
+        (assert-eq (cbrt-ad 9) 2.080083823051904)
+        (assert-eq (cbrt-ad 10) 2.154434690031884)
+        (assert-eq (cbrt-ad (+ 100 37)) 5.1551367354757724)
+        (assert-eq (cbrt-ad (+ (cbrt-ad 2) (cbrt-ad 3))) 1.392849702964866)
+        (assert-eq (cube (cbrt-ad 1000)) 1000.0)
+        ;; Test for very small and large numbers.
+        (assert-eq (cbrt-ad 0.000000001) 0.001)
+        (assert-eq (cbrt-ad 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000) 1e+32)))
+
+(test "cbrt-nt"
+      (lambda ()
+        ;; Test for ordinary numbers.
+        ; (assert-eq (cbrt-nt 0) 0.0) ; termination failure (slow convergence)
+        (assert-eq (cbrt-nt 1) 1.0)
+        (assert-eq (cbrt-nt 2) 1.2599210498948732)
+        (assert-eq (cbrt-nt 3) 1.4422495703074083)
+        (assert-eq (cbrt-nt 4) 1.5874010519681994)
+        (assert-eq (cbrt-nt 5) 1.709975946676697)
+        (assert-eq (cbrt-nt 6) 1.8171205928321397)
+        (assert-eq (cbrt-nt 7) 1.9129311827723892)
+        (assert-eq (cbrt-nt 8) 2.0)
+        (assert-eq (cbrt-nt 9) 2.080083823051904)
+        (assert-eq (cbrt-nt 10) 2.154434690031884)
+        (assert-eq (cbrt-nt (+ 100 37)) 5.1551367354757724)
+        (assert-eq (cbrt-nt (+ (cbrt-nt 2) (cbrt-nt 3))) 1.392849702964866)
+        (assert-eq (cube (cbrt-nt 1000)) 1000.0)
+        ;; Test for very small and large numbers.
+        (assert-eq (cbrt-nt 0.000000001) 0.001)
+        ; (assert-eq (cbrt-nt 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000) 1e+32) ; termination failure (finite-difference cancellation)
         ))
