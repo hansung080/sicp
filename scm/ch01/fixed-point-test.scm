@@ -18,7 +18,7 @@
 ;;   Find the golden ratio by finding a root of the equation:
 ;;     φ^2 = φ + 1
 ;;     φ^2 - φ - 1 = 0
-;;     φ = (1 + sqrt(5)) / 2 = 1.6180...
+;;     φ = (1 + sqrt(5)) / 2 ≈ 1.6180
 ;;   
 ;;   Find the golden ratio by finding a fixed point of the function:
 ;;     φ^2 = φ + 1
