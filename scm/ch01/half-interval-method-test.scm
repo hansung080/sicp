@@ -7,8 +7,8 @@
         ;; x^2 - x - 2 = 0 -> (x + 1)(x - 2) = 0 -> x = -1 or x = 2
         (assert-eq (half-interval-method (lambda (x) (- (* x x) x 2)) -5.0 0.0) -1.00006103515625)
         (assert-eq (half-interval-method (lambda (x) (- (* x x) x 2)) 0.0 5.0) 1.99981689453125)
-        (assert-eq (half-interval-method (lambda (x) (- (* x x) x 2)) 1.0 5.0) 2.0)        
-        ;; x^2 - 4x + 4 = 0 -> (x - 2)^2 = 0 -> x = 2
+        (assert-eq (half-interval-method (lambda (x) (- (* x x) x 2)) 1.0 5.0) 2.0)
+        ;; x^2 - 4x + 4 = 0 -> (x - 2)^2 = 0 -> x = 2 (double root)
         ;; `half-interval-method` does not work because for all x, (x - 2)^2 >= 0.
         ; (assert-eq (half-interval-method (lambda (x) (+ (- (* x x) (* 4 x)) 4)) 1.0 3.0) 2.0) ; error: function values must have opposite signs: 1.0 3.0 => 1.0 1.0
         ;; x^3 - 2x - 3 = 0 -> x_1 = cbrt{3/2 + sqrt(211/108)} + cbrt{3/2 - sqrt(211/108)} ≈ 1.8932891963

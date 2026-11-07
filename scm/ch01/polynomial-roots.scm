@@ -1,4 +1,6 @@
 (load "../ch01/cbrt.scm")
+(load "../ch01/half-interval-method.scm")
+(load "../ch01/newton-method.scm")
 (load "../ch01/sqrt.scm")
 
 ;; Quadratic Formula
@@ -16,6 +18,15 @@
   (let ((sqrt-value (sqrt_ (- (square c1) (* 4 c2 c0)))))
     (list (/ (+ (- c1) sqrt-value) (* 2 c2))
           (/ (- (- c1) sqrt-value) (* 2 c2)))))
+
+(define (quadratic c2 c1 c0)
+  (lambda (x) (+ (* c2 x x) (* c1 x) c0)))
+
+(define (quadratic-root-between c2 c1 c0 x1 x2)
+  (half-interval-method (quadratic c2 c1 c0) x1 x2))
+
+(define (quadratic-root-near c2 c1 c0 x)
+  (newton-method (quadratic c2 c1 c0) x))
 
 ;; Depressed Cubic Formula (Cardano's Formula)
 ;;
@@ -73,3 +84,12 @@
                            (/ (+ (- (* 2 c2 c2 c2) (* 9 c3 c2 c1)) (* 27 c3 c3 c0))
                               (* 27 c3 c3 c3)))
      (/ c2 (* 3 c3))))
+
+(define (cubic c3 c2 c1 c0)
+  (lambda (x) (+ (* c3 x x x) (* c2 x x) (* c1 x) c0)))
+
+(define (cubic-root-between c3 c2 c1 c0 x1 x2)
+  (half-interval-method (cubic c3 c2 c1 c0) x1 x2))
+
+(define (cubic-root-near c3 c2 c1 c0 x)
+  (newton-method (cubic c3 c2 c1 c0) x))

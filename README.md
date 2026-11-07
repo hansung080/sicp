@@ -35,10 +35,10 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | sum                           | scm      |
 | product                       | scm      |
 | accumulate                    | scm      |
-| polynomial-roots              | scm      |
 | half-interval-method          | scm      |
 | fixed-point                   | scm      |
 | cont-frac                     | scm      |
 | tan                           | scm      |
 | newton-method                 | scm      |
+| polynomial-roots              | scm      |
 | nth-root                      | scm      |
