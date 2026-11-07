@@ -11,6 +11,6 @@
         ;; x^3 - 2x - 3 = 0 -> x_1 = cbrt{3/2 + sqrt(211/108)} + cbrt{3/2 - sqrt(211/108)} ≈ 1.8932891963
         (assert-eq (newton-method (lambda (x) (- (* x x x) (* 2 x) 3)) 1.0) 1.8932891963044978)
         ;; 2x^3 + 5x^2 + 5x + 3 = 0 -> (2x + 3)(x^2 + x + 1) = 0 -> x_1 = -3/2
-        (assert-eq (newton-method (lambda (x) (+ (* 2 x x x ) (* 5 x x) (* 5 x) 3)) 1.0) -1.5)
+        (assert-eq (newton-method (lambda (x) (+ (* 2 x x x) (* 5 x x) (* 5 x) 3)) 1.0) -1.5)
         ;; sin(x) = 0 -> x = nπ (n ∈ Z)
         (assert-eq (newton-method sin_ 2.0) 3.1408050718021543)))
