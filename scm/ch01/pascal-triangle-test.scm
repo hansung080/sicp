@@ -63,7 +63,7 @@
         (assert-eq (pascal 5 4) 4)
         (assert-eq (pascal 5 5) 1)))
 
-;; (print-pascal-triangle 5)
+; (print-pascal-triangle 5)
 ;; Output:
 ;;     1
 ;;    1 1
