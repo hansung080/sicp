@@ -5,6 +5,7 @@
 (test "newton-method"
       (lambda ()
         ;; x^2 - x - 2 = 0 -> (x + 1)(x - 2) = 0 -> x = -1 or x = 2
+        (assert-eq (newton-method (lambda (x) (- (* x x) x 2)) 0.0) -1.0)
         (assert-eq (newton-method (lambda (x) (- (* x x) x 2)) 1.0) 2.0)
         ;; x^2 - 4x + 4 = 0 -> (x - 2)^2 = 0 -> x = 2
         (assert-eq (newton-method (lambda (x) (+ (- (* x x) (* 4 x)) 4)) 1.0) 2.0000000210151514)

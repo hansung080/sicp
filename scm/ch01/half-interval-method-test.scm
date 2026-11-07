@@ -5,6 +5,7 @@
 (test "half-interval-method"
       (lambda ()
         ;; x^2 - x - 2 = 0 -> (x + 1)(x - 2) = 0 -> x = -1 or x = 2
+        (assert-eq (half-interval-method (lambda (x) (- (* x x) x 2)) -5.0 0.0) -1.00006103515625)
         (assert-eq (half-interval-method (lambda (x) (- (* x x) x 2)) 0.0 5.0) 1.99981689453125)
         (assert-eq (half-interval-method (lambda (x) (- (* x x) x 2)) 1.0 5.0) 2.0)        
         ;; x^2 - 4x + 4 = 0 -> (x - 2)^2 = 0 -> x = 2
