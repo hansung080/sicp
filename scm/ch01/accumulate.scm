@@ -1,4 +1,4 @@
-;; Higher-Order Accumulate
+;; Accumulate
 ;;
 ;;   accumulate(combiner, null-value, term, a, next, b)
 ;;   = combiner(term(a), term(next(a)), term(next(next(a))), ..., term(b))
@@ -21,7 +21,7 @@
 
 (define accumulate accumulate2)
 
-;; Higher-Order Filtered-Accumulate
+;; Filtered Accumulate
 ;;
 ;;   filtered-accumulate(predicate?, combiner, null-value, term, a, next, b)
 ;;   = combiner(term(a), term(next(a)), term(next(next(a))), ..., term(b))

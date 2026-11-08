@@ -1,6 +1,6 @@
 (load "../common/math.scm")
 
-;; Higher-Order Sum
+;; Sum
 ;;
 ;;   sum(term, a, next, b) = term(a) + term(next(a)) + term(next(next(a))) + ... + term(b)
 ;;

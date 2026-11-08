@@ -41,4 +41,5 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 | tan                           | scm      |
 | newton-method                 | scm      |
 | polynomial-roots              | scm      |
+| double                        | scm      |
 | nth-root                      | scm      |

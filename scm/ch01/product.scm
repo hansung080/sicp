@@ -1,4 +1,4 @@
-;; Higher-Order Product
+;; Product
 ;;
 ;;   product(term, a, next, b) = term(a) * term(next(a)) * term(next(next(a))) * ... * term(b)
 ;;
