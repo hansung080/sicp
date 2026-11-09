@@ -2,6 +2,57 @@
 (load "../common/testing.scm")
 (load "double.scm")
 
+;; Substitution Models for Double
+;;
+;;   ((double inc) 5)
+;;   ((lambda (x) (inc (inc x))) 5)
+;;   (inc (inc 5))
+;;   (inc 6)
+;;   7
+;;
+;;   (((double (double double)) inc) 5)
+;;   (((double (lambda (x) (double (double x)))) inc) 5)
+;;   ; z -> x -> y
+;;   (((lambda (z) ((lambda (y) (double (double y))) ((lambda (x) (double (double x))) z))) inc) 5)
+;;   (((lambda (y) (double (double y))) ((lambda (x) (double (double x))) inc)) 5)
+;;   (((lambda (y) (double (double y))) (double (double inc))) 5)
+;;   ((double (double (double (double inc)))) 5)
+;;   ((double (double (double (lambda (a) (inc (inc a)))))) 5)
+;;   ((double (double (lambda (c) ((lambda (b) (inc (inc b))) ((lambda (a) (inc (inc a))) c))))) 5)
+;;   ((double (lambda (g) ((lambda (f) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) f))) ((lambda (c) ((lambda (b) (inc (inc b))) ((lambda (a) (inc (inc a))) c))) g)))) 5)
+;;   ; o -> g -> c -> a -> b -> f -> d -> e -> n -> j -> h -> i -> m -> k -> l
+;;   ((lambda (o) ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (g) ((lambda (f) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) f))) ((lambda (c) ((lambda (b) (inc (inc b))) ((lambda (a) (inc (inc a))) c))) g))) o))) 5)
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (g) ((lambda (f) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) f))) ((lambda (c) ((lambda (b) (inc (inc b))) ((lambda (a) (inc (inc a))) c))) g))) 5))
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (f) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) f))) ((lambda (c) ((lambda (b) (inc (inc b))) ((lambda (a) (inc (inc a))) c))) 5)))
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (f) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) f))) ((lambda (b) (inc (inc b))) ((lambda (a) (inc (inc a))) 5))))
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (f) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) f))) ((lambda (b) (inc (inc b))) (inc (inc 5)))))
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (f) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) f))) ((lambda (b) (inc (inc b))) (inc 6))))
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (f) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) f))) ((lambda (b) (inc (inc b))) 7)))
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (f) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) f))) (inc (inc 7))))
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (f) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) f))) (inc 8)))
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (f) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) f))) 9))
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) 9)))
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (e) (inc (inc e))) (inc (inc 9))))
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (e) (inc (inc e))) (inc 10)))
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (e) (inc (inc e))) 11))
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) (inc (inc 11)))
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) (inc 12))
+;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) 13)
+;;   ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) 13))
+;;   ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) 13)))
+;;   ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (i) (inc (inc i))) (inc (inc 13))))
+;;   ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (i) (inc (inc i))) (inc 14)))
+;;   ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (i) (inc (inc i))) 15))
+;;   ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) (inc (inc 15)))
+;;   ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) (inc 16))
+;;   ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) 17)
+;;   ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) 17))
+;;   ((lambda (l) (inc (inc l))) (inc (inc 17)))
+;;   ((lambda (l) (inc (inc l))) 19)
+;;   (inc (inc 19))
+;;   (inc 20)
+;;   21
+
 (test "double"
       (lambda ()
         (assert-eq ((double inc) 5) 7)
