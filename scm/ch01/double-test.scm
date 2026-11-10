@@ -54,6 +54,12 @@
 ;;   (inc 20)
 ;;   21
 ;;
+;;   ((double (double (double (double inc)))) 5)
+;;   ((double (double (double (lambda (a) (inc (inc a)))))) 5)
+;;   ((double (double (lambda (c) ((lambda (b) (inc (inc b))) ((lambda (a) (inc (inc a))) c))))) 5)
+;;   ... (same as above)
+;;   21
+;;
 (test "double"
       (lambda ()
         (assert-eq ((double inc) 5) 7)
