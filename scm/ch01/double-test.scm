@@ -12,7 +12,7 @@
 ;;
 ;;   (((double (double double)) inc) 5)
 ;;   (((double (lambda (x) (double (double x)))) inc) 5)
-;;   ; z -> x -> y
+;;   ; Lambda invocation order: z -> x -> y
 ;;   (((lambda (z) ((lambda (y) (double (double y))) ((lambda (x) (double (double x))) z))) inc) 5)
 ;;   (((lambda (y) (double (double y))) ((lambda (x) (double (double x))) inc)) 5)
 ;;   (((lambda (y) (double (double y))) (double (double inc))) 5)
@@ -20,7 +20,7 @@
 ;;   (((lambda (y) (double (double y))) (lambda (c) ((lambda (b) (inc (inc b))) ((lambda (a) (inc (inc a))) c)))) 5)
 ;;   ((double (double (lambda (c) ((lambda (b) (inc (inc b))) ((lambda (a) (inc (inc a))) c))))) 5)
 ;;   ((double (lambda (g) ((lambda (f) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) f))) ((lambda (c) ((lambda (b) (inc (inc b))) ((lambda (a) (inc (inc a))) c))) g)))) 5)
-;;   ; o -> g -> c -> a -> b -> f -> d -> e -> n -> j -> h -> i -> m -> k -> l
+;;   ; Lambda invocation order: o -> g -> c -> a -> b -> f -> d -> e -> n -> j -> h -> i -> m -> k -> l
 ;;   ((lambda (o) ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (g) ((lambda (f) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) f))) ((lambda (c) ((lambda (b) (inc (inc b))) ((lambda (a) (inc (inc a))) c))) g))) o))) 5)
 ;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (g) ((lambda (f) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) f))) ((lambda (c) ((lambda (b) (inc (inc b))) ((lambda (a) (inc (inc a))) c))) g))) 5))
 ;;   ((lambda (n) ((lambda (m) ((lambda (l) (inc (inc l))) ((lambda (k) (inc (inc k))) m))) ((lambda (j) ((lambda (i) (inc (inc i))) ((lambda (h) (inc (inc h))) j))) n))) ((lambda (f) ((lambda (e) (inc (inc e))) ((lambda (d) (inc (inc d))) f))) ((lambda (c) ((lambda (b) (inc (inc b))) ((lambda (a) (inc (inc a))) c))) 5)))
