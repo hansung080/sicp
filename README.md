@@ -6,6 +6,24 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 
 - Scheme (scm): Tested using DrRacket (Language: R5RS) and plt-r5rs.
 
+## Unicode Symbols
+
+| Symbol | Code Point | Name                       | Description                       |
+|--------|------------|----------------------------|-----------------------------------|
+| Θ      | U+0398     | GREEK CAPITAL LETTER THETA | Order of growth                   |
+| η      | U+03B7     | GREEK SMALL LETTER ETA     | Learning rate                     |
+| π      | U+03C0     | GREEK SMALL LETTER PI      | Pi                                |
+| φ      | U+03C6     | GREEK SMALL LETTER PHI     | The golden ratio                  |
+| ψ      | U+03C8     | GREEK SMALL LETTER PSI     | The conjugate of the golden ratio |
+| ↦      | U+21A6     | RIGHTWARDS ARROW FROM BAR  | Maplet arrow, maps to, lambda     |
+| ∈      | U+2208     | ELEMENT OF                 | An element of                     |
+| ∏      | U+220F     | N-ARY PRODUCT              | Product                           |
+| ∑      | U+2211     | N-ARY SUMMATION            | Summation                         |
+| ∞      | U+221E     | INFINITY                   | Infinity                          |
+| ∣      | U+2223     | DIVIDES                    | Divides                           |
+| ∫      | U+222B     | INTEGRAL                   | Integral                          |
+| ≈      | U+2248     | ALMOST EQUAL TO            | Almost equal to                   |
+
 ## Examples
 
 ### Chapter 01
