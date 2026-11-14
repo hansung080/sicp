@@ -1,6 +1,6 @@
 (load "../common/math.scm")
 
-;; Fixed Point of Function
+;; Fixed Point of a Function
 ;;
 ;;   A root of the equation f(x) = x is called a fixed point of the function f.
 ;;   In other words, if we give f an initial guess and repeatedly apply f as shown below,

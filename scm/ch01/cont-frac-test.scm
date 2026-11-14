@@ -48,7 +48,7 @@
               (lambda (i) i)
               3))
 
-;; Reciprocal of Golden Ratio (1/φ)
+;; Reciprocal of the Golden Ratio (1/φ)
 ;;
 ;;   Continued Fraction for 1/φ
 ;;
