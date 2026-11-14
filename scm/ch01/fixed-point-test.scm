@@ -18,7 +18,7 @@
 ;;   Find the golden ratio by finding a root of the equation:
 ;;     φ^2 = φ + 1
 ;;     φ^2 - φ - 1 = 0
-;;     φ = (1 + sqrt(5)) / 2 ≈ 1.6180
+;;     φ = {1 + sqrt(5)} / 2 ≈ 1.6180
 ;;   
 ;;   Find the golden ratio by finding a fixed point of the function:
 ;;     φ^2 = φ + 1
@@ -47,7 +47,7 @@
 ;;   x * log(x) = log(y)
 ;;   x = log(y) / log(x)
 ;;   2x = log(y) / log(x) + x
-;;   x = (log(y) / log(x) + x) / 2
+;;   x = {log(y) / log(x) + x} / 2
 ;;
 ;;   Without average damping, find a fixed point of the function:
 ;;     f(x) = log(y) / log(x)
@@ -59,7 +59,7 @@
 ;;       - `fixed-point-checked` takes 91 iterations.
 ;;
 ;;   With average damping, find a fixed point of the function:
-;;     f(x) = (log(y) / log(x) + x) / 2
+;;     f(x) = {log(y) / log(x) + x} / 2
 ;;
 ;;     Notes:
 ;;       - `fixed-point-exact` takes 27 iterations.

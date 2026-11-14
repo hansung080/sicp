@@ -111,7 +111,7 @@
 ;;
 ;;   Closed-Form Formula
 ;;
-;;     Fib(n) = round(φ^n / sqrt(5))  (φ^2 = φ + 1; φ = (1 + sqrt(5)) / 2 ≈ 1.6180 (golden ratio))
+;;     Fib(n) = round{φ^n / sqrt(5)}  (φ^2 = φ + 1; φ = {1 + sqrt(5)} / 2 ≈ 1.6180 (golden ratio))
 ;;
 ;;   Proof
 ;;

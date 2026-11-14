@@ -91,9 +91,9 @@
 ;;       n >= Fib(k)  (n = min(a, b); k denotes the number of steps required to compute the GCD.)
 ;;
 ;;     Then:
-;;       n >= Fib(k) = round(φ^k / sqrt(5)) ≈ φ^k / sqrt(5)
+;;       n >= Fib(k) = round{φ^k / sqrt(5)} ≈ φ^k / sqrt(5)
 ;;       φ^k <= n * sqrt(5)
-;;       k <= log<φ>(n * sqrt(5)) = log<φ>(n) + log<φ>(sqrt(5))
+;;       k <= log<φ>{n * sqrt(5)} = log<φ>(n) + log<φ>{sqrt(5)}
 ;;       k = Θ(log<φ>(n))
 ;;
 ;;     Thus:
