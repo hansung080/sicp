@@ -93,11 +93,11 @@
 ;;     Then:
 ;;       n >= Fib(k) = round(φ^k / sqrt(5)) ≈ φ^k / sqrt(5)
 ;;       φ^k <= n * sqrt(5)
-;;       k <= logφ(n * sqrt(5)) = logφ(n) + logφ(sqrt(5))
-;;       k = Θ(logφ(n))
+;;       k <= log<φ>(n * sqrt(5)) = log<φ>(n) + log<φ>(sqrt(5))
+;;       k = Θ(log<φ>(n))
 ;;
 ;;     Thus:
-;;       Time complexity:  Θ(logφ(n))  (n = min(a, b))
+;;       Time complexity:  Θ(log<φ>(n))  (n = min(a, b))
 ;;       Space complexity: Θ(1)
 ;;
 (define (gcd0 a b)

@@ -9,7 +9,7 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     Time complexity:  Θ(log2{(b - a) / tolerance})
+;;     Time complexity:  Θ(log<2>{(b - a) / tolerance})
 ;;     Space complexity: Θ(1)
 ;;
 (define (half-interval-method f a b)

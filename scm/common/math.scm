@@ -164,8 +164,8 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     Time complexity:  Θ(log2(n))
-;;     Space complexity: Θ(log2(n))
+;;     Time complexity:  Θ(log<2>(n))
+;;     Space complexity: Θ(log<2>(n))
 ;;
 (define (exprem b n m)
   (cond ((= n 0)

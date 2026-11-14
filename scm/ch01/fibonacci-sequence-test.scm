@@ -125,7 +125,7 @@
 ;;     The time and space complexities depend on the implementation of `expt_`,
 ;;     which is currently implemented as `fast-expt2`.
 ;;
-;;     Time complexity:  Θ(log2(n))
+;;     Time complexity:  Θ(log<2>(n))
 ;;     Space complexity: Θ(1)
 ;;
 (define φ (/ (+ 1 (sqrt_ 5)) 2))
@@ -173,7 +173,7 @@
 ;;
 ;;   Order of Growth
 ;;
-;;     Time complexity:  Θ(log2(n))
+;;     Time complexity:  Θ(log<2>(n))
 ;;     Space complexity: Θ(1)
 ;;
 (define (fib4 n)

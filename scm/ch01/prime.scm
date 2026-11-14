@@ -71,8 +71,8 @@
 ;;
 ;;     The time and space complexities depend on the implementation of `exprem`.
 ;;
-;;     Time complexity:  Θ(log2(n))
-;;     Space complexity: Θ(log2(n))
+;;     Time complexity:  Θ(log<2>(n))
+;;     Space complexity: Θ(log<2>(n))
 ;;
 (define (fast-prime1? n)
   (fast-prime1-with-times? n 20))
@@ -132,8 +132,8 @@
 ;;
 ;;     The time and space complexities depend on the implementation of `exprem-checked`.
 ;;
-;;     Time complexity:  Θ(log2(n))
-;;     Space complexity: Θ(log2(n))
+;;     Time complexity:  Θ(log<2>(n))
+;;     Space complexity: Θ(log<2>(n))
 ;;
 (define (fast-prime2? n)
   (fast-prime2-with-times? n 20))
