@@ -111,14 +111,30 @@
 ;;
 ;;   Closed-Form Formula
 ;;
-;;     Fib(n) = round{φ^n / sqrt(5)}  (φ^2 = φ + 1; φ = {1 + sqrt(5)} / 2 ≈ 1.6180 (golden ratio))
+;;     Fib(n) = round{φ^n / sqrt(5)}  (φ is the golden ratio)
 ;;
 ;;   Proof
 ;;
-;;     Refer to the two web pages below.
+;;     See the two web pages below.
 ;;
 ;;     https://sicp-solutions.net/post/sicp-solution-exercise-1-13/
 ;;     https://studyingeugene.github.io/sicp/chapter-1/exercise-1-13/
+;;
+;;     Hint:
+;;       Let ψ = {1 - sqrt(5)} / 2, and first prove by mathematical induction that Fib(n) = (φ^n - ψ^n) / sqrt(5).
+;;       Then prove that Fib(n) = round{φ^n / sqrt(5)}.
+;;
+;;     Note:
+;;       φ   = {1 + sqrt(5)} / 2 ≈ 1.6180   (golden ratio)
+;;       1/φ = 2 / {1 + sqrt(5)} ≈ 0.6180   (reciprocal of the golden ratio)
+;;       ψ   = {1 - sqrt(5)} / 2 ≈ -0.6180  (golden ratio conjugate)
+;;
+;;       φ^2 = φ + 1
+;;       1/φ = φ - 1
+;;       ψ   = 1 - φ
+;;
+;;       Fib(n) = (φ^n - ψ^n) / sqrt(5)
+;;              = round{φ^n / sqrt(5)}
 ;;
 ;;   Order of Growth
 ;;
