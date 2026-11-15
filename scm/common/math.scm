@@ -136,7 +136,7 @@
 (define (average x y)
   (/ (+ x y) 2))
 
-;; Check whether `divisor` divides `dividend` (i.e. divisor ∣ dividend; ∣ denotes DIVIDES (U+2223)).
+;; Check whether `divisor` divides `dividend` (i.e. divisor ∣ dividend).
 (define (divides? divisor dividend)
   (= (remainder_ dividend divisor) 0))
 
