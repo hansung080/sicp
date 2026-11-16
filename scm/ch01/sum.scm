@@ -2,7 +2,9 @@
 
 ;; Sum
 ;;
-;;   sum(term, a, next, b) = term(a) + term(next(a)) + term(next(next(a))) + ... + term(b)
+;;   sum(term, a, next, b) = ∑<k=0..n>{term(next^k(a))}
+;;                         = term(a) + term(next(a)) + term(next^2(a)) + ... + term(next^n(a))
+;;                           where n is the largest integer such that next^n(a) <= b
 ;;
 ;; Recursive Process
 (define (sum1 term a next b)
@@ -22,6 +24,12 @@
 
 (define sum sum2)
 
+;; Sum of Integers
+;;
+;;   sum-integers(a, b) = ∑<k=a..b>(k)
+;;                      = a + (a+1) + (a+2) + ... + b
+;;                        where a and b are integers such that a <= b
+;;
 (define (sum-integers0 a b)
   (if (> a b)
       0
@@ -35,6 +43,12 @@
 
 (define sum-integers sum-integers0)
 
+;; Sum of Squares
+;;
+;;   sum-squares(a, b) = ∑<k=a..b>(k^2)
+;;                     = a^2 + (a+1)^2 + (a+2)^2 + ... + b^2
+;;                       where a and b are integers such that a <= b
+;;
 (define (sum-squares0 a b)
   (if (> a b)
       0
@@ -49,6 +63,12 @@
 
 (define sum-squares sum-squares0)
 
+;; Sum of Cubes
+;;
+;;   sum-cubes(a, b) = ∑<k=a..b>(k^3)
+;;                   = a^3 + (a+1)^3 + (a+2)^3 + ... + b^3
+;;                     where a and b are integers such that a <= b
+;;
 (define (sum-cubes0 a b)
   (if (> a b)
       0
@@ -97,17 +117,17 @@
 ;;   Left Riemann Sum
 ;;
 ;;     ∫<a..b>{f(x)}dx ≈ {f(a) + f(a + dx) + f(a + 2dx) + ... + f(a + n*dx)} * dx
-;;     where n is the largest integer such that a + n*dx <= b
+;;                       where n is the largest integer such that a + n*dx <= b
 ;;
 ;;   Midpoint Riemann Sum (implemented by `integral`)
 ;;
 ;;     ∫<a..b>{f(x)}dx ≈ {f(a + dx/2) + f(a + dx/2 + dx) + f(a + dx/2 + 2dx) + ... + f(a + dx/2 + n*dx)} * dx
-;;     where n is the largest integer such that a + dx/2 + n*dx <= b
+;;                       where n is the largest integer such that a + dx/2 + n*dx <= b
 ;;
 ;;   Right Riemann Sum
 ;;
 ;;     ∫<a..b>{f(x)}dx ≈ {f(a + dx) + f(a + 2dx) + f(a + 3dx) + ... + f(a + n*dx)} * dx
-;;     where n is the largest integer such that a + n*dx <= b
+;;                       where n is the largest integer such that a + n*dx <= b
 ;;
 (define (integral-by f a b dx sum)
   (define (add-dx x)
