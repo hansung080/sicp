@@ -88,7 +88,7 @@
 ;;   Order of Growth
 ;;
 ;;     Lamé's Theorem:
-;;       n >= Fib(k)  (n = min(a, b); k denotes the number of steps required to compute the GCD.)
+;;       n >= Fib(k)  (n = min(a, b); k is the number of steps required to compute the GCD.)
 ;;
 ;;     Then:
 ;;       n >= Fib(k) = round{φ^k / sqrt(5)} ≈ φ^k / sqrt(5)
