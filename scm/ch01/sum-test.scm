@@ -7,6 +7,12 @@
         (assert-eq (sum-integers1 1 4) 10)
         (assert-eq (sum-integers2 1 4) 10)))
 
+(test "sum-squares"
+      (lambda ()
+        (assert-eq (sum-squares0 1 4) 30)
+        (assert-eq (sum-squares1 1 4) 30)
+        (assert-eq (sum-squares2 1 4) 30)))
+
 (test "sum-cubes"
       (lambda ()
         (assert-eq (sum-cubes0 1 4) 100)

@@ -35,6 +35,20 @@
 
 (define sum-integers sum-integers0)
 
+(define (sum-squares0 a b)
+  (if (> a b)
+      0
+      (+ (square a)
+         (sum-squares0 (+ a 1) b))))
+
+(define (sum-squares1 a b)
+  (sum1 square a inc b))
+
+(define (sum-squares2 a b)
+  (sum2 square a inc b))
+
+(define sum-squares sum-squares0)
+
 (define (sum-cubes0 a b)
   (if (> a b)
       0
