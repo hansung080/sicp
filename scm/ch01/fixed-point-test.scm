@@ -23,7 +23,7 @@
 ;;   Find the golden ratio by finding a fixed point of the function:
 ;;     φ^2 = φ + 1
 ;;     φ = 1 + 1 / φ
-;;     Thus φ is a fixed point of f(φ) = 1 + 1 / φ
+;;     Thus, φ is a fixed point of f(φ) = 1 + 1 / φ.
 ;;
 (define (golden-ratio1)
   (/ (+ 1 (sqrt0 5)) 2))
