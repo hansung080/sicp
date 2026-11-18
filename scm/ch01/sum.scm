@@ -85,11 +85,11 @@
 
 ;; Leibniz Series for π/4
 ;;
-;;   1 - 1/3 + 1/5 - 1/7 + ... = π/4
+;;   ∑<k=0..∞>{(-1)^k / (2k + 1)} = 1 - 1/3 + 1/5 - 1/7 + ... = π/4
 ;;
 ;; Infinite Series for π/8 (implemented by `pi-over-eight`)
 ;;
-;;   1/(1*3) + 1/(5*7) + 1/(9*11) + ... = π/8
+;;   ∑<k=0..∞>[1 / {(4k + 1)(4k + 3)}] = 1/(1*3) + 1/(5*7) + 1/(9*11) + ... = π/8
 ;;
 (define (pi-over-eight0 a b)
   (if (> a b)
@@ -116,30 +116,34 @@
 ;;
 ;;   Left Riemann Sum
 ;;
-;;     ∫<a..b>{f(x)}dx ≈ {f(a) + f(a + dx) + f(a + 2dx) + ... + f(a + n*dx)} * dx
+;;     ∫<a..b>{f(x)}dx ≈ ∑<k=0..n>{f(a + k*dx)} * dx
+;;                     = {f(a) + f(a + dx) + f(a + 2dx) + ... + f(a + n*dx)} * dx
 ;;                       where n is the largest integer such that a + n*dx <= b
 ;;
 ;;   Midpoint Riemann Sum (implemented by `integral`)
 ;;
-;;     ∫<a..b>{f(x)}dx ≈ {f(a + dx/2) + f(a + dx/2 + dx) + f(a + dx/2 + 2dx) + ... + f(a + dx/2 + n*dx)} * dx
+;;     ∫<a..b>{f(x)}dx ≈ ∑<k=0..n>{f(a + dx/2 + k*dx)} * dx
+;;                     = {f(a + dx/2) + f(a + dx/2 + dx) + f(a + dx/2 + 2dx) + ... + f(a + dx/2 + n*dx)} * dx
 ;;                       where n is the largest integer such that a + dx/2 + n*dx <= b
 ;;
 ;;   Right Riemann Sum
 ;;
-;;     ∫<a..b>{f(x)}dx ≈ {f(a + dx) + f(a + 2dx) + f(a + 3dx) + ... + f(a + n*dx)} * dx
+;;     ∫<a..b>{f(x)}dx ≈ ∑<k=1..n>{f(a + k*dx)} * dx
+;;                     = {f(a + dx) + f(a + 2dx) + f(a + 3dx) + ... + f(a + n*dx)} * dx
 ;;                       where n is the largest integer such that a + n*dx <= b
 ;;
-(define (integral-by f a b dx sum)
+(define (integral-by f a b n sum)
+  (define dx (exact->inexact (/ (- b a) n)))
   (define (add-dx x)
     (+ x dx))
   (* (sum f (+ a (/ dx 2)) add-dx b)
      dx))
 
-(define (integral1 f a b dx)
-  (integral-by f a b dx sum1))
+(define (integral1 f a b n)
+  (integral-by f a b n sum1))
 
-(define (integral2 f a b dx)
-  (integral-by f a b dx sum2))
+(define (integral2 f a b n)
+  (integral-by f a b n sum2))
 
 ;; Simpson Integral Approximation
 ;;
@@ -152,7 +156,7 @@
 ;; Precondition:
 ;;   `n` must be even.
 (define (simpson-integral-by f a b n sum)
-  (define h (/ (- b a) n))
+  (define h (exact->inexact (/ (- b a) n)))
   (define (add-2h x)
     (+ x h h))
   (* (+ (f a)
