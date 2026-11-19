@@ -116,22 +116,25 @@
 ;;
 ;;   Left Riemann Sum
 ;;
-;;     ∫<a..b>{f(x)}dx ≈ ∑<k=0..n>{f(a + k*dx)} * dx
-;;                     = {f(a) + f(a + dx) + f(a + 2dx) + ... + f(a + n*dx)} * dx
-;;                       where n is the largest integer such that a + n*dx <= b
+;;     ∫<a..b>{f(x)}dx ≈ ∑<k=0..(n-1)>{f(a + kΔx)} * Δx
+;;                     = {f(a) + f(a + Δx) + f(a + 2Δx) + ... + f(a + (n-1)Δx)} * Δx
+;;                       where n is the number of subintervals and Δx = (b - a) / n
 ;;
 ;;   Midpoint Riemann Sum (implemented by `integral`)
 ;;
-;;     ∫<a..b>{f(x)}dx ≈ ∑<k=0..n>{f(a + dx/2 + k*dx)} * dx
-;;                     = {f(a + dx/2) + f(a + dx/2 + dx) + f(a + dx/2 + 2dx) + ... + f(a + dx/2 + n*dx)} * dx
-;;                       where n is the largest integer such that a + dx/2 + n*dx <= b
+;;     ∫<a..b>{f(x)}dx ≈ ∑<k=0..(n-1)>{f(a + Δx/2 + kΔx)} * Δx
+;;                     = {f(a + Δx/2) + f(a + Δx/2 + Δx) + f(a + Δx/2 + 2Δx) + ... + f(a + Δx/2 + (n-1)Δx)} * Δx
+;;                       where n is the number of subintervals and Δx = (b - a) / n
 ;;
 ;;   Right Riemann Sum
 ;;
-;;     ∫<a..b>{f(x)}dx ≈ ∑<k=1..n>{f(a + k*dx)} * dx
-;;                     = {f(a + dx) + f(a + 2dx) + f(a + 3dx) + ... + f(a + n*dx)} * dx
-;;                       where n is the largest integer such that a + n*dx <= b
+;;     ∫<a..b>{f(x)}dx ≈ ∑<k=1..n>{f(a + kΔx)} * Δx
+;;                     = {f(a + Δx) + f(a + 2Δx) + f(a + 3Δx) + ... + f(a + nΔx)} * Δx
+;;                       where n is the number of subintervals and Δx = (b - a) / n
 ;;
+;; Note:
+;;   Originally, SICP takes the subinterval width `dx` as an input, but this implementation takes
+;;   the number of subintervals `n` to make its interface consistent with `simpson-integral`.
 (define (integral-by f a b n sum)
   (define dx (exact->inexact (/ (- b a) n)))
   (define (add-dx x)

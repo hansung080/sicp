@@ -10,6 +10,7 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 
 | Symbol | Code Point | Name                       | Description                               |
 |--------|------------|----------------------------|-------------------------------------------|
+| Δ      | U+0394     | GREEK CAPITAL LETTER DELTA | Increment                                 |
 | Θ      | U+0398     | GREEK CAPITAL LETTER THETA | Order of growth                           |
 | η      | U+03B7     | GREEK SMALL LETTER ETA     | Learning rate                             |
 | π      | U+03C0     | GREEK SMALL LETTER PI      | Pi                                        |
