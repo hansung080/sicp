@@ -1,6 +1,8 @@
 ;; Product
 ;;
-;;   product(term, a, next, b) = term(a) * term(next(a)) * term(next(next(a))) * ... * term(b)
+;;   product(term, a, next, b) = ∏<k=0..n>{term(next^k(a))}
+;;                             = term(a) * term(next(a)) * term(next^2(a)) * ... * term(next^n(a))
+;;                               where n is the largest integer such that next^n(a) <= b
 ;;
 ;; Recursive Process
 (define (product1 term a next b)
