@@ -21,9 +21,9 @@
 
 (test "pi-over-eight"
       (lambda ()
-        (assert-eq (* (pi-over-eight0 1 1000) 8) 3.139592655589783)
-        (assert-eq (* (pi-over-eight1 1 1000) 8) 3.139592655589783)
-        (assert-eq (* (pi-over-eight2 1 1000) 8) 3.139592655589782)))
+        (assert-eq (* (pi-over-eight0 1000) 8) 3.141092653621043)
+        (assert-eq (* (pi-over-eight1 1000) 8) 3.141092653621043)
+        (assert-eq (* (pi-over-eight2 1000) 8) 3.141092653621038)))
 
 (test "integral"
       (lambda ()

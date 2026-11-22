@@ -91,24 +91,26 @@
 ;;
 ;;   ∑<k=0..∞>[1 / {(4k + 1)(4k + 3)}] = 1/(1*3) + 1/(5*7) + 1/(9*11) + ... = π/8
 ;;
-(define (pi-over-eight0 a b)
-  (if (> a b)
-      0
-      (+ (/ 1.0 (* a (+ a 2)))
-         (pi-over-eight0 (+ a 4) b))))
+(define (pi-over-eight0 n)
+  (define (recur a b)
+    (if (> a b)
+        0
+        (+ (/ 1.0 (* a (+ a 2)))
+           (recur (+ a 4) b))))
+  (recur 1 (+ (* 4 (- n 1)) 1)))
 
-(define (pi-over-eight-by a b sum)
+(define (pi-over-eight-by n sum)
   (define (term x)
     (/ 1.0 (* x (+ x 2))))
   (define (next x)
     (+ x 4))
-  (sum term a next b))
+  (sum term 1 next (+ (* 4 (- n 1)) 1)))
 
-(define (pi-over-eight1 a b)
-  (pi-over-eight-by a b sum1))
+(define (pi-over-eight1 n)
+  (pi-over-eight-by n sum1))
 
-(define (pi-over-eight2 a b)
-  (pi-over-eight-by a b sum2))
+(define (pi-over-eight2 n)
+  (pi-over-eight-by n sum2))
 
 (define pi-over-eight pi-over-eight0)
 
