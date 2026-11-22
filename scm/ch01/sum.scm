@@ -116,13 +116,13 @@
 ;;
 ;;   Left Riemann Sum
 ;;
-;;     ∫<a..b>{f(x)}dx ≈ ∑<k=0..(n-1)>{f(a + kΔx)} * Δx
+;;     ∫<a..b>{f(x)}dx ≈ ∑<k=0..n-1>{f(a + kΔx)} * Δx
 ;;                     = {f(a) + f(a + Δx) + f(a + 2Δx) + ... + f(a + (n-1)Δx)} * Δx
 ;;                       where n is the number of subintervals and Δx = (b - a) / n
 ;;
 ;;   Midpoint Riemann Sum (implemented by `integral`)
 ;;
-;;     ∫<a..b>{f(x)}dx ≈ ∑<k=0..(n-1)>{f(a + Δx/2 + kΔx)} * Δx
+;;     ∫<a..b>{f(x)}dx ≈ ∑<k=0..n-1>{f(a + Δx/2 + kΔx)} * Δx
 ;;                     = {f(a + Δx/2) + f(a + Δx/2 + Δx) + f(a + Δx/2 + 2Δx) + ... + f(a + Δx/2 + (n-1)Δx)} * Δx
 ;;                       where n is the number of subintervals and Δx = (b - a) / n
 ;;
@@ -153,7 +153,9 @@
 ;;   Simpson's Rule
 ;;
 ;;     For even n, let h = (b - a) / n and y_k = f(a + kh):
-;;       ∫<a..b>{f(x)}dx ≈ {y_0 + 4y_1 + 2y_2 + 4y_3 + 2y_4 + ... + 2y_(n-2) + 4y_(n-1) + y_n} * (h / 3)
+;;       ∫<a..b>{f(x)}dx ≈ ∑<k=0..n/2-1>{y_(2k) + 4y_(2k+1) + y_(2k+2)} * (h / 3)
+;;                       = [y_0 + 4∑<k=0..n/2-1>{y_(2k+1)} + 2∑<k=1..n/2-1>{y_(2k)} + y_n] * (h / 3)
+;;                       = {y_0 + 4y_1 + 2y_2 + 4y_3 + 2y_4 + ... + 2y_(n-2) + 4y_(n-1) + y_n} * (h / 3)
 ;;                       = [y_0 + 4{y_1 + y_3 + ... + y_(n-1)} + 2{y_2 + y_4 + ... + y_(n-2)} + y_n] * (h / 3)
 ;;
 ;; Precondition:
