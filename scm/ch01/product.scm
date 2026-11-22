@@ -36,30 +36,32 @@
 ;;   = {(2 * 4) / (3 * 3)} * {(4 * 6) / (5 * 5)} * {(6 * 8) / (7 * 7)} * ...
 ;;   = π/4
 ;;
-(define (pi-over-four0 a b)
-  (if (> a b)
-      1.0
-      (* (/ (* a (+ a 2))
-            (* (+ a 1) (+ a 1)))
-         (pi-over-four0 (+ a 2) b))))
+(define (pi-over-four0 n)
+  (define (recur a b)
+    (if (> a b)
+        1.0
+        (* (/ (* a (+ a 2))
+              (* (+ a 1) (+ a 1)))
+           (recur (+ a 2) b))))
+  (recur 2 (* 2 (- n 1))))
 
 ;; DrRacket/Scheme uses arbitrary-precision exact integers and 64-bit IEEE 754 inexact floats.
 ;;
 ;; GOOD: Each term satisfies 0 < term(x) < 1, and the final product converges to π/4.
 ;;       Thus, it avoids both the large intermediate integers and float overflow.
-(define (pi-over-four-by1 a b product)
+(define (pi-over-four-by1 n product)
   (define (term x)
     (exact->inexact
      (/ (* x (+ x 2))
         (* (+ x 1) (+ x 1)))))
   (define (next x)
     (+ x 2))
-  (product term a next b))
+  (product term 2 next (* 2 (- n 1))))
 
 ;; BAD: If `x` is an exact integer, the intermediate products can become very large,
 ;;      potentially causing performance and memory overhead.
 ;;      If `x` is an inexact float, float overflow can occur.
-(define (pi-over-four-by2 a b product)
+(define (pi-over-four-by2 n product)
   (define (term-dividend x)
     (* x (+ x 2)))
   (define (term-divisor x)
@@ -67,19 +69,19 @@
   (define (next x)
     (+ x 2))
   (exact->inexact
-   (/ (product term-dividend a next b)
-      (product term-divisor (+ a 1) next (+ b 1)))))
+   (/ (product term-dividend 2 next (* 2 (- n 1)))
+      (product term-divisor 3 next (+ (* 2 (- n 1)) 1)))))
 
-(define (pi-over-four1 a b)
-  (pi-over-four-by1 a b product1))
+(define (pi-over-four1 n)
+  (pi-over-four-by1 n product1))
 
-(define (pi-over-four2 a b)
-  (pi-over-four-by1 a b product2))
+(define (pi-over-four2 n)
+  (pi-over-four-by1 n product2))
 
-(define (pi-over-four3 a b)
-  (pi-over-four-by2 a b product1))
+(define (pi-over-four3 n)
+  (pi-over-four-by2 n product1))
 
-(define (pi-over-four4 a b)
-  (pi-over-four-by2 a b product2))
+(define (pi-over-four4 n)
+  (pi-over-four-by2 n product2))
 
 (define pi-over-four pi-over-four0)
