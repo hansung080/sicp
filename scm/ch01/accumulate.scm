@@ -1,7 +1,8 @@
 ;; Accumulate
 ;;
 ;;   accumulate(combiner, null-value, term, a, next, b)
-;;   = combiner(term(a), term(next(a)), term(next(next(a))), ..., term(b))
+;;   = combiner(term(a), term(next(a)), term(next^2(a)), ..., term(next^n(a)))
+;;     where n is the largest integer such that next^n(a) <= b
 ;;
 ;; Recursive Process
 (define (accumulate1 combiner null-value term a next b)
@@ -24,8 +25,12 @@
 ;; Filtered Accumulate
 ;;
 ;;   filtered-accumulate(predicate?, combiner, null-value, term, a, next, b)
-;;   = combiner(term(a), term(next(a)), term(next(next(a))), ..., term(b))
-;;     for values a' where predicate?(a') is true
+;;   = combiner(term(a) if predicate?(a),
+;;              term(next(a)) if predicate?(next(a)),
+;;              term(next^2(a)) if predicate?(next^2(a)),
+;;              ...,
+;;              term(next^n(a)) if predicate?(next^n(a)))
+;;     where n is the largest integer such that next^n(a) <= b
 ;;
 ;; Recursive Process
 (define (filtered-accumulate1 predicate? combiner null-value term a next b)
