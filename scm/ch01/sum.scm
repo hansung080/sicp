@@ -4,7 +4,7 @@
 ;;
 ;;   sum(term, a, next, b) = ∑<k=0..n>{term(next^k(a))}
 ;;                         = term(a) + term(next(a)) + term(next^2(a)) + ... + term(next^n(a))
-;;                           where n is the largest integer such that next^n(a) <= b
+;;                           (n is the largest integer such that next^n(a) <= b)
 ;;
 ;; Recursive Process
 (define (sum1 term a next b)
@@ -28,7 +28,7 @@
 ;;
 ;;   sum-integers(a, b) = ∑<k=a..b>(k)
 ;;                      = a + (a+1) + (a+2) + ... + b
-;;                        where a and b are integers such that a <= b
+;;                        (a and b are integers such that a <= b)
 ;;
 (define (sum-integers0 a b)
   (if (> a b)
@@ -47,7 +47,7 @@
 ;;
 ;;   sum-squares(a, b) = ∑<k=a..b>(k^2)
 ;;                     = a^2 + (a+1)^2 + (a+2)^2 + ... + b^2
-;;                       where a and b are integers such that a <= b
+;;                       (a and b are integers such that a <= b)
 ;;
 (define (sum-squares0 a b)
   (if (> a b)
@@ -67,7 +67,7 @@
 ;;
 ;;   sum-cubes(a, b) = ∑<k=a..b>(k^3)
 ;;                   = a^3 + (a+1)^3 + (a+2)^3 + ... + b^3
-;;                     where a and b are integers such that a <= b
+;;                     (a and b are integers such that a <= b)
 ;;
 (define (sum-cubes0 a b)
   (if (> a b)
@@ -124,19 +124,19 @@
 ;;
 ;;     ∫<a..b>{f(x)}dx ≈ ∑<k=0..n-1>{f(a + kΔx)} * Δx
 ;;                     = {f(a) + f(a + Δx) + f(a + 2Δx) + ... + f(a + (n-1)Δx)} * Δx
-;;                       where n is the number of subintervals and Δx = (b - a) / n
+;;                       (n is the number of subintervals and Δx = (b - a) / n)
 ;;
 ;;   Midpoint Riemann Sum (implemented in `integral`)
 ;;
 ;;     ∫<a..b>{f(x)}dx ≈ ∑<k=0..n-1>{f(a + Δx/2 + kΔx)} * Δx
 ;;                     = {f(a + Δx/2) + f(a + Δx/2 + Δx) + f(a + Δx/2 + 2Δx) + ... + f(a + Δx/2 + (n-1)Δx)} * Δx
-;;                       where n is the number of subintervals and Δx = (b - a) / n
+;;                       (n is the number of subintervals and Δx = (b - a) / n)
 ;;
 ;;   Right Riemann Sum
 ;;
 ;;     ∫<a..b>{f(x)}dx ≈ ∑<k=1..n>{f(a + kΔx)} * Δx
 ;;                     = {f(a + Δx) + f(a + 2Δx) + f(a + 3Δx) + ... + f(a + nΔx)} * Δx
-;;                       where n is the number of subintervals and Δx = (b - a) / n
+;;                       (n is the number of subintervals and Δx = (b - a) / n)
 ;;
 ;; Note:
 ;;   Originally, SICP takes the subinterval width `dx` as an input, but this implementation takes

@@ -2,7 +2,7 @@
 ;;
 ;;   product(term, a, next, b) = ∏<k=0..n>{term(next^k(a))}
 ;;                             = term(a) * term(next(a)) * term(next^2(a)) * ... * term(next^n(a))
-;;                               where n is the largest integer such that next^n(a) <= b
+;;                               (n is the largest integer such that next^n(a) <= b)
 ;;
 ;; Recursive Process
 (define (product1 term a next b)

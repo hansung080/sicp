@@ -13,7 +13,7 @@
 ;;
 ;;       g'(x_n) ≈ {g(x_(n+1)) - g(x_n)} / {x_(n+1) - x_n}
 ;;       g(x_(n+1)) - g(x_n) ≈ g'(x_n) * {x_(n+1) - x_n}
-;;       x_(n+2) - r ≈ g'(r) * {x_(n+1) - r}  (because g(r) = r where r is the fixed point)
+;;       x_(n+2) - r ≈ g'(r) * {x_(n+1) - r}  (because g(r) = r, where r is a fixed point of g)
 ;;       x_(n+1) - r ≈ g'(r) * (x_n - r)
 ;;       |x_(n+1) - r| ≈ |g'(r)| * |x_n - r|
 ;;

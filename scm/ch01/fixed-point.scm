@@ -10,7 +10,7 @@
 ;;   f(x_2) = x_3
 ;;   f(x_3) = x_4
 ;;   ...
-;;   f(x_n) = x_(n+1)  (x_n = x_(n+1); x_n is a fixed point of f)
+;;   f(x_n) = x_(n+1)  (x_n = x_(n+1), where x_n is a fixed point of f)
 ;;
 (define (fixed-point-with f initial-guess close-enough?)
   (define (try guess)
