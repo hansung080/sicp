@@ -8,7 +8,7 @@ Implementations of Structure and Interpretation of Computer Programs (2/E) in mu
 
 ## Unicode Symbols
 
-| Symbol | Code Point | Name                       | Description                               |
+| Symbol | Code Point | Character Name             | Description                               |
 |--------|------------|----------------------------|-------------------------------------------|
 | Δ      | U+0394     | GREEK CAPITAL LETTER DELTA | Increment                                 |
 | Θ      | U+0398     | GREEK CAPITAL LETTER THETA | Order of growth                           |
